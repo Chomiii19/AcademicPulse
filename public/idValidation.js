@@ -71,8 +71,9 @@ function startScanning() {
         }
       },
       (error) => {
-        detectionStatus.classList.add("hidden");
-        console.log("QR code scan error:", error);
+        setTimeout(() => detectionStatus.classList.add("hidden"), 5000);
+
+        // console.log("QR code scan error:", error);
       }
     )
     .catch((err) => {
