@@ -29,6 +29,7 @@ function startScanning() {
       async (decodedText, decodedResult) => {
         // Only process if scanning is allowed
         if (isScanning) {
+          idStatus.textContent = "";
           isScanning = false; // Block further scanning
           try {
             console.log(`Code matched = ${decodedText}`, decodedResult);
@@ -62,7 +63,7 @@ function startScanning() {
               });
             } else {
               idStatus.textContent = data.message;
-              isScanning = true; // Re-enable scanning in case of error
+              setTimeout(() => (isScanning = true), 3000);
             }
           } catch (err) {
             console.error("Error processing QR code:", err);
