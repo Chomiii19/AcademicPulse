@@ -67,11 +67,12 @@ function startScanning() {
             }
           } catch (err) {
             console.error("Error processing QR code:", err);
-            isScanning = true; // Re-enable scanning in case of error
+            setTimeout(() => (isScanning = true), 3000); // Re-enable scanning in case of error
           }
         }
       },
       (error) => {
+        setTimeout(() => (isScanning = true), 3000);
         // console.log("QR code scan error:", error);
       }
     )
