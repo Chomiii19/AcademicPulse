@@ -1,0 +1,1 @@
+{"mappings":"AAAA,MAAM,WAAW,SAAS,aAAa,CAAC","sources":["script.js"],"sourcesContent":["const typeText = document.querySelector(\".typed-text\");\r\n"],"names":[],"version":3,"file":"index.672d4772.js.map","sourceRoot":"/__parcel_source_root/"}

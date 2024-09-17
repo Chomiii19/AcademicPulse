@@ -1,0 +1,2 @@
+const e=document.querySelector(".welcome-user"),t=document.querySelector(".time");function n(){let e=new Date().toLocaleString();t.textContent=e}setInterval(n,1e3),n(),(async()=>{try{let t=await fetch("/users/api/user"),n=await t.json();n?.data?.user?.firstname?e.textContent=`Welcome, ${n.data.user.firstname.split(" ")[0]}!`:(console.warn("User's firstname is not available."),e.textContent="Welcome, User!")}catch(e){console.error(e)}})();
+//# sourceMappingURL=app.f12a99f7.js.map

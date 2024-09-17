@@ -1,0 +1,63 @@
+[
+  {
+    "studentNumber": "TUPM-22-2333",
+    "surname": "Borines",
+    "firstname": "Jomari Vincent",
+    "middlename": "Ayong",
+    "email": "jomariborines55@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-08-18T09:00:00.000Z",
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2111",
+    "surname": "Agustin",
+    "firstname": "Euclid",
+    "middlename": "Einstein",
+    "extension": "Jr",
+    "email": "agustineuclid@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-08-25T09:00:00.000Z",
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2003",
+    "surname": "Alvez",
+    "firstname": "Andrei Daniel",
+    "middlename": "Borines",
+    "email": "andreialvez@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-08-20T09:00:00.000Z",
+    "course": "BSIS"
+  },
+  {
+    "studentNumber": "TUPM-22-2545",
+    "surname": "Esguera",
+    "firstname": "Jomarie",
+    "middlename": "Aughhh",
+    "extension": "Third",
+    "email": "jomarieesguerra@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-09-01T09:00:00.000Z",
+    "course": "BSIT"
+  },
+  {
+    "studentNumber": "TUPM-22-2392",
+    "surname": "Maunes",
+    "firstname": "Jason",
+    "email": "maunesjason@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-09-18T09:00:00.000Z",
+    "course": "BSIS"
+  },
+  {
+    "studentNumber": "TUPM-22-2001",
+    "surname": "Arpon",
+    "firstname": "Jake",
+    "middlename": "Yameteh",
+    "extension": "Sr",
+    "email": "arponjake69@gmail.com",
+    "isEnrolled": false,
+    "course": "BSES"
+  }
+]

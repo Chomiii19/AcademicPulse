@@ -1,0 +1,19 @@
+{
+  "name": "public",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel idValidation.html",
+    "build": "parcel build index.html app.html idValidation.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  },
+  "dependencies": {
+    "html5-qrcode": "^2.3.8",
+    "typed.js": "^2.1.0"
+  }
+}

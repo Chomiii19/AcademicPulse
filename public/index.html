@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="img/logo.png" />
+    <script type="module" defer src="script.js"></script>
+    <title>AcademicPulse</title>
+  </head>
+  <body>
+    <div class="popUp">
+      <h3 class="popupTitle"></h3>
+      <form class="form signup-form hidden">
+        <div class="data">
+          <p class="popUp-text"><span class="required">*</span>ID Number</p>
+          <input
+            type="text"
+            name="idNumber"
+            placeholder="Enter ID Number"
+            class="dataInputUser"
+            required
+          />
+        </div>
+        <div class="fullname">
+          <div class="data">
+            <p class="popUp-text"><span class="required">*</span>Surname</p>
+            <input
+              type="text"
+              name="surname"
+              placeholder="Enter Surname"
+              class="dataInputUser"
+              required
+            />
+          </div>
+          <div class="data">
+            <p class="popUp-text"><span class="required">*</span>First Name</p>
+            <input
+              type="text"
+              name="firstname"
+              placeholder="Enter First Name"
+              class="dataInputUser"
+              required
+            />
+          </div>
+          <div class="data">
+            <p class="popUp-text">Middle Name</p>
+            <input
+              type="text"
+              name="middlename"
+              placeholder="Enter Middle Name"
+              class="dataInputUser"
+            />
+          </div>
+          <div class="data">
+            <p class="popUp-text">Extension</p>
+            <input
+              type="text"
+              name="extension"
+              placeholder="Enter Extension"
+              class="dataInputUser"
+            />
+          </div>
+        </div>
+        <div class="data">
+          <p class="popUp-text"><span class="required">*</span>Email</p>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+            class="dataInputUser"
+            required
+          />
+        </div>
+        <div class="data">
+          <p class="popUp-text"><span class="required">*</span>Phone Number</p>
+          <input
+            type="text"
+            name="phoneNumber"
+            placeholder="Enter Phone Number (e.g., 09123456789)"
+            class="dataInputUser"
+            required
+            pattern="09\d{9}"
+            title="Phone number must start with 09 and be 11 digits long."
+          />
+        </div>
+        <div class="data">
+          <p class="popUp-text"><span class="required">*</span>Password</p>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Password (min. 8 characters)"
+            class="dataInputPassword"
+            required
+            minlength="8"
+          />
+        </div>
+        <div class="data">
+          <p class="popUp-text">
+            <span class="required">*</span>Confirm Password
+          </p>
+          <input
+            type="password"
+            name="passwordConfirm"
+            placeholder="Confirm Password"
+            class="dataInputPassword"
+            required
+          />
+        </div>
+        <button type="submit" class="popup-btn signup-btn-confirm">
+          Sign Up
+        </button>
+      </form>
+
+      <form class="form login-form hidden">
+        <div class="data">
+          <p class="popUp-text"><span class="required">*</span>ID Number</p>
+          <input
+            type="text"
+            name="idNumber"
+            placeholder="Enter ID Number"
+            class="dataInputUser"
+            required
+          />
+        </div>
+        <div class="data">
+          <p class="popUp-text"><span class="required">*</span>Password</p>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Password (min. 8 characters)"
+            class="dataInputPassword"
+            required
+            minlength="8"
+          />
+        </div>
+        <button type="submit" class="popup-btn signup-btn-confirm">
+          Log In
+        </button>
+      </form>
+
+      <div class="success hidden">
+        <img src="img/checked.png" alt="" />
+        <h2>Successfully signed up!</h2>
+        <p>Check your provided email to verify your account.</p>
+      </div>
+    </div>
+
+    <nav class="sidebar">
+      <div class="sidebar-container">
+        <div class="sidebar-btns">
+          <i class="fa-solid fa-gears"></i>
+          <p>Features</p>
+        </div>
+        <div class="sidebar-btns">
+          <i class="fa-solid fa-money-check-dollar"></i>
+          <p>Pricing</p>
+        </div>
+        <div class="sidebar-btns">
+          <i class="fa-solid fa-circle-info"></i>
+          <p>About Us</p>
+        </div>
+        <div class="sidebar-btns">
+          <i class="fa-solid fa-message"></i>
+          <p>Contact Us</p>
+        </div>
+        <div class="sidebar-btns login-sidebar">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <p>Log In</p>
+        </div>
+        <div class="sidebar-btns signup-sidebar">
+          <i class="fa-solid fa-user-plus"></i>
+          <p>Sign Up</p>
+        </div>
+      </div>
+    </nav>
+
+    <header class="">
+      <i class="fa fa-bars"></i>
+      <div class="navigation">
+        <a href="/" class="logo">Academic<span class="sublogo">Pulse</span></a>
+        <nav>
+          <a href="">Features</a>
+          <a href="">Pricing</a>
+          <a href="">About Us</a>
+          <a href="">Contact Us</a>
+        </nav>
+      </div>
+      <div class="user-register">
+        <a href="#" class="login-btn">Log in</a>
+        <a href="#" class="signup-btn">Sign up</a>
+      </div>
+    </header>
+
+    <section class="main">
+      <div class="main-introduction">
+        <div class="introduction-title">
+          <h1>Loved by educators.</h1>
+          <div class="typing-effect">
+            <h1>Crafted for</h1>
+            <span class="typed-text"></span>
+          </div>
+        </div>
+        <p class="introduction-details">
+          "Crafted for seamless student management, our platform excels in
+          tracking student logs, validating IDs, and streamlining administrative
+          tasks."
+        </p>
+        <div class="introduction-btns">
+          <a href="#" class="get-started">Get Started</a>
+          <a href="#" class="learn-more"
+            >Learn more <i class="fa fa-arrow-right"></i
+          ></a>
+        </div>
+      </div>
+      <div class="img-container">
+        <img src="img/img1.jpg" alt="" class="introduction-img" />
+      </div>
+    </section>
+
+    <section class="statistics-section">
+      <div>
+        <h2>50K+</h2>
+        <p>Users nationwide</p>
+      </div>
+      <div>
+        <h2>32</h2>
+        <p>Schools using nationwide</p>
+      </div>
+      <div>
+        <h2>5M+</h2>
+        <p>Student logs managed</p>
+      </div>
+      <div>
+        <h2>30%</h2>
+        <p>Improvement in administrative efficiency.</p>
+      </div>
+    </section>
+
+    <section class="features-section"></section>
+  </body>
+</html>

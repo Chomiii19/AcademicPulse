@@ -1,0 +1,506 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #3f3e41;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+.popUp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: fixed;
+  width: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(150px);
+  background-color: #f6f6f6;
+  padding: 2rem;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 1000;
+  visibility: hidden;
+  transition: visibility 0.1s ease, transform 0.3s ease;
+}
+
+.slideup {
+  transform: translate(-50%, -50%) translateY(0px);
+  visibility: visible;
+}
+
+.fullname {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #f6f6f6;
+}
+
+.popUp p,
+.popUp h3 {
+  font-weight: 700;
+  background-color: #f6f6f6;
+}
+
+.form div {
+  background-color: #f6f6f6;
+}
+
+.fullname input,
+.form input {
+  padding: 0.5rem;
+  border: 1px solid lightgrey;
+  outline: none;
+  border-radius: 0.3rem;
+}
+
+.fullname input {
+  width: 8rem;
+}
+
+.form input {
+  width: 100%;
+}
+
+.required {
+  color: red;
+  background-color: #f6f6f6;
+}
+
+.popup-btn {
+  border: none;
+  background: linear-gradient(45deg, #6b2da8, #560eaac7);
+  padding: 0.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: #f6f6f6;
+}
+
+.success img {
+  width: 50%;
+  background-color: #f6f6f6;
+}
+
+.success h2,
+.success p {
+  background-color: #f6f6f6;
+}
+
+.success h2 {
+  color: #6b2da8;
+}
+
+.hidden {
+  display: none;
+}
+
+.blurred {
+  filter: blur(5px);
+}
+
+header {
+  top: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 12%;
+  z-index: 100;
+  position: fixed;
+}
+
+.fa.fa-bars {
+  display: none;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.sublogo {
+  color: #6b2da8;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+nav a {
+  font-weight: 550;
+  border-bottom: 2px solid transparent;
+  padding: 0.5rem 0 0.5rem;
+  transition: 0.3s ease;
+}
+
+nav a:hover {
+  color: #6b2da8;
+  border-bottom: 2px solid #6b2da8;
+}
+
+.user-register {
+  display: flex;
+  gap: 1rem;
+  font-weight: 550;
+}
+
+.login-btn {
+  background-color: transparent;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #e2dfe3;
+}
+
+.signup-btn {
+  background-color: #6b2da8;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1rem;
+  color: #f1f1f1;
+  transition: 0.3s ease;
+}
+
+.signup-btn:hover {
+  transform: scale(1.05);
+  background-color: transparent;
+  border: 2px solid #6b2da8;
+  color: #6b2da8;
+}
+
+.main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  padding: 5rem 12%;
+}
+
+.main-introduction {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.introduction-title {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.typing-effect {
+  display: flex;
+  height: 2rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.introduction-title span {
+  color: #6b2da8;
+  padding: 0.3rem;
+  border: 1px solid #6b2da8;
+  border-radius: 1rem;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.introduction-details {
+  font-style: italic;
+  line-height: 1.5rem;
+}
+
+.introduction-btns {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.get-started {
+  background-color: #6b2da8;
+  color: #f1f1f1;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.5rem 2rem;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.get-started:hover {
+  transform: scale(1.05);
+  background-color: transparent;
+  border: 2px solid #6b2da8;
+  color: #6b2da8;
+}
+
+.learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.learn-more i {
+  display: inline-block;
+  transition: margin-left 0.3s ease;
+}
+
+.learn-more:hover i {
+  margin-left: 0.5rem;
+}
+
+.img-container {
+  height: 100%;
+  width: 50%;
+}
+
+.introduction-img {
+  width: 100%;
+}
+
+.fa-arrow-right {
+  color: #6b2da8;
+}
+
+.statistics-section {
+  height: 25vh;
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 3rem 12%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.statistics-section div {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f8f8;
+}
+
+.statistics-section div h2 {
+  background-color: #f8f8f8;
+  color: #6b2da8;
+}
+
+.statistics-section div p {
+  background-color: #f8f8f8;
+}
+
+.features-section {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(45deg, #6b2da8, #53129e9d);
+}
+
+.sidebar {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .navigation nav {
+    display: none;
+  }
+
+  header {
+    padding: 1rem;
+    border-bottom: 0.5px solid #afafaf;
+    z-index: 100;
+  }
+
+  .fa.fa-bars {
+    display: flex;
+    color: #3f3e41;
+  }
+
+  .user-register {
+    display: none;
+  }
+
+  .navigation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .typing-effect {
+    display: block;
+    height: 5rem;
+  }
+
+  .main {
+    padding: 1rem;
+  }
+
+  .main-introduction {
+    width: 100%;
+  }
+
+  .introduction-title,
+  .typed-text {
+    font-size: 1.8rem;
+  }
+
+  .introduction-details {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+
+  .img-container {
+    display: none;
+  }
+
+  .statistics-section {
+    height: auto;
+    width: 100%;
+    background-color: #f8f8f8;
+    padding: 3rem 12%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .statistics-section div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .statistics-section div h2 {
+    font-size: 1.5rem;
+    color: #6b2da8;
+    margin-bottom: 0.5rem;
+    background-color: #fff;
+  }
+
+  .statistics-section div p {
+    background-color: #fff;
+    font-size: 1rem;
+    color: #3f3e41;
+  }
+
+  .sidebar {
+    height: 100vh;
+    width: 45%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem 0.5rem;
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+  }
+
+  .sidebar-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .sidebar-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-btns {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 1rem 0.5rem;
+    border-radius: 0.5rem;
+    transition: 0.3s ease;
+  }
+
+  .sidebar-btns:hover {
+    background-color: #e2dfe3;
+  }
+
+  .sidebar-btns:hover i,
+  .sidebar-btns:hover p {
+    background-color: #e2dfe3;
+  }
+
+  .sidebar-btns i {
+    color: #6b2da8;
+    background-color: #ffffff;
+    transition: 0.3s ease;
+  }
+
+  .sidebar-btns p {
+    transition: 0.3s ease;
+  }
+
+  .popUp {
+    width: 70%;
+  }
+
+  .popUp p {
+    font-size: 0.9rem;
+  }
+}
