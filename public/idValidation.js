@@ -72,7 +72,7 @@ function startScanning() {
         }
       },
       (error) => {
-        setTimeout(() => (isScanning = true), 3000);
+        // setTimeout(() => (isScanning = true), 3000);
         // console.log("QR code scan error:", error);
       }
     )
