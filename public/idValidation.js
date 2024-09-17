@@ -1,7 +1,7 @@
 import { Html5Qrcode } from "html5-qrcode";
 
 const detectionStatus = document.querySelector(".detection-status");
-const studentNumber = document.querySelector(".studentNumber");
+const studentNumber = document.querySelector(".student-number");
 const html5QrCode = new Html5Qrcode("reader");
 
 function getAspectRatio() {
