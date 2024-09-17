@@ -2,6 +2,7 @@ import { Html5Qrcode } from "html5-qrcode";
 
 const detectionStatus = document.querySelector(".detection-status");
 const studentNumber = document.querySelector(".student-number");
+const idStatus = document.querySelector(".id-status");
 const html5QrCode = new Html5Qrcode("reader");
 
 let isScanning = true; // Flag to prevent multiple entries
@@ -31,7 +32,6 @@ function startScanning() {
           isScanning = false; // Block further scanning
           try {
             console.log(`Code matched = ${decodedText}`, decodedResult);
-            detectionStatus.classList.remove("hidden");
 
             // Send the decoded text (student number) to your server
             const response = await fetch("/app/id-validation/submit", {
@@ -45,18 +45,18 @@ function startScanning() {
             const data = await response.json();
             console.log(data);
 
-            if (data && data.data && data.data.validatedStudent) {
-              console.log(data.data.validatedStudent.studentNumber);
+            studentNumber.textContent = decodedText;
 
+            if (data.status === "Success") {
               // Update the student number on the UI
-              studentNumber.textContent =
-                data.data.validatedStudent.studentNumber;
-
+              idStatus.textContent = data.message;
               // Stop scanning and pause for 5 seconds
               html5QrCode.stop().then(() => {
                 setTimeout(() => {
                   console.log("Restarting QR code scanning...");
                   isScanning = true; // Re-enable scanning
+                  studentNumber.textContent = "";
+                  idStatus.textContent = "";
                   startScanning(); // Restart scanning after 5 seconds
                 }, 5000);
               });

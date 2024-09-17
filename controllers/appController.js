@@ -32,7 +32,8 @@ const validateId = catchAsync(async (req, res, next) => {
   });
 
   res.status(201).json({
-    status: "Successfully validated",
+    status: "Success",
+    message: "Successfully validated",
     data: {
       validatedStudent,
       student,
