@@ -41,6 +41,7 @@ function startScanning() {
             body: JSON.stringify({ studentNumber: decodedText }),
           });
           const data = await response.json();
+          console.log(data);
           studentNumber.textContent = data.data.validatedStudent.studentNumber;
 
           html5QrCode.stop().then(() => {
