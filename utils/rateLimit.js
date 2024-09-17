@@ -18,4 +18,10 @@ const loginLimiter = rateLimit({
   message: "Too many request from this IP, please try again after an hour!",
 });
 
-export { limiter, signupLimiter, loginLimiter };
+const validateIdLimiter = rateLimit({
+  max: 1,
+  windowMs: 1000,
+  message: "Too many request from this IP, please try again!",
+});
+
+export { limiter, signupLimiter, loginLimiter, validateIdLimiter };
