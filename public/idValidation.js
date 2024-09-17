@@ -30,6 +30,7 @@ function startScanning() {
         // Only process if scanning is allowed
         if (isScanning) {
           idStatus.textContent = "";
+          studentNumber.textContent = "";
           isScanning = false; // Block further scanning
           try {
             console.log(`Code matched = ${decodedText}`, decodedResult);
