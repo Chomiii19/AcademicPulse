@@ -42,6 +42,7 @@ function startScanning() {
           });
           const data = await response.json();
           console.log(data);
+          console.log(data.data.validatedStudent.studentNumber);
           studentNumber.textContent = data.data.validatedStudent.studentNumber;
 
           html5QrCode.stop().then(() => {
