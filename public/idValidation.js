@@ -61,7 +61,7 @@ function startScanning() {
                 }, 5000);
               });
             } else {
-              console.error("Invalid response data from the server.");
+              idStatus.textContent = data.message;
               isScanning = true; // Re-enable scanning in case of error
             }
           } catch (err) {
