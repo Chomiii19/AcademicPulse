@@ -35,8 +35,6 @@ const student = (student) => {
 
 let isScanning = true;
 
-const aspectRatio = getAspectRatio();
-
 const config = {
   fps: 15,
   qrbox: { width: 250, height: 250 },
