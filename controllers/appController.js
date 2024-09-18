@@ -18,7 +18,7 @@ const validateId = catchAsync(async (req, res, next) => {
 
   if (!student.isEnrolled)
     return next(
-      new AppError("Student is not enrolled for this school year.", 400)
+      new AppError("Student is not yet enrolled for this school year.", 400)
     );
 
   if (await Validated.findOne({ studentNumber: student.studentNumber }))
