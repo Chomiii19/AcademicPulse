@@ -83,11 +83,17 @@ function startScanning() {
               idStatus.textContent = data.message;
               qrDetails.style.background =
                 "linear-gradient(to top left, #e52a5a, #ff585f)";
-              setTimeout(() => (isScanning = true), 3000);
+              setTimeout(() => {
+                isScanning = true;
+                startScanning();
+              }, 3000);
             }
           } catch (err) {
             console.error("Error processing QR code:", err);
-            setTimeout(() => (isScanning = true), 3000);
+            setTimeout(() => {
+              isScanning = true;
+              startScanning();
+            }, 3000);
           }
         }
       },
