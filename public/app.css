@@ -410,4 +410,15 @@ section {
   .sidebar-btns p {
     transition: 0.3s ease;
   }
+
+  .sidebar-btns a {
+    width: 100%;
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  nav a:hover {
+    color: #6b2da8;
+    border-bottom: none;
+  }
 }
