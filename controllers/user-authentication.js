@@ -79,7 +79,7 @@ const verifyUser = catchAsync(async (req, res, next) => {
 const protect = catchAsync(async (req, res, next) => {
   const token = req.cookies.authToken;
 
-  if (!token) return next(new AppError("You are not logged in!", 401));
+  if (!token) return res.redirect("/");
 
   const decoded = await promisify(jwt.verify)(token, process.env.SECRET_KEY);
 
@@ -102,4 +102,15 @@ const protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-export { signup, login, verifyUser, protect };
+const signout = catchAsync(async (req, res, next) => {
+  res.cookie("authToken", "loggedOut", {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+    secure: true,
+    sameSite: "Strict",
+  });
+
+  res.redirect("/");
+});
+
+export { signup, login, verifyUser, protect, signout };

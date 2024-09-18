@@ -11,6 +11,7 @@ router
 
 router.route("/login").post(rateLimit.loginLimiter, userAuthentication.login);
 router.route("/verify/:id").get(userAuthentication.verifyUser);
+router.route("/signout").get(userAuthentication.signout);
 
 // router.route("/api/users").get();
 router
