@@ -12,29 +12,6 @@ html {
   scroll-behavior: smooth;
 }
 
-.sidebar {
-  height: 100vh;
-  width: 45%;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 2rem 0.5rem;
-  z-index: 200;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-100%);
-  transition: all 0.3s ease;
-  background-color: #ffffff;
-}
-
-.sidebar-active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(0);
-}
-
 header {
   top: 0;
   right: 0;
@@ -48,7 +25,7 @@ header {
   position: fixed;
 }
 
-.fa.fa-bars {
+.fa-arrow-left {
   display: none;
 }
 
@@ -160,46 +137,11 @@ nav a:hover {
 }
 
 @media (max-width: 480px) {
-  .sidebar-container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .sidebar-btns {
-    display: flex;
-    width: 100%;
-    gap: 1rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    padding: 1rem 0.5rem;
-    border-radius: 0.5rem;
-    transition: 0.3s ease;
-  }
-
-  .sidebar-btns:hover {
-    background-color: #e2dfe3;
-  }
-
-  .sidebar-btns:hover i,
-  .sidebar-btns:hover p {
-    background-color: #e2dfe3;
-  }
-
-  .sidebar-btns i {
-    color: #6b2da8;
-    background-color: #ffffff;
-    transition: 0.3s ease;
-  }
-
-  .sidebar-btns p {
-    transition: 0.3s ease;
-  }
-
   section {
     height: auto;
   }
 
-  .fa.fa-bars {
+  .fa-arrow-left {
     display: flex;
     color: #3f3e41;
   }
