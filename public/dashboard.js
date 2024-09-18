@@ -3,13 +3,37 @@ import Chart from "chart.js/auto";
 const ctx = document.getElementById("idvalidated-graph").getContext("2d");
 
 const idValidated = async () => {
-  const response = await fetch("/app/api/validated-id-stats?groupby=month");
+  const response = await fetch("/app/api/validated-id-stats?year=2024");
 
   const dataAPI = await response.json();
   console.log(dataAPI);
 
-  const months = Object.keys(dataAPI.data);
-  const counts = Object.values(dataAPI.data);
+  const monthsList = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const data = monthsList.reduce((acc, month) => {
+    acc[month] = 0;
+    return acc;
+  }, {});
+
+  dataAPI.data.forEach((log) => {
+    data[months[log.month - 1]] = log.count;
+  });
+
+  const months = Object.keys(data);
+  const counts = Object.values(data);
 
   const idValidatedGraph = new Chart(ctx, {
     type: "bar",

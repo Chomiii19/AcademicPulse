@@ -110,22 +110,8 @@ const studentLogExit = catchAsync(async (req, res, next) => {
 
 const validatedIdStats = catchAsync(async (req, res, next) => {
   const { year } = req.query;
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
 
-  const validationStats = await Validated.aggregate([
+  const data = await Validated.aggregate([
     {
       $match: {
         validatedAt: {
@@ -144,15 +130,6 @@ const validatedIdStats = catchAsync(async (req, res, next) => {
     { $sort: { _id: 1 } },
     { $project: { _id: 0 } },
   ]);
-
-  const data = months.reduce((acc, month) => {
-    acc[month] = 0;
-    return acc;
-  }, {});
-
-  validationStats.forEach((log) => {
-    data[months[log.month - 1]] = log.count;
-  });
 
   res.status(200).json({
     status: "Success",
