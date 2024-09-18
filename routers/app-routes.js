@@ -13,7 +13,7 @@ router.get("/", (req, res) =>
   res.sendFile(join(__dirname, "../public/dist/app.html"))
 );
 
-router.get("/id-validation", userAuthentication.protect, (req, res) => {
+router.get("/id-validation", (req, res) => {
   res.sendFile(join(__dirname, "../public/dist/idValidation.html"));
 });
 
