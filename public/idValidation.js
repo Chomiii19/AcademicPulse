@@ -1,6 +1,5 @@
 import { Html5Qrcode } from "html5-qrcode";
 
-const detectionStatus = document.querySelector(".detection-status");
 const studentNumber = document.querySelector(".student-number");
 const idStatus = document.querySelector(".id-status");
 const qrDetails = document.querySelector(".qr-details");
