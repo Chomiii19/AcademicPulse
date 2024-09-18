@@ -97,7 +97,7 @@ nav a:hover {
   height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 5rem 12%;
@@ -105,14 +105,14 @@ nav a:hover {
 }
 
 .qr-details {
-  width: 70%;
-  height: 100%;
+  width: 50%;
+  height: auto;
   background: linear-gradient(45deg, #6b2da8, rgba(83, 18, 158, 0.616));
   border-radius: 1rem;
 }
 
 #reader {
-  width: 30%;
+  width: 35%;
   height: 100%;
   display: flex;
   justify-content: center;
