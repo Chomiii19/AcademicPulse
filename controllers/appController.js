@@ -80,6 +80,7 @@ const studentLogEntrance = catchAsync(async (req, res, next) => {
 
   res.status(201).json({
     status: "Success",
+    message: "Success",
   });
 });
 

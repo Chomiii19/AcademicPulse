@@ -5,11 +5,6 @@ const studentNumber = document.querySelector(".student-number");
 const idStatus = document.querySelector(".id-status");
 const qrDetails = document.querySelector(".qr-details");
 const scanning = document.querySelector(".scanning-effect");
-const surname = document.querySelector(".surname");
-const firstname = document.querySelector(".firstname");
-const middlename = document.querySelector(".middlename");
-const extension = document.querySelector(".extension");
-const course = document.querySelector(".course");
 const html5QrCode = new Html5Qrcode("reader");
 
 const typed = new Typed(".typed-text", {
@@ -19,19 +14,6 @@ const typed = new Typed(".typed-text", {
   loop: true,
   showCursor: false,
 });
-
-const student = (student) => {
-  surname.textContent = student?.data?.student?.surname
-    ? `${student.data.student.surname},`
-    : "";
-  firstname.textContent = student?.data?.student?.firstname || "";
-  middlename.textContent = student?.data?.student?.middlename || "";
-  extension.textContent = student?.data?.student?.extension || "";
-  course.textContent = student?.data?.student?.course
-    ? `Course: ${student.data.student.course}`
-    : "";
-  idStatus.textContent = student?.message || "";
-};
 
 let isScanning = true;
 
@@ -50,7 +32,7 @@ const config = {
 };
 
 function startScanning() {
-  student(undefined);
+  idStatus.textContent = data.message || "";
   scanning.style.display = "flex";
   studentNumber.textContent = "";
   qrDetails.style.background =
@@ -63,7 +45,7 @@ function startScanning() {
         if (isScanning) {
           isScanning = false;
           try {
-            const response = await fetch("/app/id-validation/submit", {
+            const response = await fetch("/app/student-log/entrance", {
               method: "POST",
               headers: {
                 "Content-type": "application/json",
@@ -72,13 +54,11 @@ function startScanning() {
             });
 
             const data = await response.json();
-            console.log(data);
-
             studentNumber.textContent = decodedText;
 
             if (data.status === "Success") {
               scanning.style.display = "none";
-              student(data);
+              idStatus.textContent = data.message || "";
               qrDetails.style.background =
                 "linear-gradient(to top left, #39b385, #8ed74d)";
 

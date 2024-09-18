@@ -20,8 +20,15 @@ router.get("/id-validation", (req, res) => {
 router
   .route("/id-validation/submit")
   .post(rateLimiter.validateIdLimiter, appController.validateId);
-router.route("/student-log/entrance").post(appController.studentLogEntrance);
-router.route("/student-log/exit").post(appController.studentLogExit);
+
+router.get("/student-log", (req, res) => {
+  res.sendFile(join(__dirname, "../public/dist/studentLog.html"));
+});
+
+router
+  .route("/student-log/entrance/submit")
+  .post(appController.studentLogEntrance);
+router.route("/student-log/exit/submit").post(appController.studentLogExit);
 router.route("/validated-id-stats").get(appController.validatedIdStats);
 router.route("/student-log-stats").get(appController.studentLogStats);
 

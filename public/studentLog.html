@@ -7,11 +7,221 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="studentLog.css" />
     <link rel="icon" type="image/png" href="img/logo.png" />
-    <script type="module" defer src="studentLog.js"></script>
     <title>AcademicPulse</title>
   </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      text-decoration: none;
+      color: #3f3e41;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      top: 0;
+      right: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 12%;
+      z-index: 100;
+      position: fixed;
+    }
+
+    .fa-arrow-left {
+      display: flex;
+      padding-right: 1rem;
+    }
+
+    .navigation {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .sublogo {
+      color: #6b2da8;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      font-weight: 550;
+      border-bottom: 2px solid transparent;
+      padding: 0.5rem 0 0.5rem;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #6b2da8;
+      border-bottom: 2px solid #6b2da8;
+    }
+
+    .user-register {
+      display: flex;
+      gap: 1rem;
+      font-weight: 550;
+    }
+
+    .login-btn,
+    .get-help-btn {
+      background-color: transparent;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      transition: 0.3s ease;
+    }
+
+    .fa-bell {
+      transition: 0.3s ease;
+    }
+
+    .fa-bell:hover {
+      color: #6b2da8;
+    }
+
+    .login-btn:hover,
+    .get-help-btn:hover {
+      background-color: #e2dfe3;
+    }
+
+    .section-contain {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5rem 12%;
+      gap: 1rem;
+    }
+
+    .options {
+      height: 50%;
+      width: 50%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .options h1,
+    .options p {
+      color: #ffffff;
+    }
+
+    .options h1 {
+      font-weight: 800;
+    }
+
+    .entrance,
+    .exit {
+      height: 100%;
+      width: 50%;
+      border-radius: 1rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      transition: 0.3s ease;
+      box-shadow: 0 8px 10px rgba(0, 0, 0, 0.379);
+    }
+
+    .entrance:hover,
+    .exit:hover {
+      transform: scale(1.05);
+    }
+
+    .entrance {
+      background-image: linear-gradient(to top left, #39b385, #8ed74d);
+    }
+
+    .exit {
+      background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+      height: 100%;
+      width: 50%;
+      border-radius: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      section {
+        height: auto;
+      }
+
+      .fa-arrow-left {
+        display: flex;
+        color: #3f3e41;
+      }
+
+      header {
+        padding: 1rem;
+        width: 100%;
+        border-bottom: 0.5px solid #afafaf;
+        z-index: 100;
+        background-color: #ffffff;
+      }
+
+      .navigation {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .navigation nav {
+        display: none;
+      }
+
+      .user-register {
+        display: none;
+      }
+
+      .section-contain {
+        height: 100vh;
+        width: 100%;
+        padding: 1rem;
+        margin: 0;
+      }
+
+      .options {
+        width: 100%;
+        height: auto;
+      }
+
+      .options p {
+        font-size: 0.8rem;
+      }
+
+      .entrance,
+      .exit {
+        height: 100%;
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+
   <body>
     <header class="">
       <a href="/app"><i class="fa-solid fa-arrow-left" href=""></i></a>
@@ -30,19 +240,23 @@
     </header>
 
     <section class="section-contain">
-      <div id="reader"></div>
-      <div class="qr-details">
-        <div class="detection-status">
-          <h1 class="student-number"></h1>
-          <p class="id-status"></p>
-          <div class="fullname">
-            <p class="surname"></p>
-            <p class="firstname"></p>
-            <p class="middlename"></p>
-            <p class="extension"></p>
-          </div>
-          <p class="course"></p>
-        </div>
+      <div class="options">
+        <a href="/app/student-log/entrance" class="entrance">
+          <h1>ENTRANCE</h1>
+          <p>
+            Scan a student's ID QR Code and check if it is validated before
+            allowing entry to the campus. If the scan results an error, it means
+            that the student's ID is not yet validated.
+          </p>
+        </a>
+        <a href="/app/student-log/exit" class="exit">
+          <h1>EXIT</h1>
+          <p>
+            Scan a student's ID QR Code and check if the student has entered the
+            campus using that ID. If the scan results an error, it means that
+            the student didn't enter the campus using their ID.
+          </p>
+        </a>
       </div>
     </section>
   </body>
