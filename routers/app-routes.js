@@ -24,6 +24,10 @@ router.get("/student-log", (req, res) => {
   res.sendFile(join(__dirname, "../public/dist/studentLog.html"));
 });
 
+router.get("/student-log/entrance", (req, res) => {
+  res.sendFile(join(__dirname, "../public/dist/studentLogEntrance.html"));
+});
+
 router
   .route("/student-log/entrance/submit")
   .post(appController.studentLogEntrance);
