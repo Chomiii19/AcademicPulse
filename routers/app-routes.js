@@ -2,7 +2,6 @@ import express from "express";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import * as appController from "../controllers/appController.js";
-import * as userAuthentication from "../controllers/user-authentication.js";
 import * as rateLimiter from "../utils/rateLimit.js";
 
 const __filename = fileURLToPath(import.meta.url);
