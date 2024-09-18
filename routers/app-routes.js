@@ -40,7 +40,7 @@ router
   .route("/student-log/entrance/submit")
   .post(appController.studentLogEntrance);
 router.route("/student-log/exit/submit").post(appController.studentLogExit);
-router.route("/api/validated-id-stats").post(appController.validatedIdStats);
-router.route("/api/student-log-stats").post(appController.studentLogStats);
+router.route("/api/validated-id-stats").get(appController.validatedIdStats);
+router.route("/api/student-log-stats").get(appController.studentLogStats);
 
 export default router;

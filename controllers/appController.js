@@ -109,36 +109,50 @@ const studentLogExit = catchAsync(async (req, res, next) => {
 });
 
 const validatedIdStats = catchAsync(async (req, res, next) => {
-  const { groupby } = req.query;
-
-  let groupStats;
-  if (groupby === "day")
-    groupStats = {
-      $dateToString: { format: "%Y-%m-%d", date: "$validatedAt" },
-    };
-  if (groupby === "month")
-    groupStats = {
-      $dateToString: { format: "%Y-%m", date: "$validatedAt" },
-    };
-  if (groupby === "year")
-    groupStats = {
-      $dateToString: { format: "%Y", date: "$validatedAt" },
-    };
+  const { year } = req.query;
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
   const validationStats = await Validated.aggregate([
     {
-      $group: {
-        _id: groupStats,
-        numStudents: { $sum: 1 },
+      $match: {
+        validatedAt: {
+          $gte: new Date(`${year}-01-01`),
+          $lte: new Date(`${year}-12-31`),
+        },
       },
     },
+    {
+      $group: {
+        _id: { $month: "$validatedAt" },
+        count: { $sum: 1 },
+      },
+    },
+    { $addFields: { month: "$_id" } },
     { $sort: { _id: 1 } },
+    { $project: { _id: 0 } },
   ]);
 
-  const data = validationStats.map((log) => ({
-    date: log._id,
-    count: log.numStudents,
-  }));
+  const data = months.reduce((acc, month) => {
+    acc[month] = 0;
+    return acc;
+  }, {});
+
+  validationStats.forEach((log) => {
+    data[months[log.month - 1]] = log.count;
+  });
 
   res.status(200).json({
     status: "Success",
