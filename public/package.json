@@ -2,8 +2,8 @@
   "name": "public",
   "version": "1.0.0",
   "scripts": {
-    "start": "parcel studentLogEntrance.html",
-    "build": "parcel build index.html app.html idValidation.html studentLog.html studentLogEntrance.html studentLogExit.html"
+    "start": "parcel dashboard.html",
+    "build": "parcel build index.html app.html idValidation.html studentLog.html studentLogEntrance.html studentLogExit.html dashboard.html"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
     "parcel": "^2.12.0"
   },
   "dependencies": {
+    "chart.js": "^4.4.4",
     "html5-qrcode": "^2.3.8",
     "typed.js": "^2.1.0"
   }

@@ -32,11 +32,15 @@ router.get("/student-log/exit", (req, res) => {
   res.sendFile(join(__dirname, "../public/dist/studentLogExit.html"));
 });
 
+router.get("/campus-dashboard", (req, res) => {
+  res.sendFile(join(__dirname, "../public/dist/dashboard.html"));
+});
+
 router
   .route("/student-log/entrance/submit")
   .post(appController.studentLogEntrance);
 router.route("/student-log/exit/submit").post(appController.studentLogExit);
-router.route("/validated-id-stats").get(appController.validatedIdStats);
-router.route("/student-log-stats").get(appController.studentLogStats);
+router.route("/api/validated-id-stats").get(appController.validatedIdStats);
+router.route("/api/student-log-stats").get(appController.studentLogStats);
 
 export default router;

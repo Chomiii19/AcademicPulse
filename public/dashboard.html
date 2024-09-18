@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="img/logo.png" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <script type="module" defer src="dashboard.js"></script>
+    <title>AcademicPulse</title>
+  </head>
+
+  <body>
+    <header class="">
+      <a href="/app"><i class="fa-solid fa-arrow-left" href=""></i></a>
+      <div class="navigation">
+        <a href="/app" class="logo"
+          >Academic<span class="sublogo">Pulse</span></a
+        >
+        <nav>
+          <a href=""><i class="fa-solid fa-bell"></i></a>
+          <div class="user-register">
+            <a href="" class="get-help-btn">Get Help?</a>
+            <a href="/users/signout" class="signout-btn">Sign out</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section>
+      <div class="row1">
+        <div class="enrolledStudent-total"></div>
+        <div class="idValidated-total"></div>
+        <canvas id="idvalidated-graph" width="40%"></canvas>
+      </div>
+      <div class="row2">
+        <canvas id="schoollogs-graph"></canvas>
+        <div class="blogs"></div>
+      </div>
+    </section>
+  </body>
+</html>
