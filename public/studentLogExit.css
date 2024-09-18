@@ -26,7 +26,8 @@ header {
 }
 
 .fa-arrow-left {
-  display: none;
+  display: flex;
+  padding-right: 1rem;
 }
 
 .navigation {
