@@ -147,6 +147,15 @@ nav a:hover {
   display: none;
 }
 
+.fullname {
+  gap: .5rem;
+  display: flex;
+}
+
+.section-contain p, .section-contain h1 {
+  color: #fff;
+}
+
 @media (width <= 480px) {
   .sidebar-container {
     flex-direction: column;
@@ -208,6 +217,13 @@ nav a:hover {
   .section-contain {
     flex-direction: column;
     height: auto;
+    display: flex;
+  }
+
+  .qr-details {
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
     display: flex;
   }
 

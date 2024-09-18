@@ -129,7 +129,7 @@ nav a:hover {
 .qr-details {
   width: 70%;
   height: 100%;
-  background: linear-gradient(45deg, #6b2da8, #53129e9d);
+  background: linear-gradient(45deg, #6b2da8, rgba(83, 18, 158, 0.616));
   border-radius: 1rem;
 }
 
@@ -147,6 +147,16 @@ nav a:hover {
 
 .hidden {
   display: none;
+}
+
+.fullname {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.section-contain p,
+.section-contain h1 {
+  color: #ffffff;
 }
 
 @media (max-width: 480px) {
@@ -222,9 +232,8 @@ nav a:hover {
     height: auto;
   }
 
-  .detection-status {
+  .qr-details {
     width: 100%;
-    color: #ffffff;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
