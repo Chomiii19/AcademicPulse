@@ -136,6 +136,17 @@ nav a:hover {
   color: #ffffff;
 }
 
+.scanning-effect {
+  display: flex;
+
+  align-items: center;
+}
+
+.typed-text {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
 @media (max-width: 480px) {
   section {
     height: auto;

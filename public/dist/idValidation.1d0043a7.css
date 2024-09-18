@@ -12,29 +12,6 @@ html {
   font-size: 16px;
 }
 
-.sidebar {
-  z-index: 200;
-  opacity: 0;
-  visibility: hidden;
-  background-color: #fff;
-  flex-direction: column;
-  gap: .5rem;
-  width: 45%;
-  height: 100vh;
-  padding: 2rem .5rem;
-  transition: all .3s;
-  display: flex;
-  position: fixed;
-  transform: translateX(-100%);
-  box-shadow: 0 4px 8px #0000001a;
-}
-
-.sidebar-active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(0);
-}
-
 header {
   z-index: 100;
   flex-direction: row;
@@ -48,7 +25,7 @@ header {
   right: 0;
 }
 
-.fa.fa-bars {
+.fa-arrow-left {
   display: none;
 }
 
@@ -156,42 +133,22 @@ nav a:hover {
   color: #fff;
 }
 
+.scanning-effect {
+  align-items: center;
+  display: flex;
+}
+
+.typed-text {
+  color: #fff;
+  font-size: 2rem;
+}
+
 @media (width <= 480px) {
-  .sidebar-container {
-    flex-direction: column;
-    display: flex;
-  }
-
-  .sidebar-btns {
-    border-radius: .5rem;
-    gap: 1rem;
-    width: 100%;
-    padding: 1rem .5rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    transition: all .3s;
-    display: flex;
-  }
-
-  .sidebar-btns:hover, .sidebar-btns:hover i, .sidebar-btns:hover p {
-    background-color: #e2dfe3;
-  }
-
-  .sidebar-btns i {
-    color: #6b2da8;
-    background-color: #fff;
-    transition: all .3s;
-  }
-
-  .sidebar-btns p {
-    transition: all .3s;
-  }
-
   section {
     height: auto;
   }
 
-  .fa.fa-bars {
+  .fa-arrow-left {
     color: #3f3e41;
     display: flex;
   }

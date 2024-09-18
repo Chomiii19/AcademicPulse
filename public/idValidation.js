@@ -1,14 +1,24 @@
 import { Html5Qrcode } from "html5-qrcode";
+import Typed from "typed.js";
 
 const studentNumber = document.querySelector(".student-number");
 const idStatus = document.querySelector(".id-status");
 const qrDetails = document.querySelector(".qr-details");
+const scanning = document.querySelector(".scanning-effect");
 const surname = document.querySelector(".surname");
 const firstname = document.querySelector(".firstname");
 const middlename = document.querySelector(".middlename");
 const extension = document.querySelector(".extension");
 const course = document.querySelector(".course");
 const html5QrCode = new Html5Qrcode("reader");
+
+const typed = new Typed(".typed-text", {
+  strings: [".", "..", "..."],
+  typeSpeed: 50,
+  backSpeed: 0,
+  loop: true,
+  showCursor: false,
+});
 
 const student = (student) => {
   surname.textContent = student?.data?.student?.surname
@@ -41,6 +51,7 @@ const config = {
 
 function startScanning() {
   student(undefined);
+  scanning.style.display = "flex";
   studentNumber.textContent = "";
   qrDetails.style.background =
     "linear-gradient(45deg, #6b2da8, rgba(83, 18, 158, 0.62))";
@@ -68,6 +79,7 @@ function startScanning() {
             studentNumber.textContent = decodedText;
 
             if (data.status === "Success") {
+              scanning.style.display = "none";
               student(data);
               qrDetails.style.background =
                 "linear-gradient(to top left, #39b385, #8ed74d)";
@@ -79,6 +91,7 @@ function startScanning() {
                 }, 5000);
               });
             } else {
+              scanning.style.display = "none";
               idStatus.textContent = data.message;
               qrDetails.style.background =
                 "linear-gradient(to top left, #e52a5a, #ff585f)";
