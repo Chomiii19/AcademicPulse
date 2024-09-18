@@ -7,7 +7,6 @@ const idValidated = async () => {
     const response = await fetch("/app/api/validated-id-stats?year=2024");
 
     const dataAPI = await response.json();
-    console.log(dataAPI);
 
     const monthsList = [
       "January",
@@ -29,7 +28,6 @@ const idValidated = async () => {
       return acc;
     }, {});
 
-    console.log(dataList);
     dataAPI.data.forEach((log) => {
       dataList[monthsList[log.month - 1]] = log.count;
     });
@@ -43,7 +41,7 @@ const idValidated = async () => {
         labels: months,
         datasets: [
           {
-            label: "# of ID validated",
+            label: "# of ID validated (2024)",
             backgroundColor: "rgb(255, 99, 132)",
             hoverBackgroundColor: "rgba(255, 99, 133, 0.655)",
             data: counts,
