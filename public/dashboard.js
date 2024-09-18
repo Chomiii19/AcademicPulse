@@ -3,9 +3,11 @@ import Chart from "chart.js/auto";
 const ctx = document.getElementById("idvalidated-graph").getContext("2d");
 
 const idValidated = async () => {
-  const response = await fetch("/app/api/validated-id-stats");
-  const data = await response.json();
+  const response = await fetch("/app/api/validated-id-stats?groupby=month", {
+    method: "POST",
+  });
 
+  const data = await response.json();
   console.log(data);
 
   const idValidatedGraph = new Chart(ctx, {
