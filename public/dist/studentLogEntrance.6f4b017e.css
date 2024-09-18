@@ -1,28 +1,28 @@
 * {
+  box-sizing: border-box;
+  color: #3f3e41;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: Poppins, sans-serif;
   text-decoration: none;
-  color: #3f3e41;
 }
 
 html {
-  font-size: 16px;
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 header {
-  top: 0;
-  right: 0;
-  width: 100%;
-  display: flex;
+  z-index: 100;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 1rem 12%;
-  z-index: 100;
+  display: flex;
   position: fixed;
+  top: 0;
+  right: 0;
 }
 
 .fa-arrow-left {
@@ -30,11 +30,11 @@ header {
 }
 
 .navigation {
-  width: 100%;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
+  width: 100%;
+  display: flex;
 }
 
 .logo {
@@ -47,17 +47,17 @@ header {
 }
 
 nav {
-  display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 1.5rem;
+  display: flex;
 }
 
 nav a {
+  border-bottom: 2px solid #0000;
+  padding: .5rem 0;
   font-weight: 550;
-  border-bottom: 2px solid transparent;
-  padding: 0.5rem 0 0.5rem;
-  transition: 0.3s ease;
+  transition: all .3s;
 }
 
 nav a:hover {
@@ -66,56 +66,54 @@ nav a:hover {
 }
 
 .user-register {
-  display: flex;
   gap: 1rem;
   font-weight: 550;
+  display: flex;
 }
 
-.login-btn,
-.get-help-btn {
-  background-color: transparent;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  transition: 0.3s ease;
+.login-btn, .get-help-btn {
+  background-color: #0000;
+  border-radius: .5rem;
+  padding: .5rem;
+  transition: all .3s;
 }
 
 .fa-bell {
-  transition: 0.3s ease;
+  transition: all .3s;
 }
 
 .fa-bell:hover {
   color: #6b2da8;
 }
 
-.login-btn:hover,
-.get-help-btn:hover {
+.login-btn:hover, .get-help-btn:hover {
   background-color: #e2dfe3;
 }
 
 .section-contain {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5rem 12%;
   gap: 1rem;
+  width: 100%;
+  height: 100vh;
+  padding: 5rem 12%;
+  display: flex;
 }
 
 .qr-details {
-  width: 70%;
-  height: 100%;
-  background: linear-gradient(45deg, #6b2da8, rgba(83, 18, 158, 0.616));
+  background: linear-gradient(45deg, #6b2da8, #53129e9d);
   border-radius: 1rem;
+  width: 70%;
+  height: auto;
 }
 
 #reader {
+  justify-content: center;
+  align-items: center;
   width: 30%;
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .detection-status {
@@ -126,78 +124,70 @@ nav a:hover {
   display: none;
 }
 
-.fullname {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.section-contain p,
-.section-contain h1 {
-  color: #ffffff;
+.section-contain p, .section-contain h1 {
+  color: #fff;
 }
 
 .scanning-effect {
-  display: flex;
   align-items: center;
   height: 2rem;
+  padding: 1rem;
+  display: flex;
 }
 
 .typed-text {
+  color: #fff;
   font-size: 2rem;
-  color: #ffffff;
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   section {
     height: auto;
   }
 
   .fa-arrow-left {
-    display: flex;
     color: #3f3e41;
+    display: flex;
   }
 
   header {
-    padding: 1rem;
-    width: 100%;
-    border-bottom: 0.5px solid #afafaf;
     z-index: 100;
-    background-color: #ffffff;
+    background-color: #fff;
+    border-bottom: .5px solid #afafaf;
+    width: 100%;
+    padding: 1rem;
   }
 
   .navigation {
+    justify-content: center;
     width: 100%;
     display: flex;
-    justify-content: center;
   }
 
-  .navigation nav {
-    display: none;
-  }
-
-  .user-register {
+  .navigation nav, .user-register {
     display: none;
   }
 
   .section-contain {
-    display: flex;
     flex-direction: column;
     height: auto;
+    display: flex;
   }
 
   .qr-details {
+    flex-direction: column;
+    gap: .5rem;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
   }
 
   #reader {
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
   }
 }
+/*# sourceMappingURL=studentLogEntrance.6f4b017e.css.map */

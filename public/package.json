@@ -2,7 +2,7 @@
   "name": "public",
   "version": "1.0.0",
   "scripts": {
-    "start": "parcel idValidation.html",
+    "start": "parcel studentLogEntrance.html",
     "build": "parcel build index.html app.html idValidation.html studentLog.html"
   },
   "keywords": [],

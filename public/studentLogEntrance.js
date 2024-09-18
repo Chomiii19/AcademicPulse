@@ -17,18 +17,10 @@ const typed = new Typed(".typed-text", {
 
 let isScanning = true;
 
-function getAspectRatio() {
-  const viewportWidth = window.innerWidth;
-  const isMobile = viewportWidth <= 768;
-  return isMobile ? 1.0 : 0.75;
-}
-
-const aspectRatio = getAspectRatio();
-
 const config = {
   fps: 15,
   qrbox: { width: 250, height: 250 },
-  aspectRatio: aspectRatio,
+  aspectRatio: 1.0,
 };
 
 function startScanning() {
