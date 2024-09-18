@@ -41,17 +41,16 @@ const config = {
 };
 
 function startScanning() {
+  student(undefined);
+  studentNumber.textContent = "";
+  qrDetails.style.background =
+    "linear-gradient(45deg, #6b2da8, rgba(83, 18, 158, 0.62))";
   html5QrCode
     .start(
       { facingMode: "environment" },
       config,
       async (decodedText, decodedResult) => {
         if (isScanning) {
-          student(undefined);
-          studentNumber.textContent = "";
-          qrDetails.style.background =
-            "linear-gradient(45deg, #6b2da8, rgba(83, 18, 158, 0.62))";
-
           isScanning = false;
           try {
             console.log(`Code matched = ${decodedText}`, decodedResult);
