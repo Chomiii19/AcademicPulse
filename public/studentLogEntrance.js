@@ -24,7 +24,7 @@ const config = {
 };
 
 function startScanning() {
-  idStatus.textContent = data.message || "";
+  idStatus.textContent = "";
   scanning.style.display = "flex";
   studentNumber.textContent = "";
   qrDetails.style.background =
