@@ -104,6 +104,7 @@ const studentLogExit = catchAsync(async (req, res, next) => {
   await student.save();
   res.status(201).json({
     status: "Success",
+    message: "Success",
   });
 });
 
