@@ -624,7 +624,7 @@ function startScanning() {
         if (isScanning) {
             isScanning = false;
             try {
-                const response = await fetch("/app/student-log/entrance", {
+                const response = await fetch("/app/student-log/entrance/submit", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json"
