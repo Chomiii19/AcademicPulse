@@ -28,6 +28,10 @@ router.get("/student-log/entrance", (req, res) => {
   res.sendFile(join(__dirname, "../public/dist/studentLogEntrance.html"));
 });
 
+router.get("/student-log/exit", (req, res) => {
+  res.sendFile(join(__dirname, "../public/dist/studentLogExit.html"));
+});
+
 router
   .route("/student-log/entrance/submit")
   .post(appController.studentLogEntrance);

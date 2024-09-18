@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="studentLogExit.css" />
+    <link rel="icon" type="image/png" href="img/logo.png" />
+    <script type="module" defer src="studentLogExit.js"></script>
+    <title>AcademicPulse</title>
+  </head>
+  <body>
+    <header class="">
+      <a href="/app/student-log"
+        ><i class="fa-solid fa-arrow-left" href=""></i
+      ></a>
+      <div class="navigation">
+        <a href="/app/id-validation" class="logo"
+          >Academic<span class="sublogo">Pulse</span></a
+        >
+        <nav>
+          <a href=""><i class="fa-solid fa-bell"></i></a>
+          <div class="user-register">
+            <a href="" class="get-help-btn">Get Help?</a>
+            <a href="#" class="login-btn">User</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="section-contain">
+      <div id="reader"></div>
+      <div class="qr-details">
+        <div class="detection-status">
+          <div class="scanning-effect">
+            <h1 class="scanning">Scanning</h1>
+            <span class="typed-text"></span>
+          </div>
+          <h1 class="student-number"></h1>
+          <p class="id-status"></p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
