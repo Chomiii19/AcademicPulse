@@ -50,7 +50,7 @@ const time = [
 const idValidatedGraphContainer = document.getElementById("idvalidated-graph");
 const schoolLogsGraph = document.getElementById("schoollogs-graph");
 const doughnut = document.getElementById("doughnut-graph");
-const doughnutPercentage = document.getElementById("label-doughnut");
+const doughnutPercentage = document.querySelector(".label-doughnut");
 
 function resizeCanvas(canvas) {
   canvas.width = canvas.parentElement.clientWidth;
