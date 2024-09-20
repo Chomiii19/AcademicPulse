@@ -106,6 +106,49 @@ section {
   height: 50%;
 }
 
+.select-container {
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  display: flex;
+}
+
+.dropdown {
+  color: #8d8d8d;
+  border: 1px solid #d3d3d3;
+  border-radius: .5rem;
+  outline: none;
+  padding: .3rem .5rem;
+  transition: all .3s;
+}
+
+.type-options, .months-option, .day-option {
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+  transform: translateY(20px);
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+option {
+  color: #8d8d8d;
+}
+
+.bargraph {
+  width: 100%;
+  height: 100%;
+}
+
+#idvalidated-graph {
+  width: 40%;
+  height: 100%;
+}
+
 @media (width <= 480px) {
   .fa-arrow-left {
     color: #3f3e41;

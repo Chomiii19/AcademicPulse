@@ -1,6 +1,5 @@
 import Chart from "chart.js/auto";
 
-const ctx = document.getElementById("idvalidated-graph").getContext("2d");
 let year;
 let month;
 let day;
@@ -50,8 +49,8 @@ const time = [
 
 const idValidatedGraphContainer = document.getElementById("idvalidated-graph");
 const schoolLogsGraph = document.getElementById("schoollogs-graph");
+const doughnut = document.getElementById("doughnut-graph");
 
-// Set canvas to fit parent container
 function resizeCanvas(canvas) {
   canvas.width = canvas.parentElement.clientWidth;
   canvas.height = canvas.parentElement.clientHeight;
@@ -60,9 +59,9 @@ function resizeCanvas(canvas) {
 function adjustCanvases() {
   resizeCanvas(idValidatedGraphContainer);
   resizeCanvas(schoolLogsGraph);
+  resizeCanvas(doughnut);
 }
 
-// Adjust canvas size on window load and resize
 window.addEventListener("load", adjustCanvases);
 window.addEventListener("resize", adjustCanvases);
 
@@ -115,6 +114,7 @@ const idValidated = async (
   type = "year"
 ) => {
   try {
+    const ctx = document.getElementById("idvalidated-graph").getContext("2d");
     const response = await fetch(`/app/api/validated-id-stats?${url}`);
 
     const dataAPI = await response.json();
@@ -174,9 +174,46 @@ const idValidated = async (
   }
 };
 
+const doughnutGraph = async () => {
+  const ctx = document.getElementById("doughnut-graph").getContext("2d");
+  try {
+    const [response1, response2] = await Promise.all([
+      fetch("/ap/api/validated-students"),
+      fetch("/app/api/enrolled-students"),
+    ]);
+
+    const validatedAPI = response1.json();
+    const enrolledAPI = response2.json();
+
+    new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: ["Enrolled Students", "Validated Students"],
+        datasets: [
+          {
+            label: ["Enrolled Students", "Validated Students"],
+            data: [enrolledAPI.data.count, validatedAPI.data.count],
+            backgroundColor: ["rgb(107, 45, 168)", "rgb(144, 68, 220)"],
+            hoverOffset: 4,
+            borderJoinStyle: "round",
+            weight: 0.5,
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        cutout: "90%",
+      },
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 window.displayType = displayType;
 window.displayOptions = displayOptions;
 window.monthOptions = monthOptions;
 window.dayOptions = dayOptions;
 
 idValidated();
+doughnutGraph();

@@ -224,10 +224,37 @@ const studentLogStats = catchAsync(async (req, res, next) => {
   });
 });
 
+const enrolledStats = catchAsync(async (req, res, next) => {
+  const data = await Student.aggregate([
+    { $match: { isEnrolled: true } },
+    { $group: { _id: null, count: { $sum: 1 } } },
+    { $project: { _id: 0, count: 1 } },
+  ]);
+
+  res.status(200).json({
+    status: "Success",
+    data,
+  });
+});
+
+const validatedStats = catchAsync(async (req, res, next) => {
+  const data = await Validated.aggregate([
+    { $group: { _id: null, count: { $sum: 1 } } },
+    { $project: { _id: 0, count: 1 } },
+  ]);
+
+  res.status(200).json({
+    status: "Success",
+    data,
+  });
+});
+
 export {
   validateId,
   studentLogEntrance,
   studentLogExit,
   validatedIdStats,
   studentLogStats,
+  enrolledStats,
+  validatedStats,
 };

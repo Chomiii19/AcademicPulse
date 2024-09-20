@@ -42,5 +42,7 @@ router
 router.route("/student-log/exit/submit").post(appController.studentLogExit);
 router.route("/api/validated-id-stats").get(appController.validatedIdStats);
 router.route("/api/student-log-stats").get(appController.studentLogStats);
+router.route("/api/enrolled-students").get(appController.enrolledStats);
+router.route("/api/validated-students").get(appController.validatedStats);
 
 export default router;
