@@ -97,9 +97,7 @@ const idValidated = async (
   type = "year"
 ) => {
   try {
-    const response = await fetch(`/app/api/validated-id-stats?${url}`, {
-      cache: "no-store",
-    });
+    const response = await fetch(`/app/api/validated-id-stats?${url}`);
 
     const dataAPI = await response.json();
 
