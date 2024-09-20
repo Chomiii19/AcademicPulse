@@ -105,7 +105,7 @@ const idValidated = async (
       acc[list] = 0;
       return acc;
     }, {});
-    console.log(url, monthLists, type);
+
     if (type === "year") {
       dataAPI.data.forEach((log) => {
         dataList[lists[log.month - 1]] = log.count;
@@ -144,6 +144,9 @@ const idValidated = async (
         animation: {
           duration: 1000,
           easing: "easeOutBounce",
+          onComplete: () => {
+            console.log("Animation complete!");
+          },
         },
       },
     });
