@@ -167,6 +167,10 @@ const idValidated = async (
           duration: 1000,
           easing: "easeOutBounce",
         },
+        plugins: {
+          // Remove datalabels plugin
+          datalabels: false, // Ensure no datalabels are shown
+        },
       },
     });
   } catch (err) {
