@@ -1,7 +1,4 @@
 import Chart from "chart.js/auto";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-
-Chart.register(ChartDataLabels);
 
 let year;
 let month;
@@ -53,6 +50,7 @@ const time = [
 const idValidatedGraphContainer = document.getElementById("idvalidated-graph");
 const schoolLogsGraph = document.getElementById("schoollogs-graph");
 const doughnut = document.getElementById("doughnut-graph");
+const doughnutPercentage = document.getElementById("label-doughnut");
 
 function resizeCanvas(canvas) {
   canvas.width = canvas.parentElement.clientWidth;
@@ -167,10 +165,6 @@ const idValidated = async (
           duration: 1000,
           easing: "easeOutBounce",
         },
-        plugins: {
-          // Remove datalabels plugin
-          datalabels: false, // Ensure no datalabels are shown
-        },
       },
     });
   } catch (err) {
@@ -188,22 +182,24 @@ const doughnutGraph = async () => {
 
     const validatedAPI = await response1.json();
     const enrolledAPI = await response2.json();
-    // const percentage =
-    //   ((validatedAPI.data[0].count / enrolledAPI.data[0].count) * 100).toFixed(
-    //     2
-    //   ) + "%";
-    const totalStudents = enrolledAPI.data[0].count; // Total number of enrolled students
+
+    const enrolledCount = enrolledAPI.data[0].count;
     const validatedCount = validatedAPI.data[0].count;
-    const enrolledCount = totalStudents;
+
+    doughnutPercentage.textContent =
+      (
+        (enrolledCount.data[0].count / validatedCount.data[0].count) *
+        100
+      ).toFixed(2) + "%";
 
     // Create a doughnut chart
     new Chart(ctx, {
       type: "doughnut",
       data: {
-        labels: ["Enrolled", "Validated"], // Ensure this is an array
+        labels: ["Enrolled", "Validated"],
         datasets: [
           {
-            label: "Number of Students", // Provide a string label for the dataset
+            label: "Number of Students",
             data: [enrolledCount, validatedCount],
             backgroundColor: ["rgb(107, 45, 168)", "rgb(144, 68, 220)"],
             hoverOffset: 4,
@@ -214,27 +210,6 @@ const doughnutGraph = async () => {
       },
       options: {
         cutout: "90%",
-      },
-    });
-
-    Chart.plugins.register({
-      beforeDraw: function (chart) {
-        const width = chart.width,
-          height = chart.height,
-          ctx = chart.ctx;
-
-        ctx.restore();
-        const fontSize = (height / 114).toFixed(2); // Adjust the size as needed
-        ctx.font = fontSize + "em sans-serif";
-        ctx.textBaseline = "middle";
-
-        const text = ((validatedCount / totalStudents) * 100).toFixed(2) + "%"; // Change this to whatever text you want
-        const textX = Math.round((width - ctx.measureText(text).width) / 2);
-        const textY = height / 2;
-
-        ctx.fillStyle = "rgb(144, 68, 220)"; // Text color
-        ctx.fillText(text, textX, textY);
-        ctx.save();
       },
     });
   } catch (err) {
