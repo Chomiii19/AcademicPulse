@@ -163,9 +163,6 @@ const idValidated = async (
         animation: {
           duration: 1000,
           easing: "easeOutBounce",
-          onComplete: () => {
-            console.log("Animation complete!");
-          },
         },
       },
     });
@@ -178,12 +175,12 @@ const doughnutGraph = async () => {
   const ctx = document.getElementById("doughnut-graph").getContext("2d");
   try {
     const [response1, response2] = await Promise.all([
-      fetch("/ap/api/validated-students"),
+      fetch("/app/api/validated-students"),
       fetch("/app/api/enrolled-students"),
     ]);
 
-    const validatedAPI = response1.json();
-    const enrolledAPI = response2.json();
+    const validatedAPI = await response1.json();
+    const enrolledAPI = await response2.json();
 
     new Chart(ctx, {
       type: "doughnut",
