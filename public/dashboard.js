@@ -94,7 +94,7 @@ const dayOptions = () => {
 };
 
 const idValidated = async (
-  url = `year=${new Date().getFullYear()}}`,
+  url = `year=${new Date().getFullYear()}`,
   lists = monthLists,
   type = "year"
 ) => {
@@ -137,8 +137,8 @@ const idValidated = async (
         datasets: [
           {
             label: "# of ID validated (2024)",
-            backgroundColor: "rgb(255, 99, 132)",
-            hoverBackgroundColor: "rgba(255, 99, 133, 0.655)",
+            backgroundColor: "rgb(107, 45, 168)",
+            hoverBackgroundColor: "rgba(107, 45, 168, 0.75)",
             data: counts,
             borderWidth: 0.5,
           },
