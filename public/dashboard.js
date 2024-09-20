@@ -182,6 +182,7 @@ const doughnutGraph = async () => {
     const validatedAPI = await response1.json();
     const enrolledAPI = await response2.json();
 
+    console.log(validatedAPI, enrolledAPI);
     new Chart(ctx, {
       type: "doughnut",
       data: {
