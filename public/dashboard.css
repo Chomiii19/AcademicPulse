@@ -117,7 +117,6 @@ section {
 
 .select-container {
   display: flex;
-  gap: 1rem;
   justify-content: flex-end;
   align-items: center;
 }
@@ -184,12 +183,12 @@ option {
   z-index: 1;
 }
 
-#idvalidated-graph {
+/* #idvalidated-graph {
   width: 40%;
   height: 100%;
   z-index: 10;
   position: relative;
-}
+} */
 
 @media (max-width: 480px) {
   .fa-arrow-left {
