@@ -109,6 +109,7 @@ const studentLogExit = catchAsync(async (req, res, next) => {
 });
 
 const validatedIdStats = catchAsync(async (req, res, next) => {
+  res.set("Cache-Control", "no-store");
   const { year, month, hours, startDate, endDate } = req.query;
 
   let filter;
