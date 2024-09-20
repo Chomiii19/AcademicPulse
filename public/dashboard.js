@@ -48,6 +48,24 @@ const time = [
   "11 PM",
 ];
 
+const idValidatedGraphContainer = document.getElementById("idvalidated-graph");
+const schoolLogsGraph = document.getElementById("schoollogs-graph");
+
+// Set canvas to fit parent container
+function resizeCanvas(canvas) {
+  canvas.width = canvas.parentElement.clientWidth;
+  canvas.height = canvas.parentElement.clientHeight;
+}
+
+function adjustCanvases() {
+  resizeCanvas(idValidatedGraphContainer);
+  resizeCanvas(schoolLogsGraph);
+}
+
+// Adjust canvas size on window load and resize
+window.addEventListener("load", adjustCanvases);
+window.addEventListener("resize", adjustCanvases);
+
 const displayType = () => {
   const yearValue = document.querySelector(".year-options").value;
   if (yearValue === "currentYear") year = new Date().getFullYear();
