@@ -149,7 +149,12 @@ option {
 
 .bargraph {
   height: 100%;
-  width: 100%;
+  width: 50%;
+}
+
+.doughnut-graph-container {
+  height: 100%;
+  height: 25%;
 }
 
 #idvalidated-graph {

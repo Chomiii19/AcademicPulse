@@ -190,7 +190,7 @@ const doughnutGraph = async () => {
         datasets: [
           {
             label: ["Enrolled Students", "Validated Students"],
-            data: [enrolledAPI.data.count, validatedAPI.data.count],
+            data: [enrolledAPI.data[0].count, validatedAPI.data[0].count],
             backgroundColor: ["rgb(107, 45, 168)", "rgb(144, 68, 220)"],
             hoverOffset: 4,
             borderJoinStyle: "round",
@@ -200,6 +200,7 @@ const doughnutGraph = async () => {
         ],
       },
       options: {
+        responsive: true,
         cutout: "90%",
       },
     });
