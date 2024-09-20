@@ -92,7 +92,7 @@ const dayOptions = () => {
 };
 
 const idValidated = async (
-  url = `year=${new Date().getFullYear()}`,
+  url = `year=${new Date().getFullYear()}}`,
   lists = monthLists,
   type = "year"
 ) => {
@@ -158,4 +158,4 @@ window.displayOptions = displayOptions;
 window.monthOptions = monthOptions;
 window.dayOptions = dayOptions;
 
-// idValidated();
+idValidated();
