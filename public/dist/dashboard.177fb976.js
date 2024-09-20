@@ -589,46 +589,53 @@ var _auto = require("chart.js/auto");
 var _autoDefault = parcelHelpers.interopDefault(_auto);
 const ctx = document.getElementById("idvalidated-graph").getContext("2d");
 const idValidated = async ()=>{
-    const response = await fetch("/app/api/validated-id-stats");
-    const data = await response.json();
-    console.log(data);
-    const idValidatedGraph = new (0, _autoDefault.default)(ctx, {
-        type: "bar",
-        data: {
-            labels: [
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December"
-            ],
-            datasets: [
-                {
-                    label: "# of ID validated",
-                    backgroundColor: "rgb(255, 99, 132)",
-                    hoverBackgroundColor: "rgba(255, 99, 133, 0.655)",
-                    data: [
-                        12,
-                        19,
-                        3,
-                        5,
-                        2,
-                        3
-                    ],
-                    borderWidth: 0.5
-                }
-            ]
-        },
-        options: {}
-    });
+    try {
+        const response = await fetch("/app/api/validated-id-stats?year=2024");
+        const dataAPI = await response.json();
+        const monthsList = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ];
+        const dataList = monthsList.reduce((acc, month)=>{
+            acc[month] = 0;
+            return acc;
+        }, {});
+        dataAPI.data.forEach((log)=>{
+            dataList[monthsList[log.month - 1]] = log.count;
+        });
+        const months = Object.keys(dataList);
+        const counts = Object.values(dataList);
+        const idValidatedGraph = new (0, _autoDefault.default)(ctx, {
+            type: "bar",
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: "# of ID validated (2024)",
+                        backgroundColor: "rgb(255, 99, 132)",
+                        hoverBackgroundColor: "rgba(255, 99, 133, 0.655)",
+                        data: counts,
+                        borderWidth: 0.5
+                    }
+                ]
+            },
+            options: {}
+        });
+    } catch (err) {
+        console.error(err);
+    }
 };
+//FIX BACKEND SEND DATA FOR ALL GRAPHS IN A SINGLE REQUEST
 idValidated();
 
 },{"chart.js/auto":"d8NN9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d8NN9":[function(require,module,exports) {

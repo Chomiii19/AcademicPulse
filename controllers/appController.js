@@ -109,25 +109,63 @@ const studentLogExit = catchAsync(async (req, res, next) => {
 });
 
 const validatedIdStats = catchAsync(async (req, res, next) => {
-  const { year } = req.query;
+  const { year, month, hours, startDate, endDate } = req.query;
+
+  let filter;
+  let groupby;
+  let fieldType;
+
+  if (hours) {
+    filter = {
+      validatedAt: {
+        $gte: new Date(`${hours}T00:00:00`),
+        $lte: new Date(`${hours}T23:59:59`),
+      },
+    };
+    groupby = { $hour: "$validatedAt" };
+    fieldType = { hour: "$_id" };
+  } else if (year && month) {
+    const daysInMonth = new Date(year, month, 0).getDate();
+    filter = {
+      validatedAt: {
+        $gte: new Date(`${year}-${month}-01`),
+        $lte: new Date(`${year}-${month}-${daysInMonth}`),
+      },
+    };
+    groupby = { $dayOfMonth: "$validatedAt" };
+    fieldType = { day: "$_id" };
+  } else if (year) {
+    filter = {
+      validatedAt: {
+        $gte: new Date(`${year}-1-01`),
+        $lte: new Date(`${year}-12-31`),
+      },
+    };
+    groupby = { $month: "$validatedAt" };
+    fieldType = { month: "$_id" };
+  } else if (startDate && endDate) {
+    filter = {
+      validatedAt: {
+        $gte: new Date(`${startDate}`),
+        $lte: new Date(`${endDate}`),
+      },
+    };
+    groupby = { $year: "$validatedAt" };
+    fieldType = { year: "$_id" };
+  }
 
   const data = await Validated.aggregate([
     {
-      $match: {
-        validatedAt: {
-          $gte: new Date(`${year}-01-01`),
-          $lte: new Date(`${year}-12-31`),
-        },
-      },
+      $match: filter,
     },
     {
       $group: {
-        _id: { $month: "$validatedAt" },
+        _id: groupby,
         count: { $sum: 1 },
       },
     },
-    { $addFields: { month: "$_id" } },
     { $sort: { _id: 1 } },
+    { $addFields: fieldType },
     { $project: { _id: 0 } },
   ]);
 

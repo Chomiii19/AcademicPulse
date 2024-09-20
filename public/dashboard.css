@@ -112,6 +112,41 @@ section {
   width: 100%;
 }
 
+.select-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.dropdown {
+  padding: 0.3rem 0.5rem;
+  outline: none;
+  border-radius: 0.5rem;
+  color: #8d8d8d;
+  border: 1px solid lightgrey;
+  transition: all 0.3s ease;
+}
+
+.type-options,
+.months-option,
+.day-option {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+option {
+  color: #8d8d8d;
+}
+
 @media (max-width: 480px) {
   .fa-arrow-left {
     display: flex;
