@@ -156,14 +156,14 @@ option {
 
 .users-total {
   height: 100%;
-  width: 25%;
+  width: 20%;
   background: linear-gradient(45deg, #6b2da8, rgba(83, 18, 158, 0.616));
   border-radius: 1rem;
 }
 
 .doughnut-graph-container {
   height: 100%;
-  width: 25%;
+  width: 30%;
   position: relative;
 }
 
