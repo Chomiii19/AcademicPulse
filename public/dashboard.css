@@ -165,6 +165,9 @@ option {
   height: 100%;
   width: 30%;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .label-doughnut {
