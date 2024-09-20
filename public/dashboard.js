@@ -51,6 +51,7 @@ const idValidatedGraphContainer = document.getElementById("idvalidated-graph");
 const schoolLogsGraph = document.getElementById("schoollogs-graph");
 const doughnut = document.getElementById("doughnut-graph");
 const doughnutPercentage = document.querySelector(".label-doughnut");
+const doughnutContainer = document.querySelector("doughnut-graph-container");
 
 function resizeCanvas(canvas) {
   canvas.width = canvas.parentElement.clientWidth;
@@ -65,8 +66,9 @@ function adjustCanvases() {
 
 window.addEventListener("load", adjustCanvases);
 window.addEventListener("resize", adjustCanvases);
-doughnutPercentage.style.width = doughnut.width;
-doughnutPercentage.style.height = doughnut.height;
+doughnutContainer.style.width = doughnutPercentage.style.width = doughnut.width;
+doughnutContainer.style.height = doughnutPercentage.style.height =
+  doughnut.height;
 
 const displayType = () => {
   const yearValue = document.querySelector(".year-options").value;
@@ -154,7 +156,6 @@ const idValidated = async (
         labels: lists,
         datasets: [
           {
-            label: "# of ID validated (2024)",
             backgroundColor: "rgb(107, 45, 168)",
             hoverBackgroundColor: "rgba(107, 45, 168, 0.75)",
             data: counts,
