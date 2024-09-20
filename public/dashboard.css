@@ -147,6 +147,11 @@ option {
   color: #8d8d8d;
 }
 
+.bargraph {
+  height: 100%;
+  width: 100%;
+}
+
 #idvalidated-graph {
   width: 40%;
   height: 100%;
