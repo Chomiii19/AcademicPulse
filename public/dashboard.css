@@ -162,7 +162,7 @@ option {
 .doughnut-graph-container {
   height: 100%;
   width: 25%;
-  position: absolute;
+  position: relative;
 }
 
 .label-doughnut {
@@ -173,15 +173,18 @@ option {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.box {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
 #idvalidated-graph {
   width: 40%;
   height: 100%;
+  z-index: 1;
+  position: relative;
 }
 
 @media (max-width: 480px) {
