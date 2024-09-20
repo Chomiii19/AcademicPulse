@@ -51,7 +51,6 @@ const idValidatedGraphContainer = document.getElementById("idvalidated-graph");
 const schoolLogsGraph = document.getElementById("schoollogs-graph");
 const doughnut = document.getElementById("doughnut-graph");
 const doughnutPercentage = document.querySelector(".label-doughnut");
-const doughnutContainer = document.querySelector("doughnut-graph-container");
 
 function resizeCanvas(canvas) {
   canvas.width = canvas.parentElement.clientWidth;
@@ -66,9 +65,8 @@ function adjustCanvases() {
 
 window.addEventListener("load", adjustCanvases);
 window.addEventListener("resize", adjustCanvases);
-doughnutContainer.style.width = doughnutPercentage.style.width = doughnut.width;
-doughnutContainer.style.height = doughnutPercentage.style.height =
-  doughnut.height;
+doughnutPercentage.style.width = doughnut.width;
+doughnutPercentage.style.height = doughnut.height;
 
 const displayType = () => {
   const yearValue = document.querySelector(".year-options").value;

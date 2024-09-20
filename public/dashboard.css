@@ -162,7 +162,7 @@ option {
 }
 
 .doughnut-graph-container {
-  height: 100%;
+  height: 250px;
   width: 250px;
   position: relative;
   display: flex;
