@@ -92,7 +92,7 @@ const dayOptions = () => {
 };
 
 const idValidated = async (
-  url = `year=${new Date().getFullYear()}}`,
+  url = `year=${new Date().getFullYear()}`,
   lists = monthLists,
   type = "year"
 ) => {
@@ -116,7 +116,6 @@ const idValidated = async (
       });
     } else if (type === "hour") {
       dataAPI.data.forEach((log) => {
-        const hour = new Date(``);
         dataList[lists[log.hour - 1]] = log.count;
       });
     }
