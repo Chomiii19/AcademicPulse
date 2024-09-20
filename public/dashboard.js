@@ -200,7 +200,6 @@ const doughnutGraph = async () => {
         ],
       },
       options: {
-        responsive: true,
         cutout: "90%",
       },
     });
