@@ -73,7 +73,6 @@ const displayOptions = () => {
 const monthOptions = () => {
   month = document.querySelector(".months-option").value.padStart(2, "0");
   console.log(year, month);
-  idValidated(`year=${year}&month=${month}`);
   const days = new Date(year, month, 0).getDate();
   const dayOption = document.querySelector(".day-option");
   dayOption.innerHTML = "";
@@ -85,12 +84,13 @@ const monthOptions = () => {
     dayList.push(i);
     dayOption.appendChild(option);
   }
+  idValidated(`year=${year}&month=${month}`, dayList, "month");
 };
 
 const dayOptions = () => {
   day = document.querySelector(".day-option").value.padStart(2, "0");
   console.log(year, month, day);
-  idValidated(`hours=${year}-${month}-${day}`);
+  idValidated(`hours=${year}-${month}-${day}`, time, "hour");
 };
 
 const idValidated = async (url = `year=${year}}`, lists, type) => {
