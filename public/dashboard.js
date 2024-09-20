@@ -126,32 +126,35 @@ const idValidated = async (
 
     if (idValidatedGraph) {
       idValidatedGraph.destroy();
+      idValidatedGraph = null;
     }
 
-    idValidatedGraph = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: lists,
-        datasets: [
-          {
-            label: "# of ID validated (2024)",
-            backgroundColor: "rgb(107, 45, 168)",
-            hoverBackgroundColor: "rgba(107, 45, 168, 0.75)",
-            data: counts,
-            borderWidth: 0.5,
-          },
-        ],
-      },
-      options: {
-        animation: {
-          duration: 1000,
-          easing: "easeOutBounce",
-          onComplete: () => {
-            console.log("Animation complete!");
+    setTimeout(() => {
+      idValidatedGraph = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: lists,
+          datasets: [
+            {
+              label: "# of ID validated (2024)",
+              backgroundColor: "rgb(107, 45, 168)",
+              hoverBackgroundColor: "rgba(107, 45, 168, 0.75)",
+              data: counts,
+              borderWidth: 0.5,
+            },
+          ],
+        },
+        options: {
+          animation: {
+            duration: 1000,
+            easing: "easeOutBounce",
+            onComplete: () => {
+              console.log("Animation complete!");
+            },
           },
         },
-      },
-    });
+      });
+    }, 50);
   } catch (err) {
     console.error(err);
   }
