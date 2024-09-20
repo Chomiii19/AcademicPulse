@@ -72,7 +72,6 @@ const displayOptions = () => {
 
 const monthOptions = () => {
   month = document.querySelector(".months-option").value.padStart(2, "0");
-  console.log(year, month);
   const days = new Date(year, month, 0).getDate();
   const dayOption = document.querySelector(".day-option");
   dayOption.innerHTML = "";
@@ -89,7 +88,6 @@ const monthOptions = () => {
 
 const dayOptions = () => {
   day = document.querySelector(".day-option").value.padStart(2, "0");
-  console.log(year, month, day);
   idValidated(`hours=${year}-${month}-${day}`, time, "hour");
 };
 
@@ -123,7 +121,6 @@ const idValidated = async (
       });
     }
 
-    const months = Object.keys(dataList);
     const counts = Object.values(dataList);
 
     if (idValidatedGraph) {
@@ -144,7 +141,12 @@ const idValidated = async (
           },
         ],
       },
-      options: {},
+      options: {
+        animation: {
+          duration: 1000,
+          easing: "easeOutBounce",
+        },
+      },
     });
   } catch (err) {
     console.error(err);
