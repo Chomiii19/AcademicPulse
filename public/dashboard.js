@@ -1,4 +1,7 @@
 import Chart from "chart.js/auto";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+
+Chart.register(ChartDataLabels);
 
 let year;
 let month;
@@ -181,15 +184,18 @@ const doughnutGraph = async () => {
 
     const validatedAPI = await response1.json();
     const enrolledAPI = await response2.json();
+    // const percentage =
+    //   ((validatedAPI.data[0].count / enrolledAPI.data[0].count) * 100).toFixed(
+    //     2
+    //   ) + "%";
 
-    console.log(validatedAPI, enrolledAPI);
     new Chart(ctx, {
       type: "doughnut",
       data: {
-        labels: ["Enrolled Students", "Validated Students"],
+        labels: "Number of students",
         datasets: [
           {
-            label: ["Enrolled Students", "Validated Students"],
+            label: ["Enrolled", "Validated"],
             data: [enrolledAPI.data[0].count, validatedAPI.data[0].count],
             backgroundColor: ["rgb(107, 45, 168)", "rgb(144, 68, 220)"],
             hoverOffset: 4,
@@ -201,6 +207,22 @@ const doughnutGraph = async () => {
       },
       options: {
         cutout: "90%",
+        plugins: {
+          datalabels: {
+            color: "rgb(144, 68, 220)", // Text color
+            formatter: (value, ctx) => {
+              // Calculate percentage
+              let percentage = ((value / totalStudents) * 100).toFixed(2) + "%";
+              return percentage;
+            },
+            font: {
+              size: 14, // Customize font size
+              weight: "bold",
+            },
+            align: "center", // Align the text
+            anchor: "center", // Anchor it to the center of the doughnut
+          },
+        },
       },
     });
   } catch (err) {
