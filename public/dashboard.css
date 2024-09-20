@@ -147,6 +147,11 @@ option {
   color: #8d8d8d;
 }
 
+#idvalidated-graph {
+  width: 40%;
+  height: 100%;
+}
+
 @media (max-width: 480px) {
   .fa-arrow-left {
     display: flex;

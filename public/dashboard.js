@@ -97,9 +97,7 @@ const idValidated = async (
   type = "year"
 ) => {
   try {
-    const response = await fetch(`/app/api/validated-id-stats?${url}`, {
-      cache: "no-store",
-    });
+    const response = await fetch(`/app/api/validated-id-stats?${url}`);
 
     const dataAPI = await response.json();
 
@@ -129,32 +127,30 @@ const idValidated = async (
       idValidatedGraph = null;
     }
 
-    setTimeout(() => {
-      idValidatedGraph = new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: lists,
-          datasets: [
-            {
-              label: "# of ID validated (2024)",
-              backgroundColor: "rgb(107, 45, 168)",
-              hoverBackgroundColor: "rgba(107, 45, 168, 0.75)",
-              data: counts,
-              borderWidth: 0.5,
-            },
-          ],
-        },
-        options: {
-          animation: {
-            duration: 1000,
-            easing: "easeOutBounce",
-            onComplete: () => {
-              console.log("Animation complete!");
-            },
+    idValidatedGraph = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: lists,
+        datasets: [
+          {
+            label: "# of ID validated (2024)",
+            backgroundColor: "rgb(107, 45, 168)",
+            hoverBackgroundColor: "rgba(107, 45, 168, 0.75)",
+            data: counts,
+            borderWidth: 0.5,
+          },
+        ],
+      },
+      options: {
+        animation: {
+          duration: 1000,
+          easing: "easeOutBounce",
+          onComplete: () => {
+            console.log("Animation complete!");
           },
         },
-      });
-    }, 50);
+      },
+    });
   } catch (err) {
     console.error(err);
   }
