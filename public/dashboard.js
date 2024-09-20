@@ -188,19 +188,22 @@ const doughnutGraph = async () => {
     //   ((validatedAPI.data[0].count / enrolledAPI.data[0].count) * 100).toFixed(
     //     2
     //   ) + "%";
+    const totalStudents = enrolledAPI.data[0].count; // Total number of enrolled students
+    const validatedCount = validatedAPI.data[0].count;
+    const enrolledCount = totalStudents;
 
+    // Create a doughnut chart
     new Chart(ctx, {
       type: "doughnut",
       data: {
-        labels: ["Enrolled", "Validated"],
+        labels: ["Enrolled", "Validated"], // Ensure this is an array
         datasets: [
           {
-            label: "Number of students",
-            data: [enrolledAPI.data[0].count, validatedAPI.data[0].count],
+            label: "Number of Students", // Provide a string label for the dataset
+            data: [enrolledCount, validatedCount],
             backgroundColor: ["rgb(107, 45, 168)", "rgb(144, 68, 220)"],
             hoverOffset: 4,
             borderJoinStyle: "round",
-            weight: 0.5,
             borderWidth: 1,
           },
         ],
@@ -208,10 +211,13 @@ const doughnutGraph = async () => {
       options: {
         cutout: "90%",
         plugins: {
+          legend: {
+            display: true, // Ensure the legend is displayed
+          },
           datalabels: {
             color: "rgb(144, 68, 220)", // Text color
-            formatter: (value, ctx) => {
-              // Calculate percentage
+            formatter: (value) => {
+              // Calculate percentage using the total count
               let percentage = ((value / totalStudents) * 100).toFixed(2) + "%";
               return percentage;
             },
