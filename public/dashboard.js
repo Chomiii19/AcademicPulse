@@ -158,4 +158,4 @@ window.displayOptions = displayOptions;
 window.monthOptions = monthOptions;
 window.dayOptions = dayOptions;
 
-idValidated();
+// idValidated();
