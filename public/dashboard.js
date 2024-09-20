@@ -102,5 +102,10 @@ const idValidated = async (url = `year=${year}}`) => {
   }
 };
 
+window.displayType = displayType;
+window.displayOptions = displayOptions;
+window.monthOptions = monthOptions;
+window.dayOptions = dayOptions;
+
 idValidated();
 //FIX BACKEND SEND DATA FOR ALL GRAPHS IN A SINGLE REQUEST
