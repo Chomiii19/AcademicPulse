@@ -93,7 +93,11 @@ const dayOptions = () => {
   idValidated(`hours=${year}-${month}-${day}`, time, "hour");
 };
 
-const idValidated = async (url = `year=${year}}`, lists, type) => {
+const idValidated = async (
+  url = `year=${year}}`,
+  lists = monthLists,
+  type = "year"
+) => {
   try {
     const response = await fetch(`/app/api/validated-id-stats?${url}`);
 
