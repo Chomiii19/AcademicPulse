@@ -4,6 +4,7 @@ const ctx = document.getElementById("idvalidated-graph").getContext("2d");
 let year;
 let month;
 let day;
+let idValidatedGraph;
 
 const displayType = () => {
   const yearValue = document.querySelector(".year-options").value;
@@ -81,7 +82,11 @@ const idValidated = async (url = `year=${year}}`) => {
     const months = Object.keys(dataList);
     const counts = Object.values(dataList);
 
-    const idValidatedGraph = new Chart(ctx, {
+    if (idValidatedGraph) {
+      idValidatedGraph.destroy();
+    }
+
+    idValidatedGraph = new Chart(ctx, {
       type: "bar",
       data: {
         labels: months,
@@ -108,4 +113,3 @@ window.monthOptions = monthOptions;
 window.dayOptions = dayOptions;
 
 idValidated();
-//FIX BACKEND SEND DATA FOR ALL GRAPHS IN A SINGLE REQUEST
