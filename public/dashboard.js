@@ -214,25 +214,27 @@ const doughnutGraph = async () => {
       },
       options: {
         cutout: "90%",
-        plugins: {
-          legend: {
-            display: true, // Ensure the legend is displayed
-          },
-          datalabels: {
-            color: "rgb(144, 68, 220)", // Text color
-            formatter: (value) => {
-              // Calculate percentage using the total count
-              let percentage = ((value / totalStudents) * 100).toFixed(2) + "%";
-              return percentage;
-            },
-            font: {
-              size: 14, // Customize font size
-              weight: "bold",
-            },
-            align: "center", // Align the text
-            anchor: "center", // Anchor it to the center of the doughnut
-          },
-        },
+      },
+    });
+
+    Chart.plugins.register({
+      beforeDraw: function (chart) {
+        const width = chart.width,
+          height = chart.height,
+          ctx = chart.ctx;
+
+        ctx.restore();
+        const fontSize = (height / 114).toFixed(2); // Adjust the size as needed
+        ctx.font = fontSize + "em sans-serif";
+        ctx.textBaseline = "middle";
+
+        const text = ((validatedCount / totalStudents) * 100).toFixed(2) + "%"; // Change this to whatever text you want
+        const textX = Math.round((width - ctx.measureText(text).width) / 2);
+        const textY = height / 2;
+
+        ctx.fillStyle = "rgb(144, 68, 220)"; // Text color
+        ctx.fillText(text, textX, textY);
+        ctx.save();
       },
     });
   } catch (err) {
