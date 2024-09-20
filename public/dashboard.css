@@ -158,8 +158,8 @@ option {
   height: 100%;
   width: 25%;
   background: linear-gradient(45deg, #6b2da8, rgba(83, 18, 158, 0.616));
-  border-radius: 0.5rem;
-  padding-left: 0.5rem;
+  border-radius: 1rem;
+  padding-left: 1rem;
 }
 
 .doughnut-graph-container {
