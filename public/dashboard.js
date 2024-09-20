@@ -192,10 +192,10 @@ const doughnutGraph = async () => {
     new Chart(ctx, {
       type: "doughnut",
       data: {
-        labels: "Number of students",
+        labels: ["Enrolled", "Validated"],
         datasets: [
           {
-            label: ["Enrolled", "Validated"],
+            label: "Number of students",
             data: [enrolledAPI.data[0].count, validatedAPI.data[0].count],
             backgroundColor: ["rgb(107, 45, 168)", "rgb(144, 68, 220)"],
             hoverOffset: 4,
