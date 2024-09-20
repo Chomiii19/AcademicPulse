@@ -65,6 +65,8 @@ function adjustCanvases() {
 
 window.addEventListener("load", adjustCanvases);
 window.addEventListener("resize", adjustCanvases);
+doughnutPercentage.style.width = doughnut.width;
+doughnutPercentage.style.height = doughnut.height;
 
 const displayType = () => {
   const yearValue = document.querySelector(".year-options").value;
