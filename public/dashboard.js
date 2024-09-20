@@ -5,6 +5,48 @@ let year;
 let month;
 let day;
 let idValidatedGraph;
+let dayList = [];
+const monthLists = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const time = [
+  "12 AM",
+  "1 AM",
+  "2 AM",
+  "3 AM",
+  "4 AM",
+  "5 AM",
+  "6 AM",
+  "7 AM",
+  "8 AM",
+  "9 AM",
+  "10 AM",
+  "11 AM",
+  "12 PM",
+  "1 PM",
+  "2 PM",
+  "3 PM",
+  "4 PM",
+  "5 PM",
+  "6 PM",
+  "7 PM",
+  "8 PM",
+  "9 PM",
+  "10 PM",
+  "11 PM",
+];
 
 const displayType = () => {
   const yearValue = document.querySelector(".year-options").value;
@@ -23,7 +65,8 @@ const displayOptions = () => {
   } else if (type === "months") {
     document.querySelector(".months-option").classList.remove("active");
     document.querySelector(".day-option").classList.remove("active");
-    idValidated(`year=${year}`);
+
+    idValidated(`year=${year}`, monthLists, "year");
   }
 };
 
@@ -39,6 +82,7 @@ const monthOptions = () => {
     const option = document.createElement("option");
     option.value = i;
     option.textContent = i;
+    dayList.push(i);
     dayOption.appendChild(option);
   }
 };
@@ -49,35 +93,31 @@ const dayOptions = () => {
   idValidated(`hours=${year}-${month}-${day}`);
 };
 
-const idValidated = async (url = `year=${year}}`) => {
+const idValidated = async (url = `year=${year}}`, lists, type) => {
   try {
     const response = await fetch(`/app/api/validated-id-stats?${url}`);
 
     const dataAPI = await response.json();
 
-    const monthsList = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    const dataList = monthsList.reduce((acc, month) => {
-      acc[month] = 0;
+    const dataList = lists.reduce((acc, list) => {
+      acc[list] = 0;
       return acc;
     }, {});
 
-    dataAPI.data.forEach((log) => {
-      dataList[monthsList[log.month - 1]] = log.count;
-    });
+    if (type === "year") {
+      dataAPI.data.forEach((log) => {
+        dataList[lists[log.month - 1]] = log.count;
+      });
+    } else if (type === "month") {
+      dataAPI.data.forEach((log) => {
+        dataList[lists[log.day - 1]] = log.count;
+      });
+    } else if (type === "hour") {
+      dataAPI.data.forEach((log) => {
+        const hour = new Date(``);
+        dataList[lists[log.hour - 1]] = log.count;
+      });
+    }
 
     const months = Object.keys(dataList);
     const counts = Object.values(dataList);
@@ -89,7 +129,7 @@ const idValidated = async (url = `year=${year}}`) => {
     idValidatedGraph = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: months,
+        labels: lists,
         datasets: [
           {
             label: "# of ID validated (2024)",

@@ -117,44 +117,51 @@ const validatedIdStats = catchAsync(async (req, res, next) => {
 
   if (hours) {
     filter = {
-      validatedAt: {
+      validatedAtUTC8: {
         $gte: new Date(`${hours}T00:00:00`),
         $lte: new Date(`${hours}T23:59:59`),
       },
     };
-    groupby = { $hour: "$validatedAt" };
+    groupby = { $hour: "$validatedAtUTC8" };
     fieldType = { hour: "$_id" };
   } else if (year && month) {
     const daysInMonth = new Date(year, month, 0).getDate();
     filter = {
-      validatedAt: {
+      validatedAtUTC8: {
         $gte: new Date(`${year}-${month}-01`),
         $lte: new Date(`${year}-${month}-${daysInMonth}`),
       },
     };
-    groupby = { $dayOfMonth: "$validatedAt" };
+    groupby = { $dayOfMonth: "$validatedAtUTC8" };
     fieldType = { day: "$_id" };
   } else if (year) {
     filter = {
-      validatedAt: {
+      validatedAtUTC8: {
         $gte: new Date(`${year}-1-01`),
         $lte: new Date(`${year}-12-31`),
       },
     };
-    groupby = { $month: "$validatedAt" };
+    groupby = { $month: "$validatedAtUTC8" };
     fieldType = { month: "$_id" };
   } else if (startDate && endDate) {
     filter = {
-      validatedAt: {
+      validatedAtUTC8: {
         $gte: new Date(`${startDate}`),
         $lte: new Date(`${endDate}`),
       },
     };
-    groupby = { $year: "$validatedAt" };
+    groupby = { $year: "$validatedAtUTC8" };
     fieldType = { year: "$_id" };
   }
 
   const data = await Validated.aggregate([
+    {
+      $project: {
+        validatedAtUTC8: {
+          $add: ["$validatedAt", 8 * 60 * 60 * 1000],
+        },
+      },
+    },
     {
       $match: filter,
     },
