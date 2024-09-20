@@ -154,6 +154,7 @@ const idValidated = async (
         labels: lists,
         datasets: [
           {
+            label: "# of ID Validated",
             backgroundColor: "rgb(107, 45, 168)",
             hoverBackgroundColor: "rgba(107, 45, 168, 0.75)",
             data: counts,
