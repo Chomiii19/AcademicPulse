@@ -94,7 +94,7 @@ const dayOptions = () => {
 };
 
 const idValidated = async (
-  url = `year=${year}}`,
+  url = `year=${new Date().getFullYear()}}`,
   lists = monthLists,
   type = "year"
 ) => {
