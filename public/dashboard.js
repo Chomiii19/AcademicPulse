@@ -187,9 +187,8 @@ const doughnutGraph = async () => {
     const validatedCount = validatedAPI.data[0].count;
 
     doughnutPercentage.textContent =
-      ((enrolledCount / validatedCount) * 100).toFixed(2) + "%";
+      ((enrolledCount / validatedCount) * 100).toFixed(1) + "%";
 
-    // Create a doughnut chart
     new Chart(ctx, {
       type: "doughnut",
       data: {
