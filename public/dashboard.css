@@ -166,7 +166,7 @@ option {
 
 .users-total {
   height: 265px;
-  width: 265px;
+  width: 100%;
   background: linear-gradient(45deg, #6b2da8, rgba(83, 18, 158, 0.616));
   border-radius: 1rem;
 }
