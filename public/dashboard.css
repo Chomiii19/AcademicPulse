@@ -194,7 +194,7 @@ option {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 45%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
