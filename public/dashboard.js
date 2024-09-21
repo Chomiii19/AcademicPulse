@@ -6,18 +6,18 @@ let day;
 let idValidatedGraph;
 let dayList = [];
 const monthLists = [
-  "January",
-  "February",
-  "March",
-  "April",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
   "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 const time = [
@@ -215,10 +215,39 @@ const doughnutGraph = async () => {
   }
 };
 
+const lineGraph = () => {
+  const ctx = document.getElementById("idvalidated-graph").getContext("2d");
+
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: monthLists,
+      datasets: [
+        {
+          label: "Count",
+          data: [65, 59, 80, 81, 56, 55, 40],
+          fill: false,
+          borderColor: "rgb(107, 45, 168)",
+          tension: 0.4,
+        },
+      ],
+    },
+    options: {
+      elements: {
+        line: {
+          borderCapStyle: "round", // For rounded end caps on lines
+          borderJoinStyle: "round", // For smooth joins between lines
+        },
+      },
+    },
+  });
+};
+
 window.displayType = displayType;
 window.displayOptions = displayOptions;
 window.monthOptions = monthOptions;
 window.dayOptions = dayOptions;
 
 idValidated();
+lineGraph();
 doughnutGraph();

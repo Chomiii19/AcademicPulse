@@ -155,7 +155,8 @@ option {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  background-color: #dddddd;
+  padding-bottom: 2rem;
+  background-color: #efefef;
   border-radius: 1rem;
 }
 
@@ -173,7 +174,7 @@ option {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #dddddd;
+  background-color: #efefef;
   padding: 1rem;
   border-radius: 1rem;
 }
@@ -194,12 +195,10 @@ option {
   z-index: 1;
 }
 
-/* #idvalidated-graph {
-  width: 40%;
-  height: 100%;
+#idvalidated-graph {
   z-index: 10;
   position: relative;
-} */
+}
 
 @media (max-width: 480px) {
   .fa-arrow-left {
