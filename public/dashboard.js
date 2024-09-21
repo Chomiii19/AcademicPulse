@@ -216,7 +216,7 @@ const doughnutGraph = async () => {
 };
 
 const lineGraph = () => {
-  const ctx = document.getElementById("idvalidated-graph").getContext("2d");
+  const ctx = document.getElementById("schoollogs-graph").getContext("2d");
 
   new Chart(ctx, {
     type: "line",
