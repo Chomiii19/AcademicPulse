@@ -118,7 +118,7 @@ section {
 
 .select-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
 }
@@ -153,9 +153,11 @@ option {
 
 .bargraph {
   max-height: 265px;
-  width: 440px;
+  width: 520px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
   padding-bottom: 2rem;
   background-color: #efefef;
