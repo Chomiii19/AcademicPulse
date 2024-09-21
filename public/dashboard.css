@@ -195,6 +195,19 @@ option {
   z-index: 1;
 }
 
+.line-graph-container {
+  width: 70%;
+  height: 100%;
+  padding: 1rem;
+  background-color: #efefef;
+  border-radius: 1rem;
+}
+
+.blogs {
+  width: 30%;
+  height: 100%;
+}
+
 #idvalidated-graph {
   z-index: 10;
   position: relative;

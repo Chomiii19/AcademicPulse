@@ -50,6 +50,7 @@ const time = [
 const idValidatedGraphContainer = document.getElementById("idvalidated-graph");
 const schoolLogsGraph = document.getElementById("schoollogs-graph");
 const doughnut = document.getElementById("doughnut-graph");
+const lineGraphLogs = document.getElementById("schoollogs-graph");
 const doughnutPercentage = document.querySelector(".label-doughnut");
 
 function resizeCanvas(canvas) {
@@ -61,6 +62,7 @@ function adjustCanvases() {
   resizeCanvas(idValidatedGraphContainer);
   resizeCanvas(schoolLogsGraph);
   resizeCanvas(doughnut);
+  resizeCanvas(lineGraphLogs);
 }
 
 window.addEventListener("load", adjustCanvases);
