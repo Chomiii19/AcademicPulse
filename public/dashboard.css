@@ -154,13 +154,12 @@ option {
 
 .bargraph {
   max-height: 265px;
-  width: auto;
+  width: 405px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  padding-bottom: 2rem;
   background-color: #efefef;
   border-radius: 1rem;
 }
