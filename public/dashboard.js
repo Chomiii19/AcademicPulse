@@ -224,7 +224,7 @@ const lineGraph = () => {
       labels: monthLists,
       datasets: [
         {
-          label: "Count",
+          label: "School Logs",
           data: [65, 59, 80, 81, 56, 55, 40],
           fill: false,
           borderColor: "rgb(107, 45, 168)",
