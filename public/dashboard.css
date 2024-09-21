@@ -111,6 +111,7 @@ section {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 1rem;
 }
 .row2 {
   max-height: 400px;
