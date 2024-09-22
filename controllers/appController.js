@@ -6,7 +6,7 @@ import StudentLog from "../models/student-log.js";
 
 const date = new Date();
 const timezoneOffset = new Date().getTimezoneOffset() / 60;
-const utc = Math.abs(timezoneOffset);
+const utc = 8;
 
 const utcDate = () => {
   const today = new Date().toISOString().split("T")[0];
