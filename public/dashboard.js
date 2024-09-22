@@ -218,9 +218,10 @@ const doughnutGraph = async () => {
   }
 };
 
+let lineYear;
 const lineDisplayType = () => {
   const yearValue = document.querySelector(".linegraph-year-options").value;
-  if (yearValue === "currentYear") year = new Date().getFullYear();
+  if (yearValue === "currentYear") lineYear = new Date().getFullYear();
   document.querySelector(".linegraph-type-options").classList.add("active");
 };
 
@@ -238,15 +239,16 @@ const lineDisplayOptions = () => {
       .classList.remove("active");
     document.querySelector(".linegraph-day-option").classList.remove("active");
 
-    lineGraph(`year=${year}`, monthLists, "year");
+    lineGraph(`year=${lineYear}`, monthLists, "year");
   }
 };
 
+let lineMonth;
 const lineMonthOptions = () => {
-  month = document
+  lineMonth = document
     .querySelector(".linegraph-months-options")
     .value.padStart(2, "0");
-  const days = new Date(year, month, 0).getDate();
+  const days = new Date(lineYear, lineMonth, 0).getDate();
   const dayOption = document.querySelector(".linegraph-day-option");
   dayOption.innerHTML = "";
 
@@ -257,11 +259,13 @@ const lineMonthOptions = () => {
     dayList.push(i);
     dayOption.appendChild(option);
   }
-  lineGraph(`year=${year}&month=${month}`, dayList, "month");
+  lineGraph(`year=${lineYear}&month=${lineMonth}`, dayList, "month");
 };
 
 const lineDayOptions = () => {
-  day = document.querySelector(".linegraph-day-option").value.padStart(2, "0");
+  const day = document
+    .querySelector(".linegraph-day-option")
+    .value.padStart(2, "0");
   lineGraph(`year=${year}&month=${month}&day=${day}`, time, "hour");
 };
 
