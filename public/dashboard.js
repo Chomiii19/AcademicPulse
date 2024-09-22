@@ -226,14 +226,14 @@ const lineDisplayType = () => {
 const lineDisplayOptions = () => {
   const type = document.querySelector(".linegraph-type-options").value;
   if (type === "days") {
-    document.querySelector(".linegraph-months-option").classList.add("active");
+    document.querySelector(".linegraph-months-options").classList.add("active");
     document.querySelector(".linegraph-day-option").classList.remove("active");
   } else if (type === "hours") {
-    document.querySelector(".linegraph-months-option").classList.add("active");
+    document.querySelector(".linegraph-months-options").classList.add("active");
     document.querySelector(".linegraph-day-option").classList.add("active");
   } else if (type === "months") {
     document
-      .querySelector(".linegraph-months-option")
+      .querySelector(".linegraph-months-options")
       .classList.remove("active");
     document.querySelector(".linegraph-day-option").classList.remove("active");
 
@@ -243,7 +243,7 @@ const lineDisplayOptions = () => {
 
 const lineMonthOptions = () => {
   month = document
-    .querySelector(".linegraph-months-option")
+    .querySelector(".linegraph-months-options")
     .value.padStart(2, "0");
   const days = new Date(year, month, 0).getDate();
   const dayOption = document.querySelector(".linegraph-day-option");
@@ -264,7 +264,11 @@ const lineDayOptions = () => {
   lineGraph(`year=${year}&month=${month}&day=${day}`, time, "hour");
 };
 
-const lineGraph = async (date, lists, type) => {
+const lineGraph = async (
+  date = `year=${new Date().getFullYear}`,
+  lists = monthLists,
+  type
+) => {
   try {
     const ctx = document.getElementById("schoollogs-graph").getContext("2d");
 
