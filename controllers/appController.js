@@ -445,6 +445,8 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
   else if (year && month) dataLog = formatData(data[0], "day");
   else if (year) dataLog = formatData(data[0], "month");
 
+  console.log(data, utc);
+
   res.status(200).json({
     status: "Success",
     data: dataLog,
