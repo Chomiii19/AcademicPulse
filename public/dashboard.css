@@ -206,7 +206,7 @@ option {
 
 .line-graph-container {
   width: 780px;
-  height: 400px;
+  height: auto;
   padding: 1rem;
   background-color: #efefef;
   border-radius: 1rem;
