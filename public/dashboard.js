@@ -304,7 +304,7 @@ const lineGraph = async (
     console.log(dataEntries, dataExits);
 
     const entryAvg = Object.values(dataEntries);
-    const exitAvg = Object.values(dataEntries);
+    const exitAvg = Object.values(dataExits);
     console.log(entryAvg, exitAvg);
 
     if (schoolLogsLineGraph) {
