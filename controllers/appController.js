@@ -307,10 +307,18 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
     addField = {
       avgHour: {
         $add: [
-          { $hour: { $subtract: ["$avgDate", utc * 60 * 60 * 1000] } },
+          {
+            $hour: {
+              $subtract: ["$avgDate", utc * 60 * 60 * 1000],
+            },
+          },
           {
             $divide: [
-              { $minute: { $subtract: ["$avgDate", utc * 60 * 60 * 1000] } },
+              {
+                $minute: {
+                  $subtract: ["$avgDate", utc * 60 * 60 * 1000],
+                },
+              },
               60,
             ],
           },
@@ -446,12 +454,8 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
   else if (year && month) dataLog = formatData(data[0], "day");
   else if (year) dataLog = formatData(data[0], "month");
 
-  console.log(data, utc);
-
   res.status(200).json({
     status: "Success",
-    utc,
-    timezoneOffset,
     data: dataLog,
   });
 });
