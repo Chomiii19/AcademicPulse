@@ -274,12 +274,12 @@ const lineGraph = async (
 
     const response = await fetch(`/app/api/school-log-stats?${date}`);
     const dataAPI = await response.json();
-
+    console.log(dataAPI);
     const dataEntries = lists.reduce((acc, list) => {
       acc[list] = 0;
       return acc;
     }, {});
-
+    console.log(dataEntries);
     const dataExits = lists.reduce((acc, list) => {
       acc[list] = 0;
       return acc;
@@ -334,7 +334,10 @@ const lineGraph = async (
 window.displayType = displayType;
 window.displayOptions = displayOptions;
 window.monthOptions = monthOptions;
-window.dayOptions = dayOptions;
+window.dayOptions = lineDisplayType;
+window.dayOptions = lineDisplayOptions;
+window.monthOptions = lineMonthOptions;
+window.dayOptions = lineDayOptions;
 
 idValidated();
 lineGraph();
