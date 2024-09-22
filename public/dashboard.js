@@ -299,8 +299,8 @@ const lineGraph = async (
     }
     console.log(dataEntries, dataExits);
 
-    const entryCounts = Object.values(dataEntries);
-    const exitCounts = Object.values(dataEntries);
+    const entryAvg = Object.values(dataEntries);
+    const exitAvg = Object.values(dataEntries);
 
     if (schoolLogsLineGraph) {
       schoolLogsLineGraph.destroy();
@@ -313,15 +313,15 @@ const lineGraph = async (
         labels: lists,
         datasets: [
           {
-            label: "School Logs - Entrance",
-            data: entryCounts,
+            label: "Avg School Logs - Entrance",
+            data: entryAvg,
             fill: false,
             borderColor: "rgb(107, 45, 168)",
             tension: 0.4,
           },
           {
-            label: "School Logs - Exit",
-            data: exitCounts,
+            label: "Avg School Logs - Exit",
+            data: exitAvg,
             fill: false,
             borderColor: "rgb(144, 68, 220)",
             tension: 0.4,
@@ -335,6 +335,28 @@ const lineGraph = async (
             borderJoinStyle: "round",
           },
         },
+        scales: {
+          y: {
+            ticks: {
+              callback: function (value) {
+                const hours = Math.floor(value);
+                return `${hours}h`;
+              },
+            },
+            beginAtZero: true,
+          },
+        },
+        // plugins: {
+        //   tooltip: {
+        //     callbacks: {
+        //       label: function (tooltipItem) {
+        //         const dataset = tooltipItem.dataset;
+        //         const count = dataset.counts[tooltipItem.dataIndex]; // Access count array using dataIndex
+        //         return `Count: ${count}`; // Show count in the tooltip
+        //       },
+        //     },
+        //   },
+        // },
       },
     });
   } catch (err) {

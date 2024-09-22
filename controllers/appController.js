@@ -4,7 +4,6 @@ import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
 import StudentLog from "../models/student-log.js";
 
-const today = new Date().toISOString().split("T")[0];
 const date = new Date();
 const timezoneOffset = new Date().getTimezoneOffset() / 60;
 const utc = Math.abs(timezoneOffset);
@@ -258,10 +257,12 @@ const formatData = (data, type) => {
 
   const entryCounts = data.entryTimes.map((entry) => entry.count);
   const exitCounts = data.exitTimes.map((exit) => exit.count);
+  const entryAvg = data.entryTimes.map((entry) => entry.avgHour);
+  const exitAvg = data.exitTimes.map((exit) => exit.avgHour);
 
   return {
-    entryLogs: [entryTimes, entryCounts],
-    exitLogs: [exitTimes, exitCounts],
+    entryLogs: [entryTimes, entryAvg, entryCounts],
+    exitLogs: [exitTimes, exitAvg, exitCounts],
   };
 };
 
@@ -275,8 +276,47 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
     filterEnd,
     fieldNameEntry,
     fieldNameExit,
-    project = { _id: 0 },
+    project,
     dataLog;
+
+  let addField;
+  if (timezoneOffset < 0) {
+    addField = {
+      avgHour: {
+        $add: [
+          {
+            $hour: {
+              $add: ["$avgDate", utc * 60 * 60 * 1000],
+            },
+          },
+          {
+            $divide: [
+              {
+                $minute: {
+                  $add: ["$avgDate", utc * 60 * 60 * 1000],
+                },
+              },
+              60,
+            ],
+          },
+        ],
+      },
+    };
+  } else {
+    addField = {
+      avgHour: {
+        $add: [
+          { $hour: { $subtract: ["$avgDate", utc * 60 * 60 * 1000] } },
+          {
+            $divide: [
+              { $minute: { $subtract: ["$avgDate", utc * 60 * 60 * 1000] } },
+              60,
+            ],
+          },
+        ],
+      },
+    };
+  }
 
   if (year && month && day) {
     const { start, end } = utcDate(
@@ -301,8 +341,18 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
     fieldNameExit = { hour: "$_id" };
     project =
       timezoneOffset < 0
-        ? { _id: 0, count: 1, hour: { $add: ["$hour", utc] } }
-        : { _id: 0, count: 1, hour: { $subtract: ["$hour", utc] } };
+        ? {
+            _id: 0,
+            count: 1,
+            avgDate: { $toDate: "$avgDate" },
+            hour: { $add: ["$hour", utc] },
+          }
+        : {
+            _id: 0,
+            count: 1,
+            avgDate: { $toDate: "$avgDate" },
+            hour: { $subtract: ["$hour", utc] },
+          };
   } else if (year && month) {
     const { start, end } = utcDate(
       `${year}-${month}-01`,
@@ -324,6 +374,7 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
     groupbyExit = { $dayOfMonth: "$exitTime" };
     fieldNameEntry = { day: "$_id" };
     fieldNameExit = { day: "$_id" };
+    project = { _id: 0, day: 1, count: 1, avgDate: { $toDate: "$avgDate" } };
   } else if (year) {
     const { start, end } = utcDate(`${year}-01-01`, `${year}-12-31`);
     filterEntry = {
@@ -342,6 +393,7 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
     groupbyExit = { $month: "$exitTime" };
     fieldNameEntry = { month: "$_id" };
     fieldNameExit = { month: "$_id" };
+    project = { _id: 0, month: 1, count: 1, avgDate: { $toDate: "$avgDate" } };
   }
 
   const data = await StudentLog.aggregate([
@@ -351,19 +403,39 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
           { $unwind: "$entryTime" },
           { $project: { _id: 0, entryTime: 1 } },
           { $match: filterEntry },
-          { $group: { _id: groupbyEntry, count: { $sum: 1 } } },
+          {
+            $group: {
+              _id: groupbyEntry,
+              count: { $sum: 1 },
+              avgDate: {
+                $avg: { $toLong: "$entryTime" },
+              },
+            },
+          },
           { $sort: { _id: 1 } },
           { $addFields: fieldNameEntry },
           { $project: project },
+          { $addFields: addField },
+          { $project: { avgDate: 0 } },
         ],
         exitTimes: [
           { $unwind: "$exitTime" },
           { $project: { _id: 0, exitTime: 1 } },
           { $match: filterEnd },
-          { $group: { _id: groupbyExit, count: { $sum: 1 } } },
+          {
+            $group: {
+              _id: groupbyExit,
+              count: { $sum: 1 },
+              avgDate: {
+                $avg: { $toLong: "$exitTime" },
+              },
+            },
+          },
           { $sort: { _id: 1 } },
           { $addFields: fieldNameExit },
           { $project: project },
+          { $addFields: addField },
+          { $project: { avgDate: 0 } },
         ],
       },
     },
