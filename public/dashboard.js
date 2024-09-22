@@ -292,6 +292,7 @@ const lineGraph = async (
     for (const [i, dataType] of dataAPI.exitLogs[0].entries()) {
       dataExits[lists[dataType - 1]] = dataAPI.exitLogs[1][i];
     }
+    console.log(dataEntries, dataExits);
 
     const entryCounts = Object.values(dataEntries);
     const exitCounts = Object.values(dataEntries);
