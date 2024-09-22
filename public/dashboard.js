@@ -4,6 +4,7 @@ let year;
 let month;
 let day;
 let idValidatedGraph;
+let schoolLogsLineGraph;
 let dayList = [];
 const monthLists = [
   "Jan",
@@ -301,7 +302,12 @@ const lineGraph = async (
     const entryCounts = Object.values(dataEntries);
     const exitCounts = Object.values(dataEntries);
 
-    new Chart(ctx, {
+    if (schoolLogsLineGraph) {
+      schoolLogsLineGraph.destroy();
+      schoolLogsLineGraph = null;
+    }
+
+    schoolLogsLineGraph = new Chart(ctx, {
       type: "line",
       data: {
         labels: lists,
