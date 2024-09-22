@@ -266,7 +266,7 @@ const lineDayOptions = () => {
   const day = document
     .querySelector(".linegraph-day-option")
     .value.padStart(2, "0");
-  lineGraph(`year=${year}&month=${month}&day=${day}`, time, "hour");
+  lineGraph(`year=${lineYear}&month=${lineMonth}&day=${day}`, time, "hour");
 };
 
 const lineGraph = async (
@@ -276,7 +276,7 @@ const lineGraph = async (
 ) => {
   try {
     const ctx = document.getElementById("schoollogs-graph").getContext("2d");
-
+    console.log(date);
     const response = await fetch(`/app/api/school-log-stats?${date}`);
     const dataAPI = await response.json();
     console.log(dataAPI);
@@ -301,11 +301,11 @@ const lineGraph = async (
         dataExits[lists[dataType - 1]] = dataAPI.data.exitLogs[1][i];
       }
     }
-    console.log(dataEntries, dataExits);
+    // console.log(dataEntries, dataExits);
 
     const entryAvg = Object.values(dataEntries);
     const exitAvg = Object.values(dataExits);
-    console.log(entryAvg, exitAvg);
+    // console.log(entryAvg, exitAvg);
 
     if (schoolLogsLineGraph) {
       schoolLogsLineGraph.destroy();
