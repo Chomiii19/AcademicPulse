@@ -339,10 +339,11 @@ const lineGraph = async (
 window.displayType = displayType;
 window.displayOptions = displayOptions;
 window.monthOptions = monthOptions;
-window.dayOptions = lineDisplayType;
-window.dayOptions = lineDisplayOptions;
-window.monthOptions = lineMonthOptions;
-window.dayOptions = lineDayOptions;
+window.dayOptions = dayOptions;
+window.lineDisplayType = lineDisplayType;
+window.lineDisplayOptions = lineDisplayOptions;
+window.lineMonthOptions = lineMonthOptions;
+window.lineDayOptions = lineDayOptions;
 
 idValidated();
 lineGraph();
