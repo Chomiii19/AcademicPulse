@@ -210,6 +210,8 @@ option {
   padding: 1rem;
   background-color: #efefef;
   border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .blogs {
