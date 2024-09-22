@@ -285,12 +285,16 @@ const lineGraph = async (
       return acc;
     }, {});
 
-    for (const [i, dataType] of dataAPI.entryLogs[0].entries()) {
-      dataEntries[lists[dataType - 1]] = dataAPI.entryLogs[1][i];
+    if (dataAPI.data.entryLogs.length > 0) {
+      for (const [i, dataType] of dataAPI.data.entryLogs[0].entries()) {
+        dataEntries[lists[dataType - 1]] = dataAPI.data.entryLogs[1][i];
+      }
     }
 
-    for (const [i, dataType] of dataAPI.exitLogs[0].entries()) {
-      dataExits[lists[dataType - 1]] = dataAPI.exitLogs[1][i];
+    if (dataAPI.data.exitLogs.length > 0) {
+      for (const [i, dataType] of dataAPI.exitLogs[0].entries()) {
+        dataExits[lists[dataType - 1]] = dataAPI.exitLogs[1][i];
+      }
     }
     console.log(dataEntries, dataExits);
 
