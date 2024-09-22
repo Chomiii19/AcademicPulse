@@ -280,7 +280,7 @@ const lineGraph = async (
       acc[list] = 0;
       return acc;
     }, {});
-    console.log(dataEntries);
+
     const dataExits = lists.reduce((acc, list) => {
       acc[list] = 0;
       return acc;
@@ -301,6 +301,7 @@ const lineGraph = async (
 
     const entryAvg = Object.values(dataEntries);
     const exitAvg = Object.values(dataEntries);
+    console.log(entryAvg, exitAvg);
 
     if (schoolLogsLineGraph) {
       schoolLogsLineGraph.destroy();
