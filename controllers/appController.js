@@ -199,47 +199,47 @@ const validatedIdStats = catchAsync(async (req, res, next) => {
   });
 });
 
-const studentLogStats = catchAsync(async (req, res, next) => {
-  const { groupby } = req.query;
+// const studentLogStats = catchAsync(async (req, res, next) => {
+//   const { groupby } = req.query;
 
-  let groupStats;
-  if (groupby === "hour")
-    groupStats = {
-      $dateToString: { format: "%Y-%m-%d %H", date: "$logs.entryTime" },
-    };
-  if (groupby === "day")
-    groupStats = {
-      $dateToString: { format: "%Y-%m-%d", date: "$logs.entryTime" },
-    };
-  if (groupby === "month")
-    groupStats = {
-      $dateToString: { format: "%Y-%m", date: "$logs.entryTime" },
-    };
-  if (groupby === "year")
-    groupStats = { $dateToString: { format: "%Y", date: "$logs.entryTime" } };
+//   let groupStats;
+//   if (groupby === "hour")
+//     groupStats = {
+//       $dateToString: { format: "%Y-%m-%d %H", date: "$logs.entryTime" },
+//     };
+//   if (groupby === "day")
+//     groupStats = {
+//       $dateToString: { format: "%Y-%m-%d", date: "$logs.entryTime" },
+//     };
+//   if (groupby === "month")
+//     groupStats = {
+//       $dateToString: { format: "%Y-%m", date: "$logs.entryTime" },
+//     };
+//   if (groupby === "year")
+//     groupStats = { $dateToString: { format: "%Y", date: "$logs.entryTime" } };
 
-  const dataLogs = await StudentLog.aggregate([
-    { $unwind: "$logs" },
-    { $unwind: "$logs.entryTime" },
-    {
-      $group: {
-        _id: groupStats,
-        logNumbers: { $sum: 1 },
-      },
-    },
-    { $sort: { _id: 1 } },
-  ]);
+//   const dataLogs = await StudentLog.aggregate([
+//     { $unwind: "$logs" },
+//     { $unwind: "$logs.entryTime" },
+//     {
+//       $group: {
+//         _id: groupStats,
+//         logNumbers: { $sum: 1 },
+//       },
+//     },
+//     { $sort: { _id: 1 } },
+//   ]);
 
-  const data = dataLogs.map((log) => ({
-    date: log._id,
-    count: log.logNumbers,
-  }));
+//   const data = dataLogs.map((log) => ({
+//     date: log._id,
+//     count: log.logNumbers,
+//   }));
 
-  res.status(200).json({
-    status: "Success",
-    data,
-  });
-});
+//   res.status(200).json({
+//     status: "Success",
+//     data,
+//   });
+// });
 
 const formatData = (data, type) => {
   let entryTimes, exitTimes;
@@ -449,6 +449,8 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: "Success",
+    utc,
+    timezoneOffset,
     data: dataLog,
   });
 });
@@ -483,7 +485,7 @@ export {
   studentLogEntrance,
   studentLogExit,
   validatedIdStats,
-  studentLogStats,
+  // studentLogStats,
   schoolLogStats,
   enrolledStats,
   validatedStats,
