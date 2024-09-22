@@ -6,58 +6,776 @@
     "middlename": "Ayong",
     "email": "jomariborines55@gmail.com",
     "isEnrolled": true,
-    "isEnrolledAt": "2021-08-18T09:00:00.000Z",
+    "isEnrolledAt": "2021-08-18T09:00:00.000+00:00",
     "course": "BSCS"
   },
   {
-    "studentNumber": "TUPM-22-2111",
-    "surname": "Agustin",
-    "firstname": "Euclid",
-    "middlename": "Einstein",
-    "extension": "Jr",
-    "email": "agustineuclid@gmail.com",
-    "isEnrolled": true,
-    "isEnrolledAt": "2021-08-25T09:00:00.000Z",
-    "course": "BSCS"
-  },
-  {
-    "studentNumber": "TUPM-22-2003",
-    "surname": "Alvez",
-    "firstname": "Andrei Daniel",
-    "middlename": "Borines",
-    "email": "andreialvez@gmail.com",
-    "isEnrolled": true,
-    "isEnrolledAt": "2021-08-20T09:00:00.000Z",
-    "course": "BSIS"
-  },
-  {
-    "studentNumber": "TUPM-22-2545",
-    "surname": "Esguera",
-    "firstname": "Jomarie",
-    "middlename": "Aughhh",
-    "extension": "Third",
-    "email": "jomarieesguerra@gmail.com",
-    "isEnrolled": true,
-    "isEnrolledAt": "2021-09-01T09:00:00.000Z",
+    "studentNumber": "TUPM-22-4334",
+    "surname": "Gomez",
+    "firstname": "Maria Angela",
+    "middlename": "Santos",
+    "email": "mariaangela.gomez@yahoo.com",
+    "isEnrolled": false,
     "course": "BSIT"
   },
   {
-    "studentNumber": "TUPM-22-2392",
-    "surname": "Maunes",
-    "firstname": "Jason",
-    "email": "maunesjason@gmail.com",
+    "studentNumber": "TUPM-22-2335",
+    "surname": "Reyes",
+    "firstname": "Carlos",
+    "middlename": "Manuel",
+    "email": "carlos.reyes123@outlook.com",
     "isEnrolled": true,
-    "isEnrolledAt": "2021-09-18T09:00:00.000Z",
-    "course": "BSIS"
+    "isEnrolledAt": "2022-09-10T10:30:00.000+00:00",
+    "course": "BSCE"
   },
   {
-    "studentNumber": "TUPM-22-2001",
-    "surname": "Arpon",
-    "firstname": "Jake",
-    "middlename": "Yameteh",
-    "extension": "Sr",
-    "email": "arponjake69@gmail.com",
+    "studentNumber": "TUPM-22-2336",
+    "surname": "Cruz",
+    "firstname": "Isabella",
+    "middlename": "Tan",
+    "email": "isabellacruz@tup.edu.ph",
     "isEnrolled": false,
-    "course": "BSES"
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2337",
+    "surname": "Dela Cruz",
+    "firstname": "Juan Miguel",
+    "middlename": "Torres",
+    "email": "juanmiguel.dc@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-07-22T13:45:00.000+00:00",
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2338",
+    "surname": "Villanueva",
+    "firstname": "Angela",
+    "middlename": "Lorenzo",
+    "email": "angela.villanueva@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-01-15T08:15:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2339",
+    "surname": "Fernandez",
+    "firstname": "Joshua",
+    "middlename": "Pineda",
+    "email": "joshfernandez.99@gmail.com",
+    "isEnrolled": false,
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2340",
+    "surname": "Santos",
+    "firstname": "Anna Liza",
+    "middlename": "Mercado",
+    "email": "annalisa.santos@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-03-10T11:10:00.000+00:00",
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2341",
+    "surname": "Aquino",
+    "firstname": "Rafael",
+    "middlename": "Cruz",
+    "email": "rafael.aquino1998@gmail.com",
+    "isEnrolled": false,
+    "course": "BSIT"
+  },
+  {
+    "studentNumber": "TUPM-22-2342",
+    "surname": "Soriano",
+    "firstname": "Patricia",
+    "middlename": "Lim",
+    "email": "patricia.soriano@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-10-25T14:00:00.000+00:00",
+    "course": "BSCE"
+  },
+  {
+    "studentNumber": "TUPM-22-2343",
+    "surname": "Gonzales",
+    "firstname": "Lorenzo",
+    "middlename": "De Vera",
+    "email": "lorenzogonzales98@hotmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-05-18T09:20:00.000+00:00",
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2344",
+    "surname": "Lopez",
+    "firstname": "Joaquin",
+    "middlename": "Villar",
+    "email": "joaquin.lopez@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2345",
+    "surname": "Martinez",
+    "firstname": "Camille",
+    "middlename": "Gatchalian",
+    "email": "camille.martinez@yahoo.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-09-01T07:45:00.000+00:00",
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2346",
+    "surname": "Bautista",
+    "firstname": "David",
+    "middlename": "Marquez",
+    "email": "david.bautista1999@gmail.com",
+    "isEnrolled": false,
+    "course": "BSIT"
+  },
+  {
+    "studentNumber": "TUPM-22-2347",
+    "surname": "Rivera",
+    "firstname": "Kristina",
+    "middlename": "Mendoza",
+    "email": "kristina.rivera@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-04-22T10:00:00.000+00:00",
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2348",
+    "surname": "Gutierrez",
+    "firstname": "Eduardo",
+    "middlename": "Reyes",
+    "email": "eduardo.gutierrez@yahoo.com",
+    "isEnrolled": false,
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2349",
+    "surname": "Morales",
+    "firstname": "Felipe",
+    "middlename": "Castro",
+    "email": "felipemorales@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-08-30T13:00:00.000+00:00",
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2350",
+    "surname": "Ramos",
+    "firstname": "Sofia",
+    "middlename": "Garcia",
+    "email": "sofia.ramos@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSCE"
+  },
+  {
+    "studentNumber": "TUPM-22-2351",
+    "surname": "Luna",
+    "firstname": "Miguel",
+    "middlename": "Javier",
+    "email": "miguel.luna@hotmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-08-05T12:00:00.000+00:00",
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2352",
+    "surname": "Perez",
+    "firstname": "Roberto",
+    "middlename": "Tan",
+    "email": "roberto.perez99@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-02-10T08:30:00.000+00:00",
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2353",
+    "surname": "Mendoza",
+    "firstname": "Arlene",
+    "middlename": "Bautista",
+    "email": "arlene.mendoza@gmail.com",
+    "isEnrolled": false,
+    "course": "BSIT"
+  },
+  {
+    "studentNumber": "TUPM-22-2354",
+    "surname": "Aguilar",
+    "firstname": "Benjamin",
+    "middlename": "Gonzalez",
+    "email": "benjamin.aguilar99@yahoo.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-12-12T10:45:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2355",
+    "surname": "Romero",
+    "firstname": "Claudia",
+    "middlename": "Valdez",
+    "email": "claudia.romero@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2356",
+    "surname": "Silva",
+    "firstname": "Paul",
+    "middlename": "Lopez",
+    "email": "paulsilva99@hotmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-04-01T07:50:00.000+00:00",
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2357",
+    "surname": "Diaz",
+    "firstname": "Isabel",
+    "middlename": "Marcos",
+    "email": "isabel.diaz@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-07-10T08:10:00.000+00:00",
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2358",
+    "surname": "Torres",
+    "firstname": "Alfredo",
+    "middlename": "Espinoza",
+    "email": "alfredo.torres@gmail.com",
+    "isEnrolled": false,
+    "course": "BSIT"
+  },
+  {
+    "studentNumber": "TUPM-22-2359",
+    "surname": "Hernandez",
+    "firstname": "Lucia",
+    "middlename": "Cruz",
+    "email": "lucia.hernandez99@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-11-18T09:15:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2360",
+    "surname": "Navarro",
+    "firstname": "Gabriel",
+    "middlename": "Montalvo",
+    "email": "gabriel.navarro@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-05-20T10:25:00.000+00:00",
+    "course": "BSME"
+  },
+
+  {
+    "studentNumber": "TUPM-22-2361",
+    "surname": "Del Rosario",
+    "firstname": "Alicia",
+    "middlename": "Cortez",
+    "email": "alicia.delrosario@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2362",
+    "surname": "Garcia",
+    "firstname": "Ramon",
+    "middlename": "Silva",
+    "email": "ramon.garcia1998@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-06-11T09:45:00.000+00:00",
+    "course": "BSCE"
+  },
+  {
+    "studentNumber": "TUPM-22-2363",
+    "surname": "Lacson",
+    "firstname": "Emilio",
+    "middlename": "Rivera",
+    "email": "emilio.lacson@yahoo.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-07-18T08:30:00.000+00:00",
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2364",
+    "surname": "Perez",
+    "firstname": "Angela",
+    "middlename": "Romero",
+    "email": "angela.perez@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2365",
+    "surname": "Espinosa",
+    "firstname": "Roberto",
+    "middlename": "Mercado",
+    "email": "roberto.espinosa@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-02-25T10:50:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2366",
+    "surname": "Gutierrez",
+    "firstname": "Cynthia",
+    "middlename": "Villafuerte",
+    "email": "cynthia.gutierrez99@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-09-20T11:15:00.000+00:00",
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2367",
+    "surname": "Velasquez",
+    "firstname": "Miguel",
+    "middlename": "Lopez",
+    "email": "miguel.velasquez@yahoo.com",
+    "isEnrolled": false,
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2368",
+    "surname": "Jimenez",
+    "firstname": "Mariana",
+    "middlename": "Delos Santos",
+    "email": "mariana.jimenez@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-05-14T07:30:00.000+00:00",
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2369",
+    "surname": "Rivera",
+    "firstname": "Jose",
+    "middlename": "Hernandez",
+    "email": "jose.rivera@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-11-02T09:00:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2370",
+    "surname": "De Guzman",
+    "firstname": "Lorena",
+    "middlename": "Rosales",
+    "email": "lorena.deguzman@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSCE"
+  },
+  {
+    "studentNumber": "TUPM-22-2371",
+    "surname": "Pascual",
+    "firstname": "Gabriel",
+    "middlename": "Diaz",
+    "email": "gabriel.pascual@yahoo.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-12-10T10:15:00.000+00:00",
+    "course": "BSIT"
+  },
+  {
+    "studentNumber": "TUPM-22-2372",
+    "surname": "Reyes",
+    "firstname": "Amanda",
+    "middlename": "Mendoza",
+    "email": "amanda.reyes@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-03-22T08:30:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2373",
+    "surname": "Luna",
+    "firstname": "Carlos",
+    "middlename": "Reyes",
+    "email": "carlos.luna@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSCE"
+  },
+  {
+    "studentNumber": "TUPM-22-2374",
+    "surname": "Santos",
+    "firstname": "Julia",
+    "middlename": "Fernandez",
+    "email": "julia.santos1998@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-10-30T07:45:00.000+00:00",
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2375",
+    "surname": "Manalo",
+    "firstname": "Luis",
+    "middlename": "Garcia",
+    "email": "luis.manalo99@hotmail.com",
+    "isEnrolled": false,
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2376",
+    "surname": "Delos Reyes",
+    "firstname": "Ana",
+    "middlename": "Cruz",
+    "email": "ana.delosreyes@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-09-12T10:25:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2377",
+    "surname": "Mendoza",
+    "firstname": "Maricel",
+    "middlename": "Pineda",
+    "email": "maricel.mendoza@yahoo.com",
+    "isEnrolled": false,
+    "course": "BSCE"
+  },
+  {
+    "studentNumber": "TUPM-22-2378",
+    "surname": "De La Cruz",
+    "firstname": "Isabella",
+    "middlename": "Tan",
+    "email": "isabella.delacruz@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-08-01T09:15:00.000+00:00",
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2379",
+    "surname": "Martinez",
+    "firstname": "Joaquin",
+    "middlename": "Santos",
+    "email": "joaquin.martinez99@gmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-04-20T08:00:00.000+00:00",
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2380",
+    "surname": "Gonzalez",
+    "firstname": "Catherine",
+    "middlename": "Lim",
+    "email": "catherine.gonzalez@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2381",
+    "surname": "Santiago",
+    "firstname": "Francisco",
+    "middlename": "Garcia",
+    "email": "francisco.santiago99@yahoo.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-11-01T07:40:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2382",
+    "surname": "Torres",
+    "firstname": "Andrea",
+    "middlename": "Delos Santos",
+    "email": "andrea.torres@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSIT"
+  },
+  {
+    "studentNumber": "TUPM-22-2383",
+    "surname": "Lopez",
+    "firstname": "Ricardo",
+    "middlename": "Fernandez",
+    "email": "ricardo.lopez99@hotmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-06-10T08:25:00.000+00:00",
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2384",
+    "surname": "Aquino",
+    "firstname": "Vera",
+    "middlename": "Mendoza",
+    "email": "vera.aquino@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-05-16T07:50:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2385",
+    "surname": "Ramos",
+    "firstname": "David",
+    "middlename": "Castro",
+    "email": "david.ramos@yahoo.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-08-12T09:10:00.000+00:00",
+    "course": "BSCE"
+  },
+  {
+    "studentNumber": "TUPM-22-2386",
+    "surname": "Bautista",
+    "firstname": "Sofia",
+    "middlename": "Reyes",
+    "email": "sofia.bautista@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2387",
+    "surname": "Villanueva",
+    "firstname": "Miguel",
+    "middlename": "Romero",
+    "email": "miguel.villanueva99@hotmail.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-07-30T10:45:00.000+00:00",
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2388",
+    "surname": "Ponce",
+    "firstname": "Patricia",
+    "middlename": "Gonzalez",
+    "email": "patricia.ponce@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2389",
+    "surname": "Ortega",
+    "firstname": "Daniel",
+    "middlename": "Marcos",
+    "email": "daniel.ortega@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-09-05T08:20:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2390",
+    "surname": "Morales",
+    "firstname": "Nina",
+    "middlename": "Santiago",
+    "email": "nina.morales@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSCE"
+  },
+  {
+    "studentNumber": "TUPM-22-2391",
+    "surname": "Castillo",
+    "firstname": "Luis",
+    "middlename": "Aguilar",
+    "email": "luis.castillo@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-02-15T08:30:00.000+00:00",
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2392",
+    "surname": "Lara",
+    "firstname": "Isabel",
+    "middlename": "Gonzales",
+    "email": "isabel.lara99@gmail.com",
+    "isEnrolled": false,
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2393",
+    "surname": "Flores",
+    "firstname": "David",
+    "middlename": "Santos",
+    "email": "david.flores@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-06-22T10:00:00.000+00:00",
+    "course": "BSIT"
+  },
+  {
+    "studentNumber": "TUPM-22-2394",
+    "surname": "Alvarez",
+    "firstname": "Emma",
+    "middlename": "Ramos",
+    "email": "emma.alvarez@yahoo.com",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-03-13T09:15:00.000+00:00",
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2395",
+    "surname": "Hernandez",
+    "firstname": "Carlos",
+    "middlename": "Bautista",
+    "email": "carlos.hernandez@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2396",
+    "surname": "Castaneda",
+    "firstname": "Marisol",
+    "middlename": "Cruz",
+    "email": "marisol.castaneda@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-11-12T08:45:00.000+00:00",
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2397",
+    "surname": "Salazar",
+    "firstname": "Jorge",
+    "middlename": "Martinez",
+    "email": "jorge.salazar@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-01-14T10:00:00.000+00:00",
+    "course": "BSIT"
+  },
+  {
+    "studentNumber": "TUPM-22-2398",
+    "surname": "Moreno",
+    "firstname": "Sofia",
+    "middlename": "Morales",
+    "email": "sofia.moreno@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2399",
+    "surname": "Bravo",
+    "firstname": "Emilio",
+    "middlename": "Ponce",
+    "email": "emilio.bravo@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-07-21T08:30:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2400",
+    "surname": "Cruz",
+    "firstname": "Liam",
+    "middlename": "Zamora",
+    "email": "liam.cruz@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-04-16T09:50:00.000+00:00",
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2401",
+    "surname": "Ramirez",
+    "firstname": "Valentina",
+    "middlename": "Gonzalez",
+    "email": "valentina.ramirez@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2402",
+    "surname": "Avila",
+    "firstname": "Diego",
+    "middlename": "Nava",
+    "email": "diego.avila@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-10-29T10:20:00.000+00:00",
+    "course": "BSIT"
+  },
+  {
+    "studentNumber": "TUPM-22-2403",
+    "surname": "Ortega",
+    "firstname": "Alfredo",
+    "middlename": "Vega",
+    "email": "alfredo.ortega@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-12-09T09:30:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2404",
+    "surname": "Salas",
+    "firstname": "Ximena",
+    "middlename": "Castillo",
+    "email": "ximena.salas@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2405",
+    "surname": "Carrillo",
+    "firstname": "Rafael",
+    "middlename": "Rios",
+    "email": "rafael.carrillo@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-07-13T08:40:00.000+00:00",
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2406",
+    "surname": "Martinez",
+    "firstname": "Lucia",
+    "middlename": "Silva",
+    "email": "lucia.martinez@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSCE"
+  },
+  {
+    "studentNumber": "TUPM-22-2407",
+    "surname": "Lopez",
+    "firstname": "Hugo",
+    "middlename": "Aguilar",
+    "email": "hugo.lopez@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-04-05T10:30:00.000+00:00",
+    "course": "BSEE"
+  },
+  {
+    "studentNumber": "TUPM-22-2408",
+    "surname": "Chavez",
+    "firstname": "Nora",
+    "middlename": "Bravo",
+    "email": "nora.chavez@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSME"
+  },
+  {
+    "studentNumber": "TUPM-22-2409",
+    "surname": "Solis",
+    "firstname": "Victor",
+    "middlename": "Villarreal",
+    "email": "victor.solis@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2022-08-22T08:25:00.000+00:00",
+    "course": "BSCS"
+  },
+  {
+    "studentNumber": "TUPM-22-2410",
+    "surname": "Aguilar",
+    "firstname": "Marta",
+    "middlename": "Romero",
+    "email": "marta.aguilar@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2021-09-30T09:55:00.000+00:00",
+    "course": "BSArch"
+  },
+  {
+    "studentNumber": "TUPM-22-2411",
+    "surname": "Mora",
+    "firstname": "Felipe",
+    "middlename": "Hernandez",
+    "email": "felipe.mora@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSCE"
+  },
+  {
+    "studentNumber": "TUPM-22-2412",
+    "surname": "Bennett",
+    "firstname": "Sophia",
+    "middlename": "Gonzalez",
+    "email": "sophia.bennett@tup.edu.ph",
+    "isEnrolled": true,
+    "isEnrolledAt": "2023-09-10T08:50:00.000+00:00",
+    "course": "BSIT"
+  },
+  {
+    "studentNumber": "TUPM-22-2413",
+    "surname": "Cortez",
+    "firstname": "Mia",
+    "middlename": "Flores",
+    "email": "mia.cortez@tup.edu.ph",
+    "isEnrolled": false,
+    "course": "BSME"
   }
 ]
