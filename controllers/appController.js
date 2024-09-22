@@ -267,8 +267,6 @@ const formatData = (data, type) => {
 };
 
 const schoolLogStats = catchAsync(async (req, res, next) => {
-  const timezoneOffset = new Date().getTimezoneOffset() / 60;
-  const utc = Math.abs(timezoneOffset);
   const { year, month, day } = req.query;
   const daysInMonth = new Date(year, month, 0).getDate();
 
