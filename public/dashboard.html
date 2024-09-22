@@ -77,10 +77,52 @@
       </div>
       <div class="row2">
         <div class="line-graph-container">
-          <canvas id="schoollogs-graph"></canvas>
+          <div class="select-container"></div>
+          <select
+            class="dropdown linegraph-year-options"
+            onchange="lineDisplayType()"
+          >
+            <option disabled selected>Select Year</option>
+            <option value="currentYear">Current Year</option>
+            <option value="previousYear">Past 10 Years</option>
+          </select>
+
+          <select
+            class="dropdown linegraph-type-options"
+            onchange="lineDisplayOptions()"
+          >
+            <option disabled selected>View by</option>
+            <option value="hours">Hours</option>
+            <option value="days">Days</option>
+            <option value="months">Months</option>
+          </select>
+
+          <select
+            class="dropdown linegraph-months-option"
+            onchange="lineMonthOptions()"
+          >
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+
+          <select
+            class="dropdown linegraph-day-option"
+            onchange="lineDayOptions()"
+          ></select>
         </div>
-        <div class="blogs"></div>
+        <canvas id="schoollogs-graph"></canvas>
       </div>
+      <div class="blogs"></div>
     </section>
   </body>
 </html>

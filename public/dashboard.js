@@ -217,32 +217,114 @@ const doughnutGraph = async () => {
   }
 };
 
-const lineGraph = () => {
-  const ctx = document.getElementById("schoollogs-graph").getContext("2d");
+const lineDisplayType = () => {
+  const yearValue = document.querySelector(".linegraph-year-options").value;
+  if (yearValue === "currentYear") year = new Date().getFullYear();
+  document.querySelector(".linegraph-type-options").classList.add("active");
+};
 
-  new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: monthLists,
-      datasets: [
-        {
-          label: "School Logs",
-          data: [65, 59, 80, 81, 56, 55, 40],
-          fill: false,
-          borderColor: "rgb(107, 45, 168)",
-          tension: 0.4,
-        },
-      ],
-    },
-    options: {
-      elements: {
-        line: {
-          borderCapStyle: "round", // For rounded end caps on lines
-          borderJoinStyle: "round", // For smooth joins between lines
+const lineDisplayOptions = () => {
+  const type = document.querySelector(".linegraph-type-options").value;
+  if (type === "days") {
+    document.querySelector(".linegraph-months-option").classList.add("active");
+    document.querySelector(".linegraph-day-option").classList.remove("active");
+  } else if (type === "hours") {
+    document.querySelector(".linegraph-months-option").classList.add("active");
+    document.querySelector(".linegraph-day-option").classList.add("active");
+  } else if (type === "months") {
+    document
+      .querySelector(".linegraph-months-option")
+      .classList.remove("active");
+    document.querySelector(".linegraph-day-option").classList.remove("active");
+
+    lineGraph(`year=${year}`, monthLists, "year");
+  }
+};
+
+const lineMonthOptions = () => {
+  month = document
+    .querySelector(".linegraph-months-option")
+    .value.padStart(2, "0");
+  const days = new Date(year, month, 0).getDate();
+  const dayOption = document.querySelector(".linegraph-day-option");
+  dayOption.innerHTML = "";
+
+  for (let i = 1; i <= days; i++) {
+    const option = document.createElement("option");
+    option.value = i;
+    option.textContent = i;
+    dayList.push(i);
+    dayOption.appendChild(option);
+  }
+  lineGraph(`year=${year}&month=${month}`, dayList, "month");
+};
+
+const lineDayOptions = () => {
+  day = document.querySelector(".linegraph-day-option").value.padStart(2, "0");
+  lineGraph(`year=${year}&month=${month}&day=${day}`, time, "hour");
+};
+
+const lineGraph = async (date, lists, type) => {
+  try {
+    const ctx = document.getElementById("schoollogs-graph").getContext("2d");
+
+    const response = await fetch(`/app/api/school-log-stats?${date}`);
+    const dataAPI = await response.json();
+
+    const dataEntries = lists.reduce((acc, list) => {
+      acc[list] = 0;
+      return acc;
+    }, {});
+
+    const dataExits = lists.reduce((acc, list) => {
+      acc[list] = 0;
+      return acc;
+    }, {});
+
+    for (const [i, dataType] of dataAPI.entryLogs[0].entries()) {
+      dataEntries[lists[dataType - 1]] = dataAPI.entryLogs[1][i];
+    }
+
+    for (const [i, dataType] of dataAPI.exitLogs[0].entries()) {
+      dataExits[lists[dataType - 1]] = dataAPI.exitLogs[1][i];
+    }
+
+    const entryCounts = Object.values(dataEntries);
+    const exitCounts = Object.values(dataEntries);
+
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: lists,
+        datasets: [
+          {
+            label: "School Logs - Entrance",
+            data: entryCounts,
+            fill: false,
+            borderColor: "rgb(107, 45, 168)",
+            tension: 0.4,
+          },
+          {
+            label: "School Logs - Exit",
+            data: exitCounts,
+            fill: false,
+            borderColor: "rgb(144, 68, 220)",
+            tension: 0.4,
+          },
+        ],
+      },
+      options: {
+        elements: {
+          line: {
+            borderCapStyle: "round",
+            borderJoinStyle: "round",
+          },
         },
       },
-    },
-  });
+    });
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 window.displayType = displayType;

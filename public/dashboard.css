@@ -136,7 +136,10 @@ section {
 
 .type-options,
 .months-option,
-.day-option {
+.day-option,
+.linegraph-type-options,
+.linegraph-months-options,
+.linegraph-day-option {
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
