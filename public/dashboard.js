@@ -344,13 +344,18 @@ const lineGraph = async (
           y: {
             ticks: {
               callback: function (value) {
-                const hours = Math.floor(value);
-                return `${hours}h`;
+                // Convert value to hours
+                const hours = value % 24; // Use modulo to wrap around 24 hours
+                const period = hours < 12 ? "am" : "pm"; // Determine am or pm
+                const formattedHour =
+                  hours === 0 ? 12 : hours > 12 ? hours - 12 : hours; // Convert to 12-hour format
+                return `${formattedHour}${period}`; // Return formatted hour with am/pm
               },
             },
             beginAtZero: true,
           },
         },
+
         // plugins: {
         //   tooltip: {
         //     callbacks: {
