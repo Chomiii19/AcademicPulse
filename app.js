@@ -17,17 +17,6 @@ const __dirname = dirname(__filename);
 const app = express();
 app.set("trust proxy", 1);
 // app.use(helmet());
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      useDefaults: true,
-      directives: {
-        "script-src": ["'self'", "'unsafe-inline'"], // Allow inline scripts
-        // You can add other directives if necessary, like 'style-src', 'img-src', etc.
-      },
-    },
-  })
-);
 
 app.use(mongoSanitize());
 app.use(express.json());
