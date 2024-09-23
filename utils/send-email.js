@@ -238,9 +238,9 @@ const sendMail = async function (subject, receiver) {
     };
 
     const info = await transport.sendMail(mailOptions);
-    console.log("Email sent successfully:", info);
+    console.log("Email sent successfully");
   } catch (error) {
-    console.error("Failed to send email:", error);
+    console.error("Failed to send email");
   }
 };
 

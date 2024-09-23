@@ -7,8 +7,30 @@ import AppError from "../utils/appError.js";
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.SECRET_KEY, {
-    expiresIn: process.env.EXPIRES_IN,
+    expiresIn: process.env.JWT_EXPIRES_IN,
   });
+};
+
+const createSendToken = (user, statusCode, res) => {
+  const token = signToken(user._id);
+
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+  };
+
+  if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
+  res.cookie("authToken", token, cookieOptions);
+
+  res.redirect("/app");
+  // res.status(201).json({
+  //   status: "Success",
+  //   data: {
+  //     user,
+  //   },
+  // });
 };
 
 const signup = catchAsync(async (req, res, next) => {
@@ -26,14 +48,7 @@ const signup = catchAsync(async (req, res, next) => {
   });
 
   sendMail("User Verification Email - ID Validation App", user);
-  const token = signToken(user._id);
-
-  res.status(201).json({
-    status: "Success",
-    data: {
-      user,
-    },
-  });
+  createSendToken(user, 201, res);
 });
 
 const login = catchAsync(async (req, res, next) => {
@@ -49,21 +64,7 @@ const login = catchAsync(async (req, res, next) => {
 
   if (!user.isValid) return next(new AppError("Account not verified", 401));
 
-  const token = signToken(user._id);
-  res.cookie("authToken", token, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "Strict",
-  });
-
-  res.redirect("/app");
-
-  // res.status(201).json({
-  //   status: "Success",
-  //   data: {
-  //     user,
-  //   },
-  // });
+  createSendToken(user, 201, res);
 });
 
 const verifyUser = catchAsync(async (req, res, next) => {
@@ -79,7 +80,11 @@ const verifyUser = catchAsync(async (req, res, next) => {
 const protect = catchAsync(async (req, res, next) => {
   const token = req.cookies.authToken;
 
-  if (!token) return res.redirect("/");
+  if (!token) {
+    if (process.env.NODE_ENV === "production") return res.redirect("/");
+    if (process.env.NODE_ENV === "development")
+      return next(new AppError("Invalid token!", 401));
+  }
 
   const decoded = await promisify(jwt.verify)(token, process.env.SECRET_KEY);
 

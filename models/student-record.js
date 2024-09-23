@@ -9,11 +9,11 @@ const studentRecordSchema = new mongoose.Schema({
   },
   surname: {
     type: String,
-    required: [true, "A user must have a surname."],
+    required: [true, "A user must have a surname"],
   },
   firstname: {
     type: String,
-    required: [true, "A user must have a firstname."],
+    required: [true, "A user must have a firstname"],
   },
   middlename: {
     type: String,
@@ -23,8 +23,8 @@ const studentRecordSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: [true, "A user must have an email."],
-    validate: [validator.isEmail, "Invalid email."],
+    required: [true, "A user must have an email"],
+    validate: [validator.isEmail, "Invalid email"],
     unique: true,
   },
   isEnrolled: {

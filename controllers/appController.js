@@ -4,24 +4,23 @@ import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
 import StudentLog from "../models/student-log.js";
 
-const date = new Date();
-// const timezoneOffset = new Date().getTimezoneOffset() / 60;
-const timezoneOffset = -8;
-const utc = 8;
+const date = new Date().toISOString().split("T")[0];
+const timezoneOffset = new Date().getTimezoneOffset() / 60 || -8;
+const utc = Math.abs(timezoneOffset);
 
-const utcDate = () => {
-  const today = new Date().toISOString().split("T")[0];
-  const todayStartUTC =
-    timezoneOffset < 0
-      ? new Date(today) - utc * 60 * 60 * 1000
-      : new Date(today) + utc * 60 * 60 * 1000;
-  const start = new Date(todayStartUTC).toISOString();
+const utcDate = (dateStart = date, dateEnd = date) => {
+  const startDate = new Date(dateStart);
 
-  const todayEndUTC =
+  const start =
     timezoneOffset < 0
-      ? new Date(`${today}T23:59:59.999Z`) - utc * 60 * 60 * 1000
-      : new Date(`${today}T23:59:59.999Z`) + utc * 60 * 60 * 1000;
-  const end = new Date(todayEndUTC).toISOString();
+      ? new Date(startDate.getTime() - utc * 60 * 60 * 1000)
+      : new Date(startDate.getTime() + utc * 60 * 60 * 1000);
+
+  const adjustEndDate = new Date(`${dateEnd}T23:59:59.999Z`);
+  const end =
+    timezoneOffset < 0
+      ? new Date(adjustEndDate.getTime() - utc * 60 * 60 * 1000)
+      : new Date(adjustEndDate.getTime() + utc * 60 * 60 * 1000);
 
   return { start, end };
 };
@@ -87,9 +86,9 @@ const studentLogEntrance = catchAsync(async (req, res, next) => {
   } else {
     await StudentLog.create({
       studentNumber: student.studentNumber,
-      date: date,
+      date: new Date(),
       inSchool: true,
-      entryTime: [date],
+      entryTime: [new Date()],
       exitTime: [],
     });
   }
@@ -200,41 +199,65 @@ const validatedIdStats = catchAsync(async (req, res, next) => {
   });
 });
 
-// const studentLogStats = catchAsync(async (req, res, next) => {
-//   const { groupby } = req.query;
+// const filterLogs = (data, year, month = "00", day = "00") => {
+//   const days = new Date(year, month, 0).getDate();
+//   let startDate, endDate;
 
-//   let groupStats;
-//   if (groupby === "hour")
-//     groupStats = {
-//       $dateToString: { format: "%Y-%m-%d %H", date: "$logs.entryTime" },
-//     };
-//   if (groupby === "day")
-//     groupStats = {
-//       $dateToString: { format: "%Y-%m-%d", date: "$logs.entryTime" },
-//     };
-//   if (groupby === "month")
-//     groupStats = {
-//       $dateToString: { format: "%Y-%m", date: "$logs.entryTime" },
-//     };
-//   if (groupby === "year")
-//     groupStats = { $dateToString: { format: "%Y", date: "$logs.entryTime" } };
+//   if (month === "00" && day === "00") {
+//     startDate = new Date(`${year}-01-01T00:00:00Z`);
+//     endDate = new Date(`${year}-12-31T23:59:59Z`);
+//   } else if (day === "00") {
+//     startDate = new Date(`${year}-${month}-01T00:00:00Z`);
+//     endDate = new Date(`${year}-${month}-${days}T23:59:59Z`);
+//   } else {
+//     startDate = new Date(`${year}-${month}-${day}T00:00:00Z`);
+//     endDate = new Date(`${year}-${month}-${day}T23:59:59Z`);
+//   }
+
+//   const dataLog = {
+//     studentNumber: data._id,
+//     entryLog: data.entryTimes.filter((entry) => {
+//       const time = new Date(entry);
+//       return time >= startDate && time <= endDate;
+//     }),
+//     exitLog: data.exitTimes.filter((exit) => {
+//       const time = new Date(exit);
+//       return time >= startDate && time <= endDate;
+//     }),
+//   };
+
+//   return dataLog;
+// };
+
+// const studentLogStats = catchAsync(async (req, res, next) => {
+//   const { year, month, day, studentNumber } = req.query;
 
 //   const dataLogs = await StudentLog.aggregate([
+//     { $match: { studentNumber: studentNumber } },
 //     { $unwind: "$logs" },
 //     { $unwind: "$logs.entryTime" },
+//     { $unwind: "$logs.exitTime" },
 //     {
 //       $group: {
-//         _id: groupStats,
-//         logNumbers: { $sum: 1 },
+//         _id: "$studentNumber",
+//         entryLog: {
+//           $addToSet: { $add: ["$logs.entryTime", 8 * 60 * 60 * 1000] },
+//         },
+//         exitLog: {
+//           $addToSet: { $add: ["$logs.exitTime", 8 * 60 * 60 * 1000] },
+//         },
 //       },
 //     },
-//     { $sort: { _id: 1 } },
+//     {
+//       $project: {
+//         _id: 1,
+//         entryTimes: { $sortArray: { input: "$entryLog", sortBy: 1 } },
+//         exitTimes: { $sortArray: { input: "$exitLog", sortBy: 1 } },
+//       },
+//     },
 //   ]);
 
-//   const data = dataLogs.map((log) => ({
-//     date: log._id,
-//     count: log.logNumbers,
-//   }));
+//   const data = filterLogs(dataLogs[0], year, month, day);
 
 //   res.status(200).json({
 //     status: "Success",
@@ -246,8 +269,8 @@ const formatData = (data, type) => {
   let entryTimes, exitTimes;
 
   if (type === "hour") {
-    entryTimes = data.entryTimes.map((entry) => entry.hour);
-    exitTimes = data.exitTimes.map((exit) => exit.hour);
+    entryTimes = data.entryTimes.map((entry) => entry.hour % 24);
+    exitTimes = data.exitTimes.map((exit) => exit.hour % 24);
   } else if (type === "day") {
     entryTimes = data.entryTimes.map((entry) => entry.day);
     exitTimes = data.exitTimes.map((exit) => exit.day);
@@ -334,14 +357,14 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
     );
     filterEntry = {
       entryTime: {
-        $gte: new Date(start),
-        $lte: new Date(end),
+        $gte: start,
+        $lte: end,
       },
     };
     filterEnd = {
       exitTime: {
-        $gte: new Date(start),
-        $lte: new Date(end),
+        $gte: start,
+        $lte: end,
       },
     };
     groupbyEntry = { $hour: { $add: "$entryTime" } };
@@ -369,14 +392,14 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
     );
     filterEntry = {
       entryTime: {
-        $gte: new Date(start),
-        $lte: new Date(end),
+        $gte: start,
+        $lte: end,
       },
     };
     filterEnd = {
       exitTime: {
-        $gte: new Date(start),
-        $lte: new Date(end),
+        $gte: start,
+        $lte: end,
       },
     };
     groupbyEntry = { $dayOfMonth: "$entryTime" };
@@ -388,14 +411,14 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
     const { start, end } = utcDate(`${year}-01-01`, `${year}-12-31`);
     filterEntry = {
       entryTime: {
-        $gte: new Date(start),
-        $lte: new Date(end),
+        $gte: start,
+        $lte: end,
       },
     };
     filterEnd = {
       exitTime: {
-        $gte: new Date(start),
-        $lte: new Date(end),
+        $gte: start,
+        $lte: end,
       },
     };
     groupbyEntry = { $month: "$entryTime" };
@@ -491,7 +514,7 @@ export {
   studentLogExit,
   validatedIdStats,
   // studentLogStats,
-  schoolLogStats,
   enrolledStats,
   validatedStats,
+  schoolLogStats,
 };
