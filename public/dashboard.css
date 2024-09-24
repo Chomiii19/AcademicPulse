@@ -269,6 +269,14 @@ option {
   border-radius: 0.5rem;
 }
 
+.studentNumber {
+  width: 6.8rem;
+}
+
+.date {
+  width: 9rem;
+}
+
 .fa-magnifying-glass {
   padding: 0.2rem;
   color: #6b2da8;
