@@ -39,6 +39,11 @@ const userSchema = new mongoose.Schema({
       message: "Invalid phone number",
     },
   },
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
+  },
   password: {
     type: String,
     required: [true, "A user must have a password"],

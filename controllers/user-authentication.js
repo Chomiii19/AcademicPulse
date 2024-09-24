@@ -108,6 +108,7 @@ const protect = catchAsync(async (req, res, next) => {
 });
 
 const roleAuthorization = catchAsync(async (req, res, next) => {
+  console.log(req.user);
   const user = await User.findOne({ idNumber: req.user.idNumber });
 
   if (!user) return next(new AppError("User account does not exist!"));
