@@ -1,14 +1,9 @@
 import jwt from "jsonwebtoken";
 import { promisify } from "util";
-import { fileURLToPath } from "url";
-import { dirname, join } from "path";
 import User from "../models/admin-model.js";
 import sendMail from "../utils/send-email.js";
 import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.SECRET_KEY, {
@@ -117,8 +112,8 @@ const roleAuthorization = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ idNumber: req.user.idNumber });
 
   if (!user) return next(new AppError("User account does not exist!"));
-  if (user.role !== "admin")
-    return res.sendFile(join(__dirname, "../public/dist/unauthorized.html"));
+  if (user.role !== "admin") return res.redirect("/app/unauthorized");
+
   next();
 });
 

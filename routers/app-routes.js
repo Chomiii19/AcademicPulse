@@ -37,6 +37,10 @@ router.get("/campus-dashboard", roleAuthorization, (req, res) => {
   res.sendFile(join(__dirname, "../public/dist/dashboard.html"));
 });
 
+router.get("/unauthorized", (req, res) => {
+  res.sendFile(join(__dirname, "../public/dist/unauthorized.html"));
+});
+
 router
   .route("/student-log/entrance/submit")
   .post(appController.studentLogEntrance);
