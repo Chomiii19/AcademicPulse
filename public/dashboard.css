@@ -270,6 +270,13 @@ option {
   border-radius: 0.5rem;
 }
 
+.form-container input:focus {
+  outline: none;
+  border: none;
+  background-color: #ffffffc8;
+  color: #3f3e41;
+}
+
 .studentNumber {
   width: 6.8rem;
 }
