@@ -371,8 +371,8 @@ const iife = async () => {
       fetch("/app/api/total-users"),
     ]);
 
-    const data1 = response1.json();
-    const data2 = response2.json();
+    const data1 = await response1.json();
+    const data2 = await response2.json();
 
     console.log(data1, data2);
     totalStudentsInSchool.textContent = data1.data[0].count;
