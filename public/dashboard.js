@@ -384,6 +384,7 @@ const iife = async () => {
 searchStudent.addEventListener("submit", async (event) => {
   event.preventDefault();
 
+  studentLogContainer.innerHTML = "";
   const formData = new FormData(searchStudent);
   const data = Object.fromEntries(formData.entries());
 
@@ -402,7 +403,7 @@ searchStudent.addEventListener("submit", async (event) => {
     studentLog.data.forEach((data) => {
       const html = `
       <div class="logs">
-        <p>Date: ${data.date}</p>
+        <p class="logDate">Date: ${data.date}</p>
         <p class="student-entryTime">Entry Time: ${data.entryTime.join(
           ", "
         )}</p>

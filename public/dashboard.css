@@ -297,6 +297,9 @@ option {
   height: auto;
   width: 100%;
   overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .student-entryTime {
@@ -308,6 +311,10 @@ option {
 .student-exitTime {
   color: #e52a5a;
   font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.logDate {
   font-weight: 700;
 }
 
