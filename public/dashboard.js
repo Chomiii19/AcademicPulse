@@ -390,6 +390,7 @@ window.lineDisplayOptions = lineDisplayOptions;
 window.lineMonthOptions = lineMonthOptions;
 window.lineDayOptions = lineDayOptions;
 
+iife();
 idValidated();
 lineGraph();
 doughnutGraph();
