@@ -303,7 +303,10 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
     project,
     dataLog;
 
-  let addField;
+  let addField,
+    avgExit = { $toLong: "$exitTime" },
+    avgEntry = { $toLong: "$entryTime" };
+
   if (timezoneOffset < 0) {
     addField = {
       avgHour: {
@@ -426,6 +429,48 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
     fieldNameEntry = { month: "$_id" };
     fieldNameExit = { month: "$_id" };
     project = { _id: 0, month: 1, count: 1, avgDate: { $toDate: "$avgDate" } };
+    avgEntry = {
+      $toLong: {
+        $toDate: {
+          $concat: [
+            {
+              $dateToString: {
+                format: "%Y-%m-",
+                date: "$entryTime",
+              },
+            },
+            "01T",
+            {
+              $dateToString: {
+                format: "%H:%M:%S.%LZ",
+                date: "$entryTime",
+              },
+            },
+          ],
+        },
+      },
+    };
+    avgExit = {
+      $toLong: {
+        $toDate: {
+          $concat: [
+            {
+              $dateToString: {
+                format: "%Y-%m-",
+                date: "$exitTime",
+              },
+            },
+            "01T",
+            {
+              $dateToString: {
+                format: "%H:%M:%S.%LZ",
+                date: "$exitTime",
+              },
+            },
+          ],
+        },
+      },
+    };
   }
 
   const data = await StudentLog.aggregate([
@@ -440,7 +485,7 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
               _id: groupbyEntry,
               count: { $sum: 1 },
               avgDate: {
-                $avg: { $toLong: "$entryTime" },
+                $avg: avgEntry,
               },
             },
           },
@@ -459,7 +504,7 @@ const schoolLogStats = catchAsync(async (req, res, next) => {
               _id: groupbyExit,
               count: { $sum: 1 },
               avgDate: {
-                $avg: { $toLong: "$exitTime" },
+                $avg: avgExit,
               },
             },
           },
