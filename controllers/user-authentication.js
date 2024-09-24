@@ -111,10 +111,12 @@ const roleAuthorization = catchAsync(async (req, res, next) => {
   console.log(req.user);
   const user = await User.findOne({ idNumber: req.user.idNumber });
 
+  console.log(user);
   if (!user) return next(new AppError("User account does not exist!"));
-  if (!user.role === "admin")
+  if (!user.role === "admin") {
+    console.log(user);
     return next(new AppError("User is not authorized for this feature."));
-
+  }
   next();
 });
 
