@@ -1,6 +1,7 @@
 import express from "express";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import { roleAuthorization } from "../controllers/user-authentication.js";
 import * as appController from "../controllers/appController.js";
 import * as rateLimiter from "../utils/rateLimit.js";
 
@@ -32,7 +33,7 @@ router.get("/student-log/exit", (req, res) => {
   res.sendFile(join(__dirname, "../public/dist/studentLogExit.html"));
 });
 
-router.get("/campus-dashboard", (req, res) => {
+router.get("/campus-dashboard", roleAuthorization, (req, res) => {
   res.sendFile(join(__dirname, "../public/dist/dashboard.html"));
 });
 

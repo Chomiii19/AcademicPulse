@@ -107,6 +107,16 @@ const protect = catchAsync(async (req, res, next) => {
   next();
 });
 
+const roleAuthorization = catchAsync(async (req, res, next) => {
+  const user = await User.findOne({ idNumber: req.user.idNumber });
+
+  if (!user) return next(new AppError("User account does not exist!"));
+  if (!user.role === "admin")
+    return next(new AppError("User is not authorized for this feature."));
+
+  next();
+});
+
 const signout = catchAsync(async (req, res, next) => {
   res.cookie("authToken", "loggedOut", {
     expires: new Date(Date.now() + 10 * 1000),
@@ -118,4 +128,4 @@ const signout = catchAsync(async (req, res, next) => {
   res.redirect("/");
 });
 
-export { signup, login, verifyUser, protect, signout };
+export { signup, login, verifyUser, roleAuthorization, protect, signout };
