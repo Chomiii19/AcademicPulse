@@ -326,7 +326,7 @@ option {
 }
 
 .logs {
-  background-color: #d9d9d9;
+  background-color: #e2dfe3;
   width: 100%;
   padding: 0.3rem;
   border-radius: 0.5rem;
@@ -334,7 +334,7 @@ option {
 }
 
 .logs:hover {
-  background-color: #d4d4d4d7;
+  background-color: #f0eff1;
 }
 
 @media (max-width: 480px) {
