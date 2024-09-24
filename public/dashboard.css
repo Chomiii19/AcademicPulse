@@ -253,7 +253,7 @@ option {
 
 .student-log-container {
   background: linear-gradient(45deg, #6b2da8, rgba(83, 18, 158, 0.616));
-  width: 100%;
+  width: 500px;
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
