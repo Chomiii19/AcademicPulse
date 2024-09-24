@@ -271,7 +271,7 @@ const lineDayOptions = () => {
 };
 
 const lineGraph = async (
-  date = `year=${new Date().getFullYear}`,
+  date = `year=${new Date().getFullYear()}`,
   lists = monthLists,
   type
 ) => {
