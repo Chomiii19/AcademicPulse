@@ -374,7 +374,6 @@ const iife = async () => {
     const data1 = await response1.json();
     const data2 = await response2.json();
 
-    console.log(data1, data2);
     totalStudentsInSchool.textContent = data1.data[0].count;
     totalUserAccount.textContent = data2.data[0].count;
   } catch (err) {

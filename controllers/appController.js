@@ -200,71 +200,64 @@ const validatedIdStats = catchAsync(async (req, res, next) => {
   });
 });
 
-// const filterLogs = (data, year, month = "00", day = "00") => {
-//   const days = new Date(year, month, 0).getDate();
-//   let startDate, endDate;
+const studentLogStats = catchAsync(async (req, res, next) => {
+  const { date, studentNumber } = req.body;
+  let fillDateStart = date,
+    fillDateEnd = date;
+  if (!date) {
+    (fillDateStart = "2024-01-01"), (fillDateEnd = "2024-12-31");
+  }
 
-//   if (month === "00" && day === "00") {
-//     startDate = new Date(`${year}-01-01T00:00:00Z`);
-//     endDate = new Date(`${year}-12-31T23:59:59Z`);
-//   } else if (day === "00") {
-//     startDate = new Date(`${year}-${month}-01T00:00:00Z`);
-//     endDate = new Date(`${year}-${month}-${days}T23:59:59Z`);
-//   } else {
-//     startDate = new Date(`${year}-${month}-${day}T00:00:00Z`);
-//     endDate = new Date(`${year}-${month}-${day}T23:59:59Z`);
-//   }
+  const { start, end } = utcDate(fillDateStart, fillDateEnd);
+  const data = await StudentLog.aggregate([
+    {
+      $match: {
+        studentNumber: studentNumber,
+        date: {
+          $gte: start,
+          $lte: end,
+        },
+      },
+    },
+    { $sort: { date: 1 } },
+    {
+      $project: {
+        _id: 0,
+        studentNumber: 1,
+        entryTime: {
+          $map: {
+            input: "$entryTime",
+            as: "entry",
+            in: {
+              $dateToString: {
+                format: "%H:%M",
+                date: { $add: ["$$entry", utc * 60 * 60 * 1000] },
+              },
+            },
+          },
+        },
+        exitTime: {
+          $map: {
+            input: "$exitTime",
+            as: "exit",
+            in: {
+              $dateToString: {
+                format: "%H:%M",
+                date: { $add: ["$$exit", utc * 60 * 60 * 1000] },
+              },
+            },
+          },
+        },
+        date: { $dateToString: { format: "%Y-%m-%d", date: "$date" } },
+      },
+    },
+  ]);
 
-//   const dataLog = {
-//     studentNumber: data._id,
-//     entryLog: data.entryTimes.filter((entry) => {
-//       const time = new Date(entry);
-//       return time >= startDate && time <= endDate;
-//     }),
-//     exitLog: data.exitTimes.filter((exit) => {
-//       const time = new Date(exit);
-//       return time >= startDate && time <= endDate;
-//     }),
-//   };
-
-//   return dataLog;
-// };
-
-// const studentLogStats = catchAsync(async (req, res, next) => {
-//   const { year, month, day, studentNumber } = req.query;
-
-//   const dataLogs = await StudentLog.aggregate([
-//     { $match: { studentNumber: studentNumber } },
-//     { $unwind: "$logs" },
-//     { $unwind: "$logs.entryTime" },
-//     { $unwind: "$logs.exitTime" },
-//     {
-//       $group: {
-//         _id: "$studentNumber",
-//         entryLog: {
-//           $addToSet: { $add: ["$logs.entryTime", 8 * 60 * 60 * 1000] },
-//         },
-//         exitLog: {
-//           $addToSet: { $add: ["$logs.exitTime", 8 * 60 * 60 * 1000] },
-//         },
-//       },
-//     },
-//     {
-//       $project: {
-//         _id: 1,
-//         entryTimes: { $sortArray: { input: "$entryLog", sortBy: 1 } },
-//         exitTimes: { $sortArray: { input: "$exitLog", sortBy: 1 } },
-//       },
-//     },
-//   ]);
-
-//   const data = filterLogs(dataLogs[0], year, month, day);
-
-//   res.status(200).json({
-//     status: "Success",
-//     data,
-//   });
-// });
+  res.status(200).json({
+    status: "Success",
+    data,
+  });
+});
 
 const formatData = (data, type) => {
   let entryTimes, exitTimes;
@@ -584,7 +577,7 @@ export {
   studentLogEntrance,
   studentLogExit,
   validatedIdStats,
-  // studentLogStats,
+  studentLogStats,
   enrolledStats,
   validatedStats,
   schoolLogStats,
