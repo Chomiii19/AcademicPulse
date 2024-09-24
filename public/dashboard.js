@@ -356,18 +356,6 @@ const lineGraph = async (
             beginAtZero: true,
           },
         },
-
-        // plugins: {
-        //   tooltip: {
-        //     callbacks: {
-        //       label: function (tooltipItem) {
-        //         const dataset = tooltipItem.dataset;
-        //         const count = dataset.counts[tooltipItem.dataIndex]; // Access count array using dataIndex
-        //         return `Count: ${count}`; // Show count in the tooltip
-        //       },
-        //     },
-        //   },
-        // },
       },
     });
   } catch (err) {
