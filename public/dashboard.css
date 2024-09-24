@@ -296,7 +296,7 @@ option {
 .log-container {
   height: auto;
   width: 100%;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .student-entryTime {
