@@ -412,6 +412,7 @@ searchStudent.addEventListener("submit", async (event) => {
 
       studentLogContainer.insertAdjacentHTML("beforeend", html);
     });
+    searchStudent.reset();
   } catch (err) {
     console.error(err);
   }
