@@ -309,6 +309,10 @@ option {
   gap: 0.5rem;
 }
 
+.log-container h2 {
+  color: #f0eff1;
+}
+
 .student-entryTime {
   color: #39b385;
   font-size: 0.7rem;
@@ -331,6 +335,7 @@ option {
   padding: 0.3rem;
   border-radius: 0.5rem;
   transition: 0.3s ease;
+  overflow-y: auto;
 }
 
 .logs:hover {
