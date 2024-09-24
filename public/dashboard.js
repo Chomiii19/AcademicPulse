@@ -1,4 +1,13 @@
 import Chart from "chart.js/auto";
+const idValidatedGraphContainer = document.getElementById("idvalidated-graph");
+const schoolLogsGraph = document.getElementById("schoollogs-graph");
+const doughnut = document.getElementById("doughnut-graph");
+const lineGraphLogs = document.getElementById("schoollogs-graph");
+const doughnutPercentage = document.querySelector(".label-doughnut");
+const totalStudentsInSchool = document.querySelector(".total-student-inSchool");
+const totalUserAccount = document.querySelector(".total-user-account");
+const searchStudent = document.querySelector(".search-student-form");
+const studentLogContainer = document.querySelector(".log-container");
 
 let year;
 let month;
@@ -47,14 +56,6 @@ const time = [
   "10 PM",
   "11 PM",
 ];
-
-const idValidatedGraphContainer = document.getElementById("idvalidated-graph");
-const schoolLogsGraph = document.getElementById("schoollogs-graph");
-const doughnut = document.getElementById("doughnut-graph");
-const lineGraphLogs = document.getElementById("schoollogs-graph");
-const doughnutPercentage = document.querySelector(".label-doughnut");
-const totalStudentsInSchool = document.querySelector(".total-student-inSchool");
-const totalUserAccount = document.querySelector(".total-user-account");
 
 function resizeCanvas(canvas) {
   canvas.width = canvas.parentElement.clientWidth;
@@ -346,12 +347,11 @@ const lineGraph = async (
           y: {
             ticks: {
               callback: function (value) {
-                // Convert value to hours
-                const hours = value % 24; // Use modulo to wrap around 24 hours
-                const period = hours < 12 ? "am" : "pm"; // Determine am or pm
+                const hours = value % 24;
+                const period = hours < 12 ? "am" : "pm";
                 const formattedHour =
-                  hours === 0 ? 12 : hours > 12 ? hours - 12 : hours; // Convert to 12-hour format
-                return `${formattedHour}${period}`; // Return formatted hour with am/pm
+                  hours === 0 ? 12 : hours > 12 ? hours - 12 : hours;
+                return `${formattedHour}${period}`;
               },
             },
             beginAtZero: true,
@@ -380,6 +380,41 @@ const iife = async () => {
     console.error(err);
   }
 };
+
+searchStudent.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(searchStudent);
+  const data = Object.fromEntries(formData.entries());
+
+  try {
+    const response = await fetch("/app/api/student-log-stats", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const studentLog = await response.json();
+    console.log(studentLog);
+
+    studentLog.data.forEach((data) => {
+      const html = `
+      <div class="logs">
+        <p>Date: ${data.date}</p>
+        <p class="student-entryTime">Entry Time: ${data.entryTime.join(
+          ", "
+        )}</p>
+        <p class="student-exitTime">Exit Time: ${data.exitTime.join(", ")}</p>
+      </div>`;
+
+      studentLogContainer.insertAdjacentHTML("beforeend", html);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+});
 
 window.displayType = displayType;
 window.displayOptions = displayOptions;

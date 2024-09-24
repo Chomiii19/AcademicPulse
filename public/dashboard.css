@@ -253,6 +253,7 @@ option {
 
 .student-log-container {
   background: linear-gradient(45deg, #6b2da8, rgba(83, 18, 158, 0.616));
+  height: 100%;
   width: 500px;
   border-radius: 1rem;
   padding: 1rem;
@@ -295,6 +296,19 @@ option {
 .log-container {
   height: auto;
   width: 100%;
+  overflow-x: scroll;
+}
+
+.student-entryTime {
+  color: #39b385;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.student-exitTime {
+  color: #e52a5a;
+  font-size: 0.7rem;
+  font-weight: 700;
 }
 
 .logs {
