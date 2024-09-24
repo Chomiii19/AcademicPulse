@@ -175,7 +175,7 @@ option {
   border-radius: 1rem;
   display: flex;
   gap: 1rem;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .total-users,
