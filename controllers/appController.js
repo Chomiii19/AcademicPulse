@@ -1,4 +1,5 @@
 import Student from "../models/student-record.js";
+import User from "../models/admin-model.js";
 import Validated from "../models/student-validated.js";
 import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
@@ -553,6 +554,31 @@ const validatedStats = catchAsync(async (req, res, next) => {
   });
 });
 
+const countStudentsInSchool = catchAsync(async (req, res, next) => {
+  const data = await StudentLog.aggregate([
+    { $match: { inSchool: true } },
+    { $group: { _id: null, count: { $sum: 1 } } },
+    { $project: { _id: 0 } },
+  ]);
+
+  res.status(200).json({
+    status: "Success",
+    data,
+  });
+});
+
+const totalUsers = catchAsync(async (req, res, next) => {
+  const data = await User.aggregate([
+    { $group: { _id: null, count: { $sum: 1 } } },
+    { $project: { _id: 0 } },
+  ]);
+
+  res.status(200).json({
+    status: "Success",
+    data,
+  });
+});
+
 export {
   validateId,
   studentLogEntrance,
@@ -562,4 +588,6 @@ export {
   enrolledStats,
   validatedStats,
   schoolLogStats,
+  countStudentsInSchool,
+  totalUsers,
 };

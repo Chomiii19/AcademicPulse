@@ -50,6 +50,8 @@ router.route("/api/validated-id-stats").get(appController.validatedIdStats);
 router.route("/api/school-log-stats").get(appController.schoolLogStats);
 router.route("/api/enrolled-students").get(appController.enrolledStats);
 router.route("/api/validated-students").get(appController.validatedStats);
+router.route("/api/students-inschool").get(appController.countStudentsInSchool);
+router.route("/api/total-users").get(appController.totalUsers);
 
 // router.route("/api/users").get();
 

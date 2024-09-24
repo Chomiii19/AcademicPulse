@@ -53,6 +53,8 @@ const schoolLogsGraph = document.getElementById("schoollogs-graph");
 const doughnut = document.getElementById("doughnut-graph");
 const lineGraphLogs = document.getElementById("schoollogs-graph");
 const doughnutPercentage = document.querySelector(".label-doughnut");
+const totalStudentsInSchool = document.querySelector(".total-student-inSchool");
+const totalUserAccount = document.querySelector(".total-user-account");
 
 function resizeCanvas(canvas) {
   canvas.width = canvas.parentElement.clientWidth;
@@ -357,6 +359,23 @@ const lineGraph = async (
         },
       },
     });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const iife = async () => {
+  try {
+    const [response1, response2] = await Promise.all([
+      fetch("/app/api/students-inschool"),
+      fetch("/app/api/total-users"),
+    ]);
+
+    const data1 = response1.json();
+    const data2 = response2.json();
+
+    totalStudentsInSchool.textContent = data1[0].count;
+    totalUserAccount.textContent = data2[0].count;
   } catch (err) {
     console.error(err);
   }
