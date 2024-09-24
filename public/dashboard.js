@@ -120,11 +120,12 @@ const idValidated = async (
   type = "year"
 ) => {
   try {
+    console.log(date);
     const ctx = document.getElementById("idvalidated-graph").getContext("2d");
     const response = await fetch(`/app/api/validated-id-stats?${url}`);
 
     const dataAPI = await response.json();
-
+    console.log(dataAPI);
     const dataList = lists.reduce((acc, list) => {
       acc[list] = 0;
       return acc;
