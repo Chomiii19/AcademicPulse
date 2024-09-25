@@ -446,7 +446,7 @@ option {
   }
 
   section {
-    height: auto;
+    height: 1280px;
     width: 100%;
     padding: 5rem 8%;
     display: flex;
