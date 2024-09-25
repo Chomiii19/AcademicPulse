@@ -129,7 +129,7 @@ const signout = catchAsync(async (req, res, next) => {
 
 const loggedInChecker = catchAsync(async (req, res, next) => {
   const token = req.cookies.authToken;
-
+  console.log(token);
   if (!token) return res.redirect("/");
 
   const decoded = await promisify(jwt.verify)(token, process.env.SECRET_KEY);
