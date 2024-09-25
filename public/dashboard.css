@@ -394,7 +394,7 @@ option {
   }
 
   .doughnut-graph-container {
-    height: 327px;
+    height: auto;
     width: 100%;
     position: relative;
     display: flex;
@@ -440,7 +440,7 @@ option {
   canvas {
     width: auto;
     height: auto;
-    overflow: visible;
+    overflow: auto;
   }
 
   section {
