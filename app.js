@@ -1,5 +1,7 @@
 import express from "express";
 import helmet from "helmet";
+import jwt from "jsonwebtoken";
+import { promisify } from "util";
 import cookieParser from "cookie-parser";
 import mongoSanitize from "express-mongo-sanitize";
 import { fileURLToPath } from "url";
@@ -10,6 +12,7 @@ import globalErrorHandler from "./controllers/globalErrorHandler.js";
 import AppError from "./utils/appError.js";
 import * as rateLimit from "./utils/rateLimit.js";
 import { protect } from "./controllers/user-authentication.js";
+import User from "./models/admin-model.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,9 +26,22 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(join(__dirname, "public/dist")));
 
-app.get("/", (req, res) =>
-  res.sendFile(join(__dirname, "public/dist/index.html"))
-);
+app.get("/", async (req, res) => {
+  try {
+    const token = req.cookies.authToken;
+
+    if (!token) return res.sendFile(join(__dirname, "public/dist/index.html"));
+
+    const decoded = await promisify(jwt.verify)(token, process.env.SECRET_KEY);
+    const user = await User.findById(decoded.id);
+
+    if (!user) return res.sendFile(join(__dirname, "public/dist/index.html"));
+
+    res.redirect("/app");
+  } catch (err) {
+    res.sendFile(join(__dirname, "public/dist/index.html"));
+  }
+});
 
 app.use("/users", rateLimit.userLimiter, userRoute);
 app.use("/app", rateLimit.limiter, protect, appRoute);
