@@ -26,6 +26,14 @@ header {
   background-color: #ffffff;
 }
 
+canvas {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
 .fa-arrow-left {
   display: flex;
   padding-right: 1rem;
@@ -332,12 +340,11 @@ option {
 
 .logs {
   background-color: #e2dfe3;
-  height: auto;
+  height: 5rem;
   width: 100%;
   padding: 0.3rem;
   border-radius: 0.5rem;
   transition: 0.3s ease;
-  overflow-x: auto;
 }
 
 .logs:hover {

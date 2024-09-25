@@ -169,6 +169,8 @@ const idValidated = async (
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         animation: {
           duration: 1000,
           easing: "easeOutBounce",
@@ -214,6 +216,8 @@ const doughnutGraph = async () => {
       },
       options: {
         cutout: "90%",
+        responsive: true,
+        maintainAspectRatio: false,
       },
     });
   } catch (err) {
@@ -334,6 +338,8 @@ const lineGraph = async (
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         elements: {
           line: {
             borderCapStyle: "round",
