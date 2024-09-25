@@ -409,7 +409,7 @@ option {
   }
 
   .student-log-container {
-    max-width: 327px;
+    width: 100%;
     height: auto;
   }
 
