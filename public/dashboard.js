@@ -426,8 +426,8 @@ searchStudent.addEventListener("submit", async (event) => {
     searchStudent.reset();
   } catch (err) {
     const logDescription = document.querySelector(".log-description");
-    logDescription.textContent = err.message;
     console.error(err);
+    logDescription.textContent = err.message;
   }
 });
 
