@@ -26,22 +26,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(join(__dirname, "public/dist")));
 
-app.get("/", async (req, res) => {
-  try {
-    const token = req.cookies.authToken;
-
-    if (!token) return res.sendFile(join(__dirname, "public/dist/index.html"));
-
-    const decoded = await promisify(jwt.verify)(token, process.env.SECRET_KEY);
-    const user = await User.findById(decoded.id);
-
-    if (!user) return res.sendFile(join(__dirname, "public/dist/index.html"));
-
-    res.redirect("/app");
-  } catch (err) {
-    res.sendFile(join(__dirname, "public/dist/index.html"));
-  }
-});
+app.get("/", protect, async (req, res) =>
+  res.sendFile(join(__dirname, "public/dist/index.html"))
+);
 
 app.use("/users", rateLimit.userLimiter, userRoute);
 app.use("/app", rateLimit.limiter, protect, appRoute);
