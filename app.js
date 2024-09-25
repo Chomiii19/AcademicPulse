@@ -23,9 +23,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(join(__dirname, "public/dist")));
 
-app.get("/", loggedInChecker, async (req, res) =>
-  res.sendFile(join(__dirname, "public/dist/index.html"))
-);
+app.get("/", loggedInChecker, async (req, res) => {
+  console.log(req.cookies.authToken);
+  res.sendFile(join(__dirname, "public/dist/index.html"));
+});
 
 app.use("/users", rateLimit.userLimiter, userRoute);
 app.use("/app", rateLimit.limiter, protect, appRoute);
