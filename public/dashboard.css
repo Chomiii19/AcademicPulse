@@ -439,6 +439,10 @@ option {
     height: 100px;
   }
 
+  .select-container select {
+    width: 80px;
+  }
+
   section {
     height: auto;
     width: 100%;
