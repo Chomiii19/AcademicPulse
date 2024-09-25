@@ -389,7 +389,7 @@ option {
 
   .bargraph {
     max-width: 327px;
-    height: auto;
+    max-height: 240px;
   }
 
   .doughnut-graph-container {
@@ -402,12 +402,15 @@ option {
   }
 
   .line-graph-container {
+    max-height: 260px;
     max-width: 327px;
     height: auto;
   }
 
   .student-log-container {
     max-width: 327px;
+    max-height: 250px;
+    overflow-y: auto;
   }
 
   .users-total {
@@ -428,6 +431,6 @@ option {
     padding: 5rem 8%;
     display: flex;
     flex-direction: column;
-    gap: 17.6rem;
+    gap: 27rem;
   }
 }
