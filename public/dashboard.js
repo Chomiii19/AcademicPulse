@@ -279,10 +279,9 @@ const lineGraph = async (
 ) => {
   try {
     const ctx = document.getElementById("schoollogs-graph").getContext("2d");
-    console.log(date);
     const response = await fetch(`/app/api/school-log-stats?${date}`);
     const dataAPI = await response.json();
-    console.log(dataAPI);
+
     const dataEntries = lists.reduce((acc, list) => {
       acc[list] = 0;
       return acc;
@@ -304,11 +303,9 @@ const lineGraph = async (
         dataExits[lists[dataType - 1]] = dataAPI.data.exitLogs[1][i];
       }
     }
-    // console.log(dataEntries, dataExits);
 
     const entryAvg = Object.values(dataEntries);
     const exitAvg = Object.values(dataExits);
-    // console.log(entryAvg, exitAvg);
 
     if (schoolLogsLineGraph) {
       schoolLogsLineGraph.destroy();
