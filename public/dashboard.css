@@ -332,11 +332,12 @@ option {
 
 .logs {
   background-color: #e2dfe3;
+  height: auto;
   width: 100%;
   padding: 0.3rem;
   border-radius: 0.5rem;
   transition: 0.3s ease;
-  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .logs:hover {
@@ -388,13 +389,13 @@ option {
   }
 
   .bargraph {
-    max-width: 327px;
+    width: 100%;
     max-height: 240px;
   }
 
   .doughnut-graph-container {
     height: 327px;
-    width: 327px;
+    width: 100%;
     position: relative;
     display: flex;
     justify-content: center;
@@ -403,7 +404,7 @@ option {
 
   .line-graph-container {
     max-height: 260px;
-    max-width: 327px;
+    width: 100%;
     height: auto;
   }
 
@@ -431,6 +432,6 @@ option {
     padding: 5rem 8%;
     display: flex;
     flex-direction: column;
-    gap: 27rem;
+    gap: 28.6rem;
   }
 }
