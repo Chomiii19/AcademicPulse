@@ -410,13 +410,13 @@ option {
 
   .student-log-container {
     max-width: 327px;
-    height: 10rem;
-    overflow-y: auto;
+    height: auto;
   }
 
   .log-container {
-    height: 8rem;
+    height: 20rem;
     width: 100%;
+    overflow-y: auto;
   }
 
   .users-total {
@@ -439,7 +439,7 @@ option {
     max-width: 100%;
     max-height: 100%;
     width: 100%;
-    height: auto;
+    height: 100%;
     overflow: visible;
   }
 
