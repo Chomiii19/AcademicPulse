@@ -63,7 +63,6 @@ payment.addEventListener("click", async () => {
     }
 
     const data = await response.json();
-    console.log(data);
     window.location.href = data.session.url;
     if (result.error) console.error(result.error.message);
   } catch (err) {
