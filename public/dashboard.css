@@ -320,6 +320,7 @@ option {
 
 .log-container h2 {
   color: #f0eff1;
+  height: auto;
 }
 
 .student-entryTime {
@@ -340,7 +341,7 @@ option {
 
 .logs {
   background-color: #e2dfe3;
-  height: 5rem;
+  height: auto;
   width: 100%;
   padding: 0.3rem;
   border-radius: 0.5rem;
@@ -412,13 +413,18 @@ option {
   .line-graph-container {
     max-height: 260px;
     width: 100%;
-    height: auto;
+    height: 420px;
   }
 
   .student-log-container {
     max-width: 327px;
-    max-height: 250px;
+    height: 10rem;
     overflow-y: auto;
+  }
+
+  .log-container {
+    height: 8rem;
+    width: 100%;
   }
 
   .users-total {
