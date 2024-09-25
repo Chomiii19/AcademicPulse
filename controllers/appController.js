@@ -208,11 +208,14 @@ const studentLogStats = catchAsync(async (req, res, next) => {
     (fillDateStart = "2024-01-01"), (fillDateEnd = "2024-12-31");
   }
 
+  const student = await StudentLog.findOne({ studentNumber });
+  if (!student) return next(new AppError("Student not found.", 404));
+
   const { start, end } = utcDate(fillDateStart, fillDateEnd);
   const data = await StudentLog.aggregate([
     {
       $match: {
-        studentNumber: studentNumber,
+        studentNumber: student.studentNumber,
         date: {
           $gte: start,
           $lte: end,

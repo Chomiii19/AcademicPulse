@@ -398,7 +398,6 @@ searchStudent.addEventListener("submit", async (event) => {
     });
 
     const studentLog = await response.json();
-    console.log(studentLog);
 
     studentLog.data.forEach((data) => {
       const html = `
@@ -414,6 +413,8 @@ searchStudent.addEventListener("submit", async (event) => {
     });
     searchStudent.reset();
   } catch (err) {
+    const logDescription = document.querySelector(".log-description");
+    logDescription.textContent = err.message;
     console.error(err);
   }
 });
