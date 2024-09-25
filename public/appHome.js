@@ -58,6 +58,7 @@ payment.addEventListener("click", async () => {
       },
     });
 
+    console.log(response);
     if (!response.ok) {
       throw new Error("Failed to create checkout session");
     }
