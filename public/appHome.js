@@ -58,20 +58,13 @@ payment.addEventListener("click", async () => {
       },
     });
 
-    console.log(response);
     if (!response.ok) {
       throw new Error("Failed to create checkout session");
     }
 
     const data = await response.json();
-    const stripe = Stripe(
-      "pk_test_51Q2rNbL4uUkpvY1FKhuaeSOv8p1V8epQMl3blhDbD8FK9R7V6YFnFgdXEqXY5Gml25lKjQY50tONswlXXMGnoOAQ00fMs9iiUR"
-    );
-
-    const result = await stripe.redirectToCheckout({
-      sessionId: data.session.id,
-    });
-
+    console.log(data);
+    window.location.href = data.session.url;
     if (result.error) console.error(result.error.message);
   } catch (err) {
     console.error(err);
