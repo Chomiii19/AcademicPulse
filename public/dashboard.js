@@ -217,7 +217,7 @@ const doughnutGraph = async () => {
       options: {
         cutout: "90%",
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
       },
     });
   } catch (err) {
