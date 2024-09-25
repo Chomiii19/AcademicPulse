@@ -177,6 +177,10 @@ const idValidated = async (
         },
       },
     });
+
+    window.addEventListener("resize", function () {
+      idValidatedGraph.resize();
+    });
   } catch (err) {
     console.error(err);
   }
@@ -199,7 +203,7 @@ const doughnutGraph = async () => {
     doughnutPercentage.textContent =
       ((validatedCount / enrolledCount) * 100).toFixed(1) + "%";
 
-    new Chart(ctx, {
+    const myChart = new Chart(ctx, {
       type: "doughnut",
       data: {
         labels: ["Enrolled", "Validated"],
@@ -219,6 +223,10 @@ const doughnutGraph = async () => {
         responsive: true,
         maintainAspectRatio: false,
       },
+    });
+
+    window.addEventListener("resize", function () {
+      myChart.resize();
     });
   } catch (err) {
     console.error(err);
@@ -361,6 +369,10 @@ const lineGraph = async (
           },
         },
       },
+    });
+
+    window.addEventListener("resize", function () {
+      schoolLogsLineGraph.resize();
     });
   } catch (err) {
     console.error(err);
