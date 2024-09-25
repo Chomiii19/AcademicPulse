@@ -1,7 +1,5 @@
 import express from "express";
 import helmet from "helmet";
-import jwt from "jsonwebtoken";
-import { promisify } from "util";
 import cookieParser from "cookie-parser";
 import mongoSanitize from "express-mongo-sanitize";
 import { fileURLToPath } from "url";
@@ -11,8 +9,7 @@ import appRoute from "./routers/app-routes.js";
 import globalErrorHandler from "./controllers/globalErrorHandler.js";
 import AppError from "./utils/appError.js";
 import * as rateLimit from "./utils/rateLimit.js";
-import { protect } from "./controllers/user-authentication.js";
-import User from "./models/admin-model.js";
+import { loggedInChecker, protect } from "./controllers/user-authentication.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -26,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(join(__dirname, "public/dist")));
 
-app.get("/", protect, async (req, res) =>
+app.get("/", loggedInChecker, async (req, res) =>
   res.sendFile(join(__dirname, "public/dist/index.html"))
 );
 

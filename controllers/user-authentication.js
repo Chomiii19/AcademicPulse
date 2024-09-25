@@ -127,4 +127,25 @@ const signout = catchAsync(async (req, res, next) => {
   res.redirect("/");
 });
 
-export { signup, login, verifyUser, roleAuthorization, protect, signout };
+const loggedInChecker = catchAsync(async (req, res, next) => {
+  const token = req.cookies.authToken;
+
+  if (!token) return res.redirect("/");
+
+  const decoded = await promisify(jwt.verify)(token, process.env.SECRET_KEY);
+  const user = await User.findById(decoded.id);
+
+  if (!user) return res.redirect("/");
+
+  res.redirect("/app");
+});
+
+export {
+  signup,
+  login,
+  verifyUser,
+  roleAuthorization,
+  protect,
+  signout,
+  loggedInChecker,
+};
