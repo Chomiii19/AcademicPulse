@@ -2,6 +2,7 @@ import express from "express";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import { roleAuthorization } from "../controllers/user-authentication.js";
+import checkoutSession from "../controllers/checkoutController.js";
 import * as appController from "../controllers/appController.js";
 import * as rateLimiter from "../utils/rateLimit.js";
 
@@ -40,6 +41,12 @@ router.get("/campus-dashboard", roleAuthorization, (req, res) => {
 router.get("/unauthorized", (req, res) => {
   res.sendFile(join(__dirname, "../public/dist/unauthorized.html"));
 });
+
+router.get("/checkout-full-access/success", (req, res) => {
+  res.sendFile(join(__dirname, "../public/dist/success.html"));
+});
+
+router.route("/checkout-full-access").post(checkoutSession);
 
 router
   .route("/student-log/entrance/submit")

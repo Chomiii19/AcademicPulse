@@ -4,6 +4,7 @@ const header = document.querySelector("header");
 const sidebarBtn = document.querySelector(".fa-bars");
 const sidebar = document.querySelector(".sidebar");
 const section = document.querySelector(".section-contain");
+const payment = document.querySelector(".payment");
 
 function updateDateTime() {
   const now = new Date();
@@ -45,5 +46,33 @@ section.addEventListener("click", (event) => {
     sidebar.classList.remove("sidebar-active");
     section.classList.remove("blurred");
     header.classList.remove("blurred");
+  }
+});
+
+payment.addEventListener("click", async () => {
+  try {
+    const response = await fetch("/app/checkout-full-access", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to create checkout session");
+    }
+
+    const data = await response.json();
+    const stripe = Stripe(
+      "pk_test_51Q2rNbL4uUkpvY1FKhuaeSOv8p1V8epQMl3blhDbD8FK9R7V6YFnFgdXEqXY5Gml25lKjQY50tONswlXXMGnoOAQ00fMs9iiUR"
+    );
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: data.session.id,
+    });
+
+    if (result.error) console.error(result.error.message);
+  } catch (err) {
+    console.error(err);
   }
 });
