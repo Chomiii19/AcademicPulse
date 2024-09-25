@@ -397,7 +397,19 @@ searchStudent.addEventListener("submit", async (event) => {
       body: JSON.stringify(data),
     });
 
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Student not found.");
+      } else {
+        throw new Error("An error occurred while fetching student data.");
+      }
+    }
+
     const studentLog = await response.json();
+
+    if (studentLog.data.length === 0) {
+      throw new Error("No logs found for the student.");
+    }
 
     studentLog.data.forEach((data) => {
       const html = `
