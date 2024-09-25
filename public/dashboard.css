@@ -26,14 +26,6 @@ header {
   background-color: #ffffff;
 }
 
-canvas {
-  max-width: 100%;
-  max-height: 100%;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-}
-
 .fa-arrow-left {
   display: flex;
   padding-right: 1rem;
@@ -441,6 +433,14 @@ option {
 
   .select-container select {
     width: 80px;
+  }
+
+  canvas {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: auto;
+    overflow: visible;
   }
 
   section {
