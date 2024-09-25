@@ -137,8 +137,6 @@ const loggedInChecker = catchAsync(async (req, res, next) => {
 
   if (user) return res.redirect("/app");
   else return res.redirect("/users/signout");
-
-  next();
 });
 
 export {
