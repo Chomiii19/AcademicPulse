@@ -195,4 +195,4 @@ nextBtn.addEventListener("click", () => {
   renderPagination();
 });
 
-displayStudentRecord();
+if (dragDropContainer.classList.contains("remove")) displayStudentRecord();
