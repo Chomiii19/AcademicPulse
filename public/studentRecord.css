@@ -275,6 +275,14 @@ main {
   transform: scale(1.05);
 }
 
+.main-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .delete-btn {
   padding: 0.8rem;
   height: 50%;
@@ -288,6 +296,7 @@ main {
   transition: 0.3s ease;
   color: #ffffff;
   font-weight: 700;
+  width: 9rem;
 }
 
 .delete-btn:hover {
@@ -403,5 +412,22 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
+  }
+
+  .main-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    height: auto;
+  }
+
+  .filter-container {
+    height: auto;
+  }
+
+  .delete-btn {
+    padding: 0.5rem;
+    width: 8rem;
   }
 }
