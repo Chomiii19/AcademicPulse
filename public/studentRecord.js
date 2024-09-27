@@ -116,7 +116,7 @@ const studentRecordAppend = (student) => {
           student.isEnrolled ? "Enrolled" : "Not Enrolled"
         }</span></p>
         <p>Date enrolled: <span class="date-enrolled">${
-          student.isEnrolledAt.split("T")[0]
+          student.isEnrolledAt ? student.isEnrolledAt.split("T")[0] : ""
         }</span></p>
     </div>`;
 };
