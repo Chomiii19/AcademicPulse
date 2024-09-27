@@ -116,7 +116,7 @@ const studentRecordAppend = (student) => {
           student.isEnrolled ? "Enrolled" : "Not Enrolled"
         }</span></p>
         <p>Date enrolled: <span class="date-enrolled">${
-          student.isEnrolledAt
+          student.isEnrolledAt.split("T")[0]
         }</span></p>
     </div>`;
 };
@@ -130,15 +130,16 @@ const displayStudentRecord = async (page = 1) => {
     if (!data.totalStudents) {
       dragDropContainer.classList.remove("remove");
       main.classList.add("blurred");
+    } else {
+      const students = data.data;
+      totalPages = data.pages;
+
+      renderPagination();
+      students.forEach((student) => {
+        const studentRecord = studentRecordAppend(student);
+        studentRecordContainer.insertAdjacentHTML("beforeend", studentRecord);
+      });
     }
-
-    const students = data.data;
-    totalPages = data.pages;
-
-    students.forEach((student) => {
-      const studentRecord = studentRecordAppend(student);
-      studentRecordContainer.insertAdjacentHTML("beforeend", studentRecord);
-    });
   } catch (err) {
     console.error(err);
   }
@@ -195,4 +196,3 @@ nextBtn.addEventListener("click", () => {
 });
 
 displayStudentRecord();
-renderPagination();
