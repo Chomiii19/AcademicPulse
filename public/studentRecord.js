@@ -241,3 +241,4 @@ nextBtn.addEventListener("click", () => {
 });
 
 if (dragDropContainer.classList.contains("remove")) displayStudentRecord();
+else main.classList.add("blurred");
