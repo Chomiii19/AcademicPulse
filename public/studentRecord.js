@@ -134,7 +134,6 @@ const displayStudentRecord = async (page = 1) => {
       const students = data.data;
       totalPages = data.pages;
 
-      renderPagination();
       students.forEach((student) => {
         const studentRecord = studentRecordAppend(student);
         studentRecordContainer.insertAdjacentHTML("beforeend", studentRecord);
