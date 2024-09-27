@@ -258,7 +258,7 @@ main {
 .filter-container input {
   height: 50%;
   padding: 0.8rem;
-  width: 4.5rem;
+  width: 5.5rem;
   outline: none;
   background-color: #eeeeee;
   border: solid 1px transparent;
@@ -276,6 +276,10 @@ main {
   border-radius: 0.5rem;
   cursor: pointer;
   transition: 0.3s ease;
+}
+
+.active-page {
+  transform: translateY(-10px);
 }
 
 .filter-container button:hover {

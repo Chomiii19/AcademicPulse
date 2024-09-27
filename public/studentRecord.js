@@ -211,6 +211,13 @@ pages.forEach((page) => {
   page.addEventListener("click", (event) => {
     currentPage = parseInt(event.target.dataset.page);
 
+    pages.forEach((pg) => pg.classList.remove("active-page"));
+
+    const currentPageElement = [...pages].find(
+      (pg) => parseInt(pg.dataset.page) === currentPage
+    );
+    if (currentPageElement) currentPageElement.classList.add("active-page");
+
     if (currentPage === end && end < totalPages) {
       start++;
       end++;
