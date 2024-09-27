@@ -114,7 +114,10 @@ deleteBtn.addEventListener("click", async (event) => {
     if (!response.ok) throw new Error("Failed to delete record");
     const data = await response.json();
 
-    setTimeout(() => dragDropContainer.classList.remove("remove"), 2000);
+    setTimeout(() => {
+      main.classList.add("blurred");
+      dragDropContainer.classList.remove("remove");
+    }, 2000);
   } catch (err) {
     console.error(err);
   }

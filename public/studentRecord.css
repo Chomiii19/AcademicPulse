@@ -120,12 +120,14 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: 0.3s ease;
   border-radius: 1rem;
   box-shadow: 5px 10px 15px 10px #dcdcdccf;
   position: fixed;
   z-index: 1000;
+  opacity: 1;
+  visibility: visible;
   background-color: #ffffff;
+  transition: 0.3s ease;
 }
 
 .drop-zone {
@@ -133,7 +135,7 @@ img {
   border-width: 0.2rem;
   border-radius: 0.5rem;
   height: 300px;
-  width: 100%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -170,10 +172,14 @@ img {
   transform: translateY(0px);
   opacity: 1;
   visibility: visible;
+  transition: 0.3s ease;
 }
 
 .remove {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  transform: translate(-50%, -150%);
 }
 
 .file-description {
@@ -233,6 +239,7 @@ main {
   justify-content: flex-start;
   padding: 1rem;
   gap: 1rem;
+  transition: 0.3s ease;
 }
 
 .filter-container {
