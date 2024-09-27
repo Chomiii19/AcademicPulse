@@ -123,6 +123,7 @@ const studentRecordAppend = (student) => {
 let totalPages;
 const displayStudentRecord = async (page = 1) => {
   try {
+    studentRecordContainer.innerHTML = "";
     const response = await fetch(`/app/api/getAllStudents?page=${page}`);
     if (!response.ok) throw new Error(response.message);
 
