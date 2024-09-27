@@ -15,6 +15,7 @@ const pages = document.querySelectorAll(".page");
 const nextBtn = document.querySelector(".next");
 const previousBtn = document.querySelector(".prev");
 const main = document.querySelector(".main");
+const filterContainer = document.querySelector(".filter-container");
 
 form.addEventListener("click", () => {
   fileInput.click();
@@ -76,7 +77,7 @@ const upload = async (file) => {
       setTimeout(() => {
         dragDropContainer.classList.add("remove");
         main.classList.remove("blurred");
-        displayStudentRecord(1);
+        displayStudentRecord();
       }, 3000);
     } else throw new Error("There was an error uploading the file.");
   } catch (err) {
@@ -84,6 +85,23 @@ const upload = async (file) => {
     console.error(err);
   }
 };
+
+let studentQuery = "",
+  yearLevelQuery = "",
+  courseQuery = "";
+
+filterContainer.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(filterContainer);
+  const data = Object.fromEntries(formData.entries());
+
+  if (data.studentNumber) studentQuery = `studentNumber=${data.studentNumber}&`;
+  if (data.yearLevel) yearLevelQuery = `yearLevel=${data.yearLevel}&`;
+  if (data.course) courseQuery = `course=${data.course}&`;
+
+  displayStudentRecord(studentQuery, yearLevelQuery, courseQuery);
+});
 
 const studentRecordAppend = (student) => {
   return `
@@ -121,10 +139,17 @@ const studentRecordAppend = (student) => {
     </div>`;
 };
 let totalPages;
-const displayStudentRecord = async (page = 1) => {
+const displayStudentRecord = async (
+  student = "",
+  yearLevel = "",
+  course = "",
+  page = 1
+) => {
   try {
     studentRecordContainer.innerHTML = "";
-    const response = await fetch(`/app/api/getAllStudents?page=${page}`);
+    const response = await fetch(
+      `/app/api/getAllStudents?${student}${yearLevel}${course}page=${page}`
+    );
     if (!response.ok) throw new Error(response.message);
 
     const data = await response.json();
@@ -156,7 +181,7 @@ const renderPagination = () => {
 
   previousBtn.disabled = start === 1;
   nextBtn.disabled = end === totalPages;
-  displayStudentRecord(currentPage);
+  displayStudentRecord(studentQuery, yearLevelQuery, courseQuery, currentPage);
 };
 
 pages.forEach((page) => {
