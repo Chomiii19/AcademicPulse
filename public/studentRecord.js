@@ -202,6 +202,13 @@ const renderPagination = () => {
     page.dataset.page = start + index;
   });
 
+  pages.forEach((pg) => pg.classList.remove("active-page"));
+
+  const currentPageElement = [...pages].find(
+    (pg) => parseInt(pg.dataset.page) === currentPage
+  );
+  if (currentPageElement) currentPageElement.classList.add("active-page");
+
   previousBtn.disabled = start === 1;
   nextBtn.disabled = end === totalPages;
   displayStudentRecord(studentQuery, yearLevelQuery, courseQuery, currentPage);
@@ -210,13 +217,6 @@ const renderPagination = () => {
 pages.forEach((page) => {
   page.addEventListener("click", (event) => {
     currentPage = parseInt(event.target.dataset.page);
-
-    pages.forEach((pg) => pg.classList.remove("active-page"));
-
-    const currentPageElement = [...pages].find(
-      (pg) => parseInt(pg.dataset.page) === currentPage
-    );
-    if (currentPageElement) currentPageElement.classList.add("active-page");
 
     if (currentPage === end && end < totalPages) {
       start++;
