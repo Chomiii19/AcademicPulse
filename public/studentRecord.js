@@ -78,7 +78,7 @@ const upload = async (file) => {
       setTimeout(() => {
         dragDropContainer.classList.add("remove");
         main.classList.remove("blurred");
-        renderPagination();
+        displayStudentRecord();
       }, 3000);
     } else throw new Error("There was an error uploading the file.");
   } catch (err) {
@@ -115,9 +115,6 @@ deleteBtn.addEventListener("click", async (event) => {
     const data = await response.json();
 
     setTimeout(() => {
-      start = 1;
-      end = 3;
-      currentPage = 1;
       main.classList.add("blurred");
       dragDropContainer.classList.remove("remove");
     }, 2000);
