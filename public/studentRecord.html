@@ -32,11 +32,13 @@
     <section>
       <div class="drag-drop-container remove">
         <h1>Upload your JSON file</h1>
-        <form class="drop-zone" enctype="multipart/form-data">
-          <input type="file" name="file" class="file-input" hidden />
-          <i class="fa-solid fa-cloud-arrow-up"></i>
-          <p class="form-text">Browse File to Upload</p>
-        </form>
+        <div>
+          <form class="drop-zone" enctype="multipart/form-data">
+            <input type="file" name="file" class="file-input" hidden />
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <p class="form-text">Browse File to Upload</p>
+          </form>
+        </div>
 
         <div class="file-upload ongoing">
           <div class="file-description">
@@ -54,29 +56,32 @@
       </div>
 
       <main class="main">
-        <form class="filter-container">
-          <input
-            type="text"
-            name="studentNumber"
-            class="studentNumberInput"
-            placeholder="Student Number"
-          />
-          <input
-            type="text"
-            name="yearLevel"
-            class="yearFilter"
-            placeholder="Yr level"
-          />
-          <input
-            type="text"
-            name="course"
-            class="yearFilter"
-            placeholder="Course"
-          />
-          <button type="submit" class="submit-filter">
-            <i class="fa-solid fa-filter"></i>
-          </button>
-        </form>
+        <div>
+          <form class="filter-container">
+            <input
+              type="text"
+              name="studentNumber"
+              class="studentNumberInput"
+              placeholder="Student Number"
+            />
+            <input
+              type="text"
+              name="yearLevel"
+              class="yearFilter"
+              placeholder="Yr level"
+            />
+            <input
+              type="text"
+              name="course"
+              class="yearFilter"
+              placeholder="Course"
+            />
+            <button type="submit" class="submit-filter">
+              <i class="fa-solid fa-filter"></i>
+            </button>
+            <button class="delete-btn">Delete Record</button>
+          </form>
+        </div>
         <div class="student-record-container">
           <!-- <div class="student-record">
             <p>

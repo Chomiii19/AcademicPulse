@@ -16,6 +16,7 @@ const nextBtn = document.querySelector(".next");
 const previousBtn = document.querySelector(".prev");
 const main = document.querySelector(".main");
 const filterContainer = document.querySelector(".filter-container");
+const deleteBtn = document.querySelector(".delete-btn");
 
 form.addEventListener("click", () => {
   fileInput.click();
@@ -96,11 +97,27 @@ filterContainer.addEventListener("submit", (event) => {
   const formData = new FormData(filterContainer);
   const data = Object.fromEntries(formData.entries());
 
-  if (data.studentNumber) studentQuery = `studentNumber=${data.studentNumber}&`;
-  if (data.yearLevel) yearLevelQuery = `yearLevel=${data.yearLevel}&`;
-  if (data.course) courseQuery = `course=${data.course}&`;
+  studentQuery = data.studentNumber
+    ? `studentNumber=${data.studentNumber}&`
+    : "";
+  yearLevelQuery = data.yearLevel ? `yearLevel=${data.yearLevel}&` : "";
+  courseQuery = data.course ? `course=${data.course}&` : "";
 
   displayStudentRecord(studentQuery, yearLevelQuery, courseQuery);
+});
+
+deleteBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+  try {
+    const response = await fetch("/app/api/delete-record");
+
+    if (!response.ok) throw new Error("Failed to delete record");
+    const data = await response.json();
+
+    setTimeout(() => dragDropContainer.classList.remove("remove"), 2000);
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 const studentRecordAppend = (student) => {
