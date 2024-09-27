@@ -30,7 +30,7 @@
     </header>
 
     <section>
-      <div class="drag-drop-container">
+      <div class="drag-drop-container remove">
         <h1>Upload your JSON file</h1>
         <form class="drop-zone" enctype="multipart/form-data">
           <input type="file" name="file" class="file-input" hidden />
@@ -52,6 +52,61 @@
           <i class="fa-solid fa-square-check remove"></i>
         </div>
       </div>
+
+      <main class="main">
+        <form class="filter-container">
+          <input
+            type="text"
+            name="studentNumber"
+            class="studentNumberInput"
+            placeholder="Student Number"
+          />
+          <input
+            type="text"
+            name="yearLevel"
+            class="yearFilter"
+            placeholder="Yr level"
+          />
+          <input
+            type="text"
+            name="yearLevel"
+            class="yearFilter"
+            placeholder="Course"
+          />
+          <button type="submit" class="submit-filter">
+            <i class="fa-solid fa-filter"></i>
+          </button>
+        </form>
+        <div class="student-record-container">
+          <!-- <div class="student-record">
+            <p>
+              Student Number: <span class="studentNumber">TUPM-22-2333</span>
+            </p>
+            <div class="fullname">
+              <p>Surname: <span class="surname">Borines</span></p>
+              <p>First name: <span class="firstname">Jomari Vincent</span></p>
+              <p>Middle name: <span class="middlename">Ayong</span></p>
+              <p>Extension: <span class="extension"></span></p>
+            </div>
+
+            <p>Course: <span class="course">BSCS</span></p>
+            <p>Year Level: <span class="course">4</span></p>
+            <p>
+              Email:
+              <span class="email">jomarivincent.borines@tup.edu.ph</span>
+            </p>
+            <p>Status: <span class="enrollStatus">Enrolled</span></p>
+            <p>Date enrolled: <span class="date-enrolled"></span></p>
+          </div> -->
+        </div>
+        <div class="page-container">
+          <button class="prev" disabled>Prev</button>
+          <button data-page="1" class="page">1</button>
+          <button data-page="2" class="page">2</button>
+          <button data-page="3" class="page">3</button>
+          <button class="next">Next</button>
+        </div>
+      </main>
     </section>
   </body>
 </html>
