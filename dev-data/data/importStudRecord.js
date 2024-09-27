@@ -1,50 +1,32 @@
 import fs from "fs";
-import mongoose from "mongoose";
-import express from "express";
-import dotenv from "dotenv";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
 import Student from "../../models/student-record.js";
+import catchAsync from "../../utils/catchAsync.js";
+import AppError from "../../utils/appError.js";
 
-dotenv.config({ path: "../../.env" });
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB = process.env.DB.replace("<db_password>", DB_PASSWORD);
-const app = express();
-const filePath = fileURLToPath(import.meta.url);
-const __dirname = dirname(filePath);
+const importData = catchAsync(async (req, res, next) => {
+  const filepath = req.file.path;
+  const studentsData = JSON.parse(fs.readFileSync(filepath, "utf-8"));
 
-mongoose
-  .connect(DB)
-  .then(() => console.log("Successfully connected to DB"))
-  .catch(() => console.log("Failed to connect DB"));
+  await Student.insertMany(studentsData);
 
-app.listen(process.env.PORT, () =>
-  console.log(`Server listening on port ${process.env.PORT}`)
-);
+  fs.unlink(filepath, (err) => {
+    if (err)
+      return next(new AppError("File uploaded but failed to delete file", 500));
+  });
 
-const students = JSON.parse(
-  fs.readFileSync(`${__dirname}/studentRecord.json`, "utf-8")
-);
+  res.status(201).json({
+    status: "Success",
+    message: "Student record successfully created.",
+  });
+});
 
-const importData = async () => {
-  try {
-    await Student.create(students);
-    console.log("Students successfully loaded");
-  } catch (err) {
-    console.log(err);
-  }
-  process.exit();
-};
+const deleteData = catchAsync(async (req, res, next) => {
+  await Student.deleteMany();
 
-const deleteData = async () => {
-  try {
-    await Student.deleteMany();
-    console.log("Students successfully deleted");
-  } catch (err) {
-    console.log(err);
-  }
-  process.exit();
-};
+  res.status(200).json({
+    status: "Success",
+    message: "Student record successfully deleted.",
+  });
+});
 
-// deleteData();
-importData();
+export { importData, deleteData };

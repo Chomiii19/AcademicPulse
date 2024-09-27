@@ -5,6 +5,9 @@ import { roleAuthorization } from "../controllers/user-authentication.js";
 import checkoutSession from "../controllers/checkoutController.js";
 import * as appController from "../controllers/appController.js";
 import * as rateLimiter from "../utils/rateLimit.js";
+import { upload, uploadFile } from "../controllers/uploadController.js";
+import { deleteData } from "../dev-data/data/importStudRecord.js";
+import * as studentController from "../controllers/studentController.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -46,7 +49,13 @@ router.get("/checkout-full-access/success", (req, res) => {
   res.sendFile(join(__dirname, "../public/dist/success.html"));
 });
 
+router.get("/student-record", roleAuthorization, (req, res) => {
+  res.sendFile(join(__dirname, "../public/dist/studentRecord.html"));
+});
+
 router.route("/checkout-full-access").post(checkoutSession);
+router.route("/api/upload").post(upload, uploadFile);
+router.route("/api/delete-record").get(deleteData);
 
 router
   .route("/student-log/entrance/submit")
@@ -59,5 +68,6 @@ router.route("/api/enrolled-students").get(appController.enrolledStats);
 router.route("/api/validated-students").get(appController.validatedStats);
 router.route("/api/students-inschool").get(appController.countStudentsInSchool);
 router.route("/api/total-users").get(appController.totalUsers);
+router.route("/api/getAllStudents").get(studentController.getAllStudents);
 
 export default router;

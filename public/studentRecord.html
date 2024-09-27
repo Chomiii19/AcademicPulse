@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="studentRecord.css" />
+    <link rel="icon" type="image/png" href="img/logo.png" />
+    <script defer src="studentRecord.js"></script>
+    <title>AcademicPulse</title>
+  </head>
+  <body>
+    <header class="">
+      <a href="/app"><i class="fa-solid fa-arrow-left"></i></a>
+      <div class="navigation">
+        <a href="/app" class="logo"
+          >Academic<span class="sublogo">Pulse</span></a
+        >
+        <nav>
+          <a href=""><i class="fa-solid fa-bell"></i></a>
+          <div class="user-register">
+            <a href="" class="get-help-btn">Get Help?</a>
+            <a href="/users/signout" class="signout-btn">Sign out</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section>
+      <div class="drag-drop-container">
+        <h1>Upload your JSON file</h1>
+        <form class="drop-zone" enctype="multipart/form-data">
+          <input type="file" name="file" class="file-input" hidden />
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <p class="form-text">Browse File to Upload</p>
+        </form>
+
+        <div class="file-upload ongoing">
+          <div class="file-description">
+            <i class="fa-solid fa-file"></i>
+            <div class="content">
+              <div class="details">
+                <span class="file-name"></span>
+                <span class="size"></span>
+              </div>
+            </div>
+          </div>
+          <i class="fa-solid fa-spinner remove"></i>
+          <i class="fa-solid fa-square-check remove"></i>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

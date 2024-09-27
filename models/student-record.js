@@ -36,6 +36,11 @@ const studentRecordSchema = new mongoose.Schema({
     type: String,
     required: [true, "A student must have a course"],
   },
+  yearLevel: {
+    type: Number,
+    enum: [1, 2, 3, 4],
+    required: [true, "A student must have a year level."],
+  },
 });
 
 const Student = mongoose.model("Student", studentRecordSchema);
