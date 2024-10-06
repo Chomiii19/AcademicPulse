@@ -4,8 +4,7 @@ This project was specifically meant to cater IDs from Technological University o
 
 
 **If you plan to use this for either school or personal projects be sure to the following things:**
-
-  👉An ID must have a QR Code (if not you can just generate one)
+👉An ID must have a QR Code (if not you can just generate one)
   
   👉The value within the QR Code must have a standard format and must be unique (e.g. A student's ID have a qr code value when scanned of "TUPM-XX-XXXX")
   
