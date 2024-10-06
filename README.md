@@ -1,5 +1,9 @@
+# AcademicPulse
+
 This project has multiple features such as ID Validation through QR code, entry and exit campus validation using the QR code also, and a dashboard where you can check the students' log and ID validation statistics. <br /> 
 This project was specifically meant to cater IDs from Technological University of the Philippines - Manila. <br />
+You can access the app live here: [<u>here</u>](https://academicpulse.onrender.com). <br />
+ 
 
 
 **If you plan to use this for either school or personal projects be sure to the following things:** <br />
