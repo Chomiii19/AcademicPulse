@@ -45,6 +45,7 @@ const signup = catchAsync(async (req, res, next) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
     isValid: req.body.isValid,
+    role: "admin"
   });
 
   sendMail("User Verification Email - ID Validation App", user);
